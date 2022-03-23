@@ -1,4 +1,4 @@
-# Drunkin Donut
+# Drunkin' Donut
 
 ## Members
  - [Ian Goh](https://github.com/iangohy)
