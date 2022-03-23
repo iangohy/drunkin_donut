@@ -1,4 +1,4 @@
-# 50.002 1D ALU
+# Drunkin Donut
 
 ## Members
  - [Ian Goh](https://github.com/iangohy)
