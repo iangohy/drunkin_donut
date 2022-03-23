@@ -19,7 +19,7 @@ module seven_seg (
       default: segs = 7b0000000;
       */
       //common anode
-      //abcdefg df
+      //in order: a b c d e f g dp
       0: segs = 8b00000011;
       1: segs = 8b11110011;
       2: segs = 8b00100101;
