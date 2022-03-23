@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="drunkin_donut" board="Alchitry Au" language="Lucid" version="3">
   <files>
-    <component>reset_conditioner.luc</component>
-    <src>sixteen_bit_shiftright.luc</src>
-    <component>edge_detector.luc</component>
-    <src>mux_4.luc</src>
-    <src>compare.luc</src>
-    <src>full_adder.luc</src>
-    <src>tester_rom.luc</src>
     <src>multiplier.luc</src>
-    <src top="true">au_top.luc</src>
+    <src>boolean.luc</src>
+    <src>factorial.luc</src>
+    <src>mux_2.luc</src>
+    <component>counter.luc</component>
+    <src>mux_4.luc</src>
+    <src>automanual.luc</src>
+    <src>compare.luc</src>
+    <src>alu.luc</src>
     <src>sixteen_bit_sra.luc</src>
+    <src>alu_control.luc</src>
+    <src>add_sub.luc</src>
+    <src top="true">au_top.luc</src>
+    <src>tester_rom.luc</src>
+    <src>rca_five.luc</src>
+    <src>shifter.luc</src>
+    <src>full_adder.luc</src>
+    <src>tester.luc</src>
+    <src>sixteen_bit_shiftright.luc</src>
+    <component>reset_conditioner.luc</component>
+    <src>seven_seg.luc</src>
     <src>sixteen_bit_shiftleft.luc</src>
     <src>pausing_counter.luc</src>
-    <src>mux_2.luc</src>
-    <src>factorial.luc</src>
-    <src>boolean.luc</src>
-    <component>counter.luc</component>
-    <src>alu.luc</src>
-    <src>rca_five.luc</src>
-    <src>alu_control.luc</src>
-    <src>shifter.luc</src>
-    <src>tester.luc</src>
-    <src>automanual.luc</src>
-    <src>add_sub.luc</src>
-    <constraint lib="true">alchitry.acf</constraint>
-    <constraint lib="true">io.acf</constraint>
-    <constraint lib="true">au.xdc</constraint>
+    <component>edge_detector.luc</component>
+    <constraint>custom.acf</constraint>
+    <constraint>newau.xdc</constraint>
   </files>
 </project>
