@@ -1,0 +1,19 @@
+module two_bit_multiplier (
+    input a[2],  // input 2bit multiplicand a
+    input b[2],  // input 2bit multiplier b
+    output p[2]
+  ) {
+  
+  sig n1[2], n2;
+  full_adder fa;
+
+  always {
+    n1[1:0] = a[1:0] & 2x{b[0]}; //input lvl 1
+    n2 = a[0] & b[1]; // input lvl 2
+    fa.x = n1[1];
+    fa.y = n2;
+    fa.cin = 0;
+    p[0] = n1[0];
+    p[1] = fa.s;
+  }
+}

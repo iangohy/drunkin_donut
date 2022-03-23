@@ -1,0 +1,75 @@
+module alu (
+    input alufn[6],
+    input alufn_6,
+    input a[16],  
+    input b[16],
+    output out[16],
+    output zvn[3]
+  ) {
+  
+  add_sub adder16;
+  compare compare16;
+  boolean bool16;
+  shifter shift16;
+  multiplier mult16;
+  mux_2 mux2[16];
+  mux_4 mux4;
+  
+  sig s[16];
+  sig cmp[16];
+  sig boole[16];
+  sig shift[16];
+  sig mult[16];
+  sig miniMuxRes[16];
+
+  always {
+    // ------- subcomponents -------
+    // adder16
+    adder16.alufn = alufn[0];
+    adder16.a = a;
+    adder16.b = b;
+    adder16.alufn6=alufn_6;
+    s = adder16.out;
+    zvn[2] = adder16.z;
+    zvn[1] = adder16.v;
+    zvn[0] = adder16.n;
+    
+    // compare16
+    compare16.z = adder16.z;
+    compare16.v = adder16.v;
+    compare16.n = adder16.n;
+    compare16.alufn = alufn[2:0]; // specified input is alufn[3]
+    cmp[15:1] = 0;
+    cmp[0] = compare16.c;
+    
+    // bool16
+    bool16.a = a;
+    bool16.b = b;
+    bool16.alufn = alufn[3:0];
+    boole = bool16.out;
+    
+    // shift16
+    shift16.a = a;
+    shift16.b = b[3:0]; // low-order 4 bits for shift count
+    shift16.alufn = alufn[1:0];
+    shift = shift16.s;
+    
+    // mult16
+    mult16.a = a;
+    mult16.b = b;
+    mult = mult16.p;
+    
+    // ------ compute ALU output ------
+    mux2.s = 16x{alufn[1]};
+    mux2.a = s;
+    mux2.b = mult;
+    miniMuxRes = mux2.out;
+    
+    mux4.s = alufn[5:4];
+    mux4.a = miniMuxRes;
+    mux4.b = shift;
+    mux4.c = boole;
+    mux4.d = cmp;
+    out = mux4.out;
+  }
+}

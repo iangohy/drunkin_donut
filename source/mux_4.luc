@@ -1,0 +1,23 @@
+module mux_4 (
+    input s[2], // selector signals
+    input a[16],
+    input b[16],
+    input c[16],
+    input d[16],
+    output out[16]
+  ) {
+
+  always {
+    out = 0;
+    case(s) {
+      b00:
+        out = a;
+      b10:
+        out = b;  
+      b01:
+        out = c;
+      b11: 
+        out = d;
+    }
+  }
+}

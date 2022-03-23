@@ -1,0 +1,22 @@
+module compare (
+    input z,
+    input v,
+    input n,
+    input alufn[3],
+    output c
+  ) {
+
+  always {
+    c = 0;
+    case(alufn[2:1]){
+      b00:  // None
+        c = 0;
+      b10:  // Less than
+        c = n^v;
+      b01:  // Equal
+        c = z;
+      b11:  // Less than/equal to
+        c = (n^v) | z;
+          
+  }
+}

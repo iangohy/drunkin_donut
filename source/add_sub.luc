@@ -1,0 +1,63 @@
+module add_sub (
+    input a[16],
+    input b[16],
+    input alufn,
+    input alufn6,
+    output out[16],
+    output z,
+    output v,
+    output n
+  ) {
+  
+  full_adder fulladder[16];
+  
+  mux_2 incrementer[16]; // to enable incrementer/decrementer
+  sig bout[16];
+  sig cout;
+  sig orz_8[8];
+  sig orz_4[4];
+  sig orz_2[2];
+  sig orz_1;
+  sig xor1;
+  sig and_1;
+  sig and_2;
+  sig and_3;
+  sig and_4;
+  sig bin[16];
+  var i;
+  
+  always {
+    fulladder.x = a;
+    bin = 16b1;  // for add/sub 1 in incrementor/decrementor
+    for(i =0; i < 16; i++){
+      incrementer.a[i] = b[i];
+      incrementer.b[i] = bin[i];
+      incrementer.s[i] = alufn6;
+      bout[i] = incrementer.out[i];
+    }
+    fulladder.y = bout^16x{alufn};
+    fulladder.cin[0] = alufn;
+    fulladder.cin[15:1] = fulladder.cout[14:0];
+    out[15:0] = fulladder.s[15:0];
+    cout = fulladder.cout[15];
+    
+    // z signal (invert OR of all output bits)
+    orz_8 = fulladder.s[7:0]|fulladder.s[15:8];
+    orz_4 = orz_8[3:0]|orz_8[7:4];
+    orz_2 = orz_4[1:0]|orz_4[3:2];
+    orz_1 = orz_2[0]|orz_2[1];
+    z = ~orz_1;
+    
+    // v signal
+    xor1 = alufn ^ bout[15];
+    and_1 = xor1 & a[15];
+    and_2 = and_1 & ~fulladder.s[15];
+    and_3 = ~xor1 & ~a[15];
+    and_4 = and_3 & fulladder.s[15];
+    v = and_2 | and_4;
+    
+    
+    // n signal
+    n = fulladder.s[15];
+  }
+}

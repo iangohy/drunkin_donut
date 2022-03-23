@@ -1,0 +1,18 @@
+module mux_2 (
+    input s, // selector signal
+    input a,
+    input b,
+    output out
+  ) {
+
+  always {
+    case (s) {
+      b0:
+        out = a;
+      b1:
+        out = b;
+      default:
+        out = a;
+    }
+  }
+}

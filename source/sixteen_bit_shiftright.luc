@@ -1,0 +1,51 @@
+module sixteen_bit_shiftright (
+    input a[16], //input 16bit signal
+    input b[4], //selector
+    output s[16]
+  ) {
+  sig w[16],x[16],y[16];  
+  always {
+    case (b[3]){ //shift right 8 bits
+      b0:
+        w=a;
+        
+      b1:
+        w[15:8]=8b0;
+        w[7:0]=a[15:8];
+        
+      default:
+        w=a;
+    }   
+     case (b[2]){ //4 bit shifter
+      b0:
+      x=w;
+            
+      b1:
+      x[15:12]=4b0;
+      x[11:0]=w[15:4];
+            
+      default:
+      x=w;
+    }    
+     case (b[1]){//2bit shifter
+      b0:
+      y=x;
+      b1:
+      y[15:14]=2b0;
+      y[13:0]=x[15:2];
+      default:
+      y=x;
+    }
+     case (b[0]){//1bit shifter
+      b0:
+      s=y;
+        
+      b1:
+      s[15]=b0;
+      s[14:0]=y[15:1];
+      default:
+      s=y;
+                  
+    }
+  }
+}

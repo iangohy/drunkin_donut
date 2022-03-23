@@ -1,0 +1,119 @@
+module multiplier (
+    input a[16],  // input 16bit multiplicand a
+    input b[16],  // input 16bit multiplier b
+    output p[16]
+  ) {
+  
+  
+  sig n0[16], n1[15], n2[14], n3[13], n4[12], n5[11], n6[10], n7[9], n8[8], n9[7], n10[6], n11[5], n12[4], n13[3], n14[2], n15;
+  full_adder fa[120];
+  
+  always {
+  
+    n0[15:0] = a[15:0] & 16x{b[0]}; // input lvl 0
+    n1[14:0] = a[14:0] & 15x{b[1]}; // input lvl 1
+    fa.x[14:0] = n0[15:1];
+    fa.y[14:0] = n1[14:0];
+    fa.cin[0] = 0;
+    fa.cin[14:1] = fa.cout[13:0];
+    p[0] = n0[0]; //output p0
+    p[1] = fa.s[0]; //output p1
+    
+    n2[13:0] = a[13:0] & 14x{b[2]}; // input lvl 2
+    fa.x[28:15] = fa.s[14:1];
+    fa.y[28:15] = n2[13:0];
+    fa.cin[15] = 0;
+    fa.cin[28:16] = fa.cout[27:15];
+    p[2] = fa.s[15]; //output p2
+ 
+    n3[12:0] = a[12:0] & 13x{b[3]}; // input lvl 3
+    fa.x[41:29] = fa.s[28:16];
+    fa.y[41:29] = n3[12:0];
+    fa.cin[29] = 0;
+    fa.cin[41:30] = fa.cout[40:29];
+    p[3] = fa.s[29]; //output p3
+    
+    n4[11:0] = a[11:0] & 12x{b[4]}; // input lvl 4
+    fa.x[53:42] = fa.s[41:30];
+    fa.y[53:42] = n4[11:0];
+    fa.cin[42] = 0;
+    fa.cin[53:43] = fa.cout[52:42];
+    p[4] = fa.s[42]; //output p4
+    
+    n5[10:0] = a[10:0] & 11x{b[5]}; // input lvl 5
+    fa.x[64:54] = fa.s[53:43];
+    fa.y[64:54] = n5[10:0];
+    fa.cin[54] = 0;
+    fa.cin[64:55] = fa.cout[63:54];
+    p[5] = fa.s[54]; //output p5
+    
+    n6[9:0] = a[9:0] & 10x{b[6]}; // input lvl 6
+    fa.x[74:65] = fa.s[64:55];
+    fa.y[74:65] = n6[9:0];
+    fa.cin[65] = 0;
+    fa.cin[74:66] = fa.cout[73:65];
+    p[6] = fa.s[65]; //output p6
+    
+    n7[8:0] = a[8:0] & 9x{b[7]}; // input lvl 7
+    fa.x[83:75] = fa.s[74:66];
+    fa.y[83:75] = n7[8:0];
+    fa.cin[75] = 0;
+    fa.cin[83:76] = fa.cout[82:75];
+    p[7] = fa.s[75]; //output p7
+    
+    n8[7:0] = a[7:0] & 8x{b[8]}; // input lvl 8
+    fa.x[91:84] = fa.s[83:76];
+    fa.y[91:84] = n8[7:0];
+    fa.cin[84] = 0;
+    fa.cin[91:85] = fa.cout[90:84];
+    p[8] = fa.s[84]; //output p8
+    
+    n9[6:0] = a[6:0] & 7x{b[9]}; // input lvl 9
+    fa.x[98:92] = fa.s[91:85];
+    fa.y[98:92] = n9[6:0];
+    fa.cin[92] = 0;
+    fa.cin[98:93] = fa.cout[97:92];
+    p[9] = fa.s[92]; //output p9
+    
+    n10[5:0] = a[5:0] & 6x{b[10]}; // input lvl 10
+    fa.x[104:99] = fa.s[98:93];
+    fa.y[104:99] = n10[5:0];
+    fa.cin[99] = 0;
+    fa.cin[104:100] = fa.cout[103:99];
+    p[10] = fa.s[99]; //output p10
+    
+    n11[4:0] = a[4:0] & 5x{b[11]}; // input lvl 11
+    fa.x[109:105] = fa.s[105:101];
+    fa.y[109:105] = n11[4:0];
+    fa.cin[105] = 0;
+    fa.cin[109:106] = fa.cout[108:105];
+    p[11] = fa.s[105]; //output p11
+    
+    n12[3:0] = a[3:0] & 4x{b[12]}; // input lvl 12
+    fa.x[113:110] = fa.s[109:106];
+    fa.y[113:110] = n12[3:0];
+    fa.cin[110] = 0;
+    fa.cin[113:111] = fa.cout[112:110];
+    p[12] = fa.s[110]; //output p12
+    
+    n13[2:0] = a[2:0] & 3x{b[13]}; // input lvl 13
+    fa.x[116:114] = fa.s[113:111];
+    fa.y[116:114] = n13[2:0];
+    fa.cin[114] = 0;
+    fa.cin[116:115] = fa.cout[115:114];
+    p[13] = fa.s[114]; //output p13
+    
+    n14[1:0] = a[1:0] & 2x{b[14]}; // input lvl 14
+    fa.x[118:117] = fa.s[116:115];
+    fa.y[118:117] = n14[1:0];
+    fa.cin[117] = 0;
+    fa.cin[118] = fa.cout[117];
+    p[14] = fa.s[118]; //output p14
+    
+    n15 = a[0] & b[15]; // input lvl 15
+    fa.x[119] = fa.s[118];
+    fa.y[119] = n15;
+    fa.cin[119] = 0;
+    p[15] = fa.s[119]; //output p15
+  }
+}

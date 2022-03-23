@@ -1,0 +1,44 @@
+module shifter (
+    input a[16], //input 16bit signal
+    input b[4], //selector
+    input alufn[2],
+    output s[16]
+  ) {
+  
+  sixteen_bit_shiftleft shl16;
+  sixteen_bit_shiftright shr16;
+  sixteen_bit_sra sra16;
+  
+  always {
+  //4 input mux to select the correct bit shifter
+    shl16.a=a;
+    shl16.b=b;
+    shr16.a=a;
+    shr16.b=b;
+    sra16.a=a;
+    sra16.b=b;
+    
+    case(alufn[1]){
+      b0:
+      case(alufn[0]){// if alufn[1] is 0
+          b0: // if 0,0
+            s = shl16.s;
+          b1: // if 0,1
+            s = shr16.s;
+          default: // placeholder
+            s = a;
+        }
+      b1:
+      case(alufn[0]){// if alufn[1] is 1
+          b0: //if 1,0
+            s = a; // placeholder
+          b1: // if 1,1
+            s = sra16.s;
+          default:
+            s = a;
+        }
+      default:
+      s = a;
+    }
+  }
+}
