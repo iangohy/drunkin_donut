@@ -8,19 +8,20 @@ module au_top (
     output io_seg [8],      // 7-segment LEDs on IO Shield
     output io_sel [4],      // Digit select on IO Shield
     output multi_sev[8],
+    output multi_sel[4],
+    output circle_led[30],
+    input reset_button,
     input io_button [5],    // 5 buttons on IO Shield
     input io_dip [3][8]     // DIP switches on IO Shield
   ) {
   
   sig rst;                  // reset signal
-  automanual controller(.clk(clk),.rst(rst));
-  seven_seg seg;
+  simple_fsm simple(.clk(clk),.rst(rst));
   .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
     reset_conditioner reset_cond;
-    .rst(rst){
-    counter ctr (#SIZE(4), #TOP(9), #DIV(25));}
+
   }
   
   always {
@@ -34,19 +35,14 @@ module au_top (
     io_led = 3x{{8h00}};    // turn LEDs off
     io_seg = 8hff;          // turn segments off
     io_sel = 4hf;           // select no digits
+    simple.buttonNext = reset_button;
+    circle_led[14:0] = simple.ledleft;
+    circle_led[29:15] = simple.ledright;
+    multi_sel = simple.out_7segsel;
+    multi_sev = simple.out_7seg;
     
-  
-    controller.inputLessSig=io_dip[1];     // Set less significant 8 bits using io_dip[1]
-    controller.inputMoreSig=io_dip[2];     // Set more significant 8 bits using io_dip[1
-    controller.reset_counter=io_dip[0][1]; // Use io_dip[2][1] to reset counter
-    controller.buttonNext=io_button[0];    // Use io_button[0] to go to next state (manual input)
-    controller.force_error=io_dip[0][0];   // Use io_dip[0][0] to force an error in ALU output
-    io_led[2] = controller.out[15:8];      // io_led[2] shows more significant 8 bits of ALU output
-    io_led[1] = controller.out[7:0];       // io_led[1] shows less significant 8 bits of ALU output
-    io_led[0] = controller.misc_states;    // io_led[0] shows errors in test case and counter
+
     
-    seg.char =ctr.value;
-    multi_sev = seg.segs;
     
   }
 }

@@ -1,0 +1,44 @@
+module simple_fsm (
+    input clk,  // clock
+    input rst,  // reset
+    input buttonNext,
+    output ledleft[15],
+    output ledright[15],
+    output out_7seg[8],
+    output out_7segsel[4]
+  ) {
+  multi_seven_seg seg(.clk(clk),.rst(rst));
+  edge_detector goNextState(.clk(clk), #RISE(1),#FALL(0));   // debounce button press
+  fsm simplefsm(.clk(clk), .rst(rst)) = {IDLE, WIN, LOSE};
+  always {
+        out_7segsel = seg.sel;
+        out_7seg = seg.seg;
+        seg.values = {4h0,4h0,4h0,4h0};
+        ledleft = 15b0;
+        ledright = 15b0;
+        goNextState.in = buttonNext;
+    
+    case(simplefsm.q){
+      simplefsm.IDLE:
+        ledleft = 15x{b1};
+        ledright = 15x{b1};
+        seg.values = {4h4,4h3,4h2,4h1};
+        if (goNextState.out==b1){
+        simplefsm.d = simplefsm.WIN;}
+        
+      simplefsm.WIN:
+        ledleft = 15x{b1};
+        ledright = 15x{b0};
+        seg.values = {4ha,4h1,4hc,4hb};
+        if (goNextState.out==b1){
+        simplefsm.d = simplefsm.LOSE;}
+        
+      simplefsm.LOSE:
+        seg.values = {4hd,4h5,4h0,4he};
+        ledleft = 15x{b0};
+        ledright = 15x{b1};
+        if (goNextState.out==b1){
+        simplefsm.d = simplefsm.IDLE;}
+    }
+  }
+}
