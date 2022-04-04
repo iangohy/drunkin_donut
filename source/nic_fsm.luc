@@ -1,0 +1,48 @@
+module nic_fsm (
+    input clk,  // clock
+    input rst,  // reset
+    
+    input increase_counter, // need to implement
+    input decrease_timer, // need to implement
+    input nic_regfile_datain[16], //direct reading of regfile data from read_address_b
+    
+    //3 buttons
+    input p1_button,
+    input p2_button,
+    input reset_button,
+    
+    
+    
+    //30 LEDS
+    output ledleft[15],
+    output ledright[15],
+    
+    //the 3 7 segments?
+    output out_7seg_p1[8], // 7 seg for score display on p1?
+    output out_7segsel_p1[4],
+    
+    output out_7seg_p2[8],//7 seg for score display on p2?
+    output out_7segsel_p2[4],
+      
+    output out_7seg_timer[8],//7 seg for timer display?
+    output out_7segsel_timer[4],
+
+    output alufn[7], // alufn 7 bits
+    output asel[2], // asel 2 bits
+    output bsel[2], // bsel 2 bits
+    output wdsel[3], // wdsel 3 its 
+    output regfile_write_address[4], // rc 4 bits
+    output regfile_read_address_a[4], // ra 4 bits
+    output regfile_read_address_b[4], // rb 4 bits
+    output we_regfile, // we
+    //output debug[4]         
+  ) {
+    .clk(clk){
+      fsm game_fsm={
+      //stopped here
+      };
+     }
+
+  always {
+  }
+}
