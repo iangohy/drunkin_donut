@@ -14,10 +14,10 @@ module nic_regfile (
     output read_data_b[16], //rbdata
     
     //debug? not too sure how this works
-    output full_circle[30], // full circle
-    output counter_out[16], // countdown timer
-    output all_score[32], // 2 players score
-    output speed[16]
+    output full_circle[30], // full circle, left and right combine?
+    output counter_out[16], // countdown timer - nid to convert using multi_seven_seg
+    output all_score[32], // 2 players score - nid to convert using multi_seven_seg
+    output speed[16] //speed counter
     
     ) 
 {
