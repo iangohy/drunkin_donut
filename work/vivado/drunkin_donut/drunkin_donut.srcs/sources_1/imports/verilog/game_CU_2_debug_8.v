@@ -66,22 +66,23 @@ module game_CU_2_debug_8 (
   localparam CMPLE_SECOND_HALF_game_fsm = 6'd36;
   localparam BRANCH_SECOND_HALF_game_fsm = 6'd37;
   localparam CHECK_COUNT_MORETHAN_0_game_fsm = 6'd38;
-  localparam BRANCH_TIMER_game_fsm = 6'd39;
-  localparam COUNT_MINUS_1_game_fsm = 6'd40;
-  localparam CHECK_DRAW_game_fsm = 6'd41;
-  localparam BRANCH_DRAW_game_fsm = 6'd42;
-  localparam DRAW_game_fsm = 6'd43;
-  localparam CHECK_WINNER_game_fsm = 6'd44;
-  localparam BRANCH_WINNER_game_fsm = 6'd45;
-  localparam P1_WINS_game_fsm = 6'd46;
-  localparam P2_LOSES_game_fsm = 6'd47;
-  localparam LIGHT_LOWER_LEFT_LED_game_fsm = 6'd48;
-  localparam LIGHT_UPPER_RIGHT_LED_game_fsm = 6'd49;
-  localparam P2_WINS_game_fsm = 6'd50;
-  localparam P1_LOSES_game_fsm = 6'd51;
-  localparam LIGHT_UPPER_LEFT_LED_game_fsm = 6'd52;
-  localparam LIGHT_LOWER_RIGHT_LED_game_fsm = 6'd53;
-  localparam GAMEOVER_game_fsm = 6'd54;
+  localparam CHECK_TIMER_game_fsm = 6'd39;
+  localparam BRANCH_TIMER_game_fsm = 6'd40;
+  localparam COUNT_MINUS_1_game_fsm = 6'd41;
+  localparam CHECK_DRAW_game_fsm = 6'd42;
+  localparam BRANCH_DRAW_game_fsm = 6'd43;
+  localparam DRAW_game_fsm = 6'd44;
+  localparam CHECK_WINNER_game_fsm = 6'd45;
+  localparam BRANCH_WINNER_game_fsm = 6'd46;
+  localparam P1_WINS_game_fsm = 6'd47;
+  localparam P2_LOSES_game_fsm = 6'd48;
+  localparam LIGHT_LOWER_LEFT_LED_game_fsm = 6'd49;
+  localparam LIGHT_UPPER_RIGHT_LED_game_fsm = 6'd50;
+  localparam P2_WINS_game_fsm = 6'd51;
+  localparam P1_LOSES_game_fsm = 6'd52;
+  localparam LIGHT_UPPER_LEFT_LED_game_fsm = 6'd53;
+  localparam LIGHT_LOWER_RIGHT_LED_game_fsm = 6'd54;
+  localparam GAMEOVER_game_fsm = 6'd55;
   
   reg [5:0] M_game_fsm_d, M_game_fsm_q = RESET_SPEED_game_fsm;
   
@@ -161,7 +162,7 @@ module game_CU_2_debug_8 (
           regfile_read_address_a = 4'h2;
           regfile_write_address = 4'h2;
           wdsel = 4'h0;
-          if (countdown_time_reg == 2'h3) begin
+          if (countdown_time_reg == 2'h2) begin
             M_game_fsm_d = INCREASE_SPEED_game_fsm;
           end
         end
@@ -172,7 +173,7 @@ module game_CU_2_debug_8 (
           regfile_read_address_a = 4'h5;
           regfile_write_address = 4'h5;
           wdsel = 4'h0;
-          M_game_fsm_d = COUNTDOWN_game_fsm;
+          M_game_fsm_d = COUNTDOWN_IDLE_game_fsm;
         end
         COUNTDOWN_game_fsm: begin
           alufn = 7'h41;
@@ -436,12 +437,12 @@ module game_CU_2_debug_8 (
           regfile_read_address_a = 4'h2;
           regfile_write_address = 4'hf;
           wdsel = 4'h0;
-          M_game_fsm_d = BRANCH_TIMER_game_fsm;
         end
         BRANCH_TIMER_game_fsm: begin
           we_regfile = 1'h0;
           regfile_read_address_b = 4'hf;
-          if (regfile_datain[0+0-:1]) begin
+          M_game_fsm_d = BRANCH_TIMER_game_fsm;
+          if (regfile_datain == 1'h0) begin
             M_game_fsm_d = CHECK_DRAW_game_fsm;
           end else begin
             M_game_fsm_d = COUNT_MINUS_1_game_fsm;
@@ -557,24 +558,6 @@ module game_CU_2_debug_8 (
         IDLE_game_fsm: begin
           if (decrease_timer) begin
             M_game_fsm_d = CHECK_COUNT_MORETHAN_0_game_fsm;
-          end else begin
-            if (p1_button && ~p2_button) begin
-              M_game_fsm_d = CHECK_P1_LOSE_game_fsm;
-            end else begin
-              if (p2_button && ~p1_button) begin
-                M_game_fsm_d = CHECK_P2_LOSE_game_fsm;
-              end else begin
-                if (reset_button) begin
-                  M_game_fsm_d = RESET_SPEED_game_fsm;
-                end else begin
-                  if (circle_clock) begin
-                    M_game_fsm_d = SHL_RIGHT_HALF_game_fsm;
-                  end else begin
-                    M_game_fsm_d = IDLE_game_fsm;
-                  end
-                end
-              end
-            end
           end
         end
       endcase

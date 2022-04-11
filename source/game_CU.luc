@@ -33,7 +33,7 @@ module game_CU (
         READY,
         SET_COUNT_TO_3, // blue balls (before game starts)
         INCREASE_SPEED,
-        COUNTDOWN,
+        COUNTDOWN, // fsm 10
         COUNTDOWN_IDLE,
         SET_COUNT_TO_60,
         IDLE, // IDLE
@@ -43,7 +43,7 @@ module game_CU (
         CMPEQ_RIGHT,
         BRANCH_CMPEQ_RIGHT,
         PLUS1_TO_RIGHT_HALF,
-        CHECK_MSB_LEFT_HALF,
+        CHECK_MSB_LEFT_HALF, // 20
         CMPEQ_LEFT,
         BRANCH_CMPEQ_LEFT,
         PLUS1_TO_LEFT_HALF,
@@ -53,7 +53,7 @@ module game_CU (
         P2_SCORE_INCREASE_BY_1,
         CHECK_P1_LOSE, // black balls check p1
         BRANCH_P1_LOSE_OR_CARRYON,
-        P1_LED_LIGHT_UP,
+        P1_LED_LIGHT_UP,//30
         P1_SCORE_INCREASE_BY_1,
         CHECK_ANY_LED_FIRST_HALF_NOT_LIT, // black balls
         CHECK_ANY_LED_SECOND_HALF_NOT_LIT,
@@ -62,6 +62,7 @@ module game_CU (
         CMPLE_SECOND_HALF,
         BRANCH_SECOND_HALF,
         CHECK_COUNT_MORETHAN_0, //blue balls (game starts)
+        CHECK_TIMER,
         BRANCH_TIMER,
         COUNT_MINUS_1,
         CHECK_DRAW, // purple balls
@@ -168,7 +169,7 @@ module game_CU (
           regfile_read_address_a = 4h2; // countdown timer reg
           regfile_write_address = 4h2;  // countdown timer reg
           wdsel = 4h0;                  // ALU output 
-          if (countdown_time_reg == b11){
+          if (countdown_time_reg == b10){
             game_fsm.d = game_fsm.INCREASE_SPEED;
           }
             /*
@@ -184,7 +185,7 @@ module game_CU (
           regfile_read_address_a = 4h5; // speed counter reg
           regfile_write_address = 4h5;  // speed counter reg
           wdsel = 4h0;                  // ALU output 
-          game_fsm.d = game_fsm.COUNTDOWN;
+          game_fsm.d = game_fsm.COUNTDOWN_IDLE;
                                                    
         game_fsm.COUNTDOWN:       
           alufn = 7h41;                 // DEC
@@ -465,20 +466,21 @@ module game_CU (
           regfile_read_address_a = 4h2; // countdown timer
           regfile_write_address = 4hf;  // temp reg
           wdsel = 4h0;                  // ALU output 
-          game_fsm.d = game_fsm.BRANCH_TIMER;               
+          // game_fsm.d = game_fsm.BRANCH_TIMER;                  
             
-        game_fsm.BRANCH_TIMER:            
+        game_fsm.BRANCH_TIMER:
           we_regfile = b0;
-          regfile_read_address_b = 4hf; // temp reg
-          if (regfile_datain[0]){       // to check implementation
+          regfile_read_address_b = 4hf; 
+          game_fsm.d = game_fsm.BRANCH_TIMER;         
+          if (regfile_datain == b0){       // to check implementation
             // game ended
             game_fsm.d = game_fsm.CHECK_DRAW;
             }
           else{
             // game not ended
-            game_fsm.d = game_fsm.COUNT_MINUS_1;
-            }                        
-            
+            game_fsm.d = game_fsm.COUNT_MINUS_1;      
+          }
+          
         game_fsm.COUNT_MINUS_1:
           alufn = 7h41;                 // DEC
           asel = 2h0;                   // Reg[ra]
@@ -598,6 +600,7 @@ module game_CU (
             game_fsm.d = game_fsm.CHECK_COUNT_MORETHAN_0;
           }
           
+            /*
           else if (p1_button && ~p2_button){    // p1 presses button 
             game_fsm.d = game_fsm.CHECK_P1_LOSE;
           }    
@@ -613,11 +616,7 @@ module game_CU (
           else if (circle_clock){           // not sure if implementation is correct
             game_fsm.d = game_fsm.SHL_RIGHT_HALF;  
           }  
-              
-          else{
-            game_fsm.d = game_fsm.IDLE;
-          }
-            
+          */
                         
       }//case parenthesis
     }// else parenthesis    

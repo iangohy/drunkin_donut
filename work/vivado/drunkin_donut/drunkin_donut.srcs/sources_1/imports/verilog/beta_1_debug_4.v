@@ -15,7 +15,7 @@ module beta_1_debug_4 (
     output reg [15:0] p2_score,
     output reg [15:0] circle_left,
     output reg [15:0] circle_right,
-    output reg [21:0] debug__
+    output reg [37:0] debug__
   );
   
   
@@ -215,6 +215,6 @@ module beta_1_debug_4 (
   end
   
   always @* begin
-    debug__ = {M_game_regfiles_out_b, M_game_controlunit_debug__};
+    debug__ = {wdsel_mux_out, M_game_regfiles_out_b, M_game_controlunit_debug__};
   end
 endmodule

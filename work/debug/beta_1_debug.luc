@@ -9,7 +9,7 @@ module beta_1_debug (
     output p1_score[16],
     output p2_score[16],
     output circle_left[16],
-    output circle_right[16], output debug__ [22]
+    output circle_right[16], output debug__ [38]
   
 ) {
   
@@ -105,5 +105,5 @@ module beta_1_debug (
     circle_left = game_regfiles.circle_left;
     circle_right = game_regfiles.circle_right;
   }
-always debug__ = c{$flatten(game_regfiles.out_b), $flatten(game_controlunit.debug__)};
+always debug__ = c{$flatten(wdsel_mux_out), $flatten(game_regfiles.out_b), $flatten(game_controlunit.debug__)};
 }
