@@ -28,6 +28,7 @@
     <component>button_conditioner.luc</component>
     <src>sixteen_bit_shiftleft.luc</src>
     <src>mux_2.luc</src>
+    <src>custom_seven_seg.luc</src>
     <src>shifter.luc</src>
     <src>add_sub.luc</src>
     <constraint>alchitry.xdc</constraint>

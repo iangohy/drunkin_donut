@@ -88,14 +88,12 @@ module au_top (
     game_beta.reset_button = rst_btn_edge.out;
     
     
-    io_led[2] = game_beta.countdown_timer_val[7:0];
-    io_led[1] = game_beta.circle_left[15:8];
-    io_led[0] = game_beta.circle_left[7:0];
-    
-    
-        
+    // io_led[2] = game_beta.countdown_timer_val[7:0];
+    io_led[2] = game_beta.p1_score[7:0];
+    io_led[1] = game_beta.circle_left[7:0]; 
+    io_led[0] = game_beta.circle_right[15:8];
   }
-au_debugger debugger (#NONCE(3915861905), #DATA_WIDTH(138), #CAPTURE_DEPTH(256), .clk(clk));always debugger.data = c{$flatten(game_beta.debug__)};
+au_debugger debugger (#NONCE(3910346179), #DATA_WIDTH(138), #CAPTURE_DEPTH(256), .clk(clk));always debugger.data = c{$flatten(game_beta.debug__)};
 }
 
 

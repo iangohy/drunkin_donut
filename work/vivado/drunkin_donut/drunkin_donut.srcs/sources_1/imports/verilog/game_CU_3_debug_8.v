@@ -249,7 +249,7 @@ module game_CU_3_debug_8 (
           if (rb_data == 1'h0) begin
             M_game_fsm_d = CHECK_MSB_LEFT_HALF_game_fsm;
           end else begin
-            M_game_fsm_d = PLUS1_TO_RIGHT_HALF_game_fsm;
+            M_game_fsm_d = PLUS1_TO_LEFT_HALF_game_fsm;
           end
         end
         PLUS1_TO_LEFT_HALF_game_fsm: begin
@@ -259,7 +259,7 @@ module game_CU_3_debug_8 (
           regfile_read_address_a = 4'h0;
           regfile_write_address = 4'h0;
           wdsel = 4'h0;
-          M_game_fsm_d = CHECK_MSB_RIGHT_HALF_game_fsm;
+          M_game_fsm_d = CHECK_MSB_LEFT_HALF_game_fsm;
         end
         CHECK_MSB_LEFT_HALF_game_fsm: begin
           alufn = 7'h18;
@@ -287,7 +287,7 @@ module game_CU_3_debug_8 (
           if (rb_data == 1'h0) begin
             M_game_fsm_d = IDLE_game_fsm;
           end else begin
-            M_game_fsm_d = PLUS1_TO_LEFT_HALF_game_fsm;
+            M_game_fsm_d = PLUS1_TO_RIGHT_HALF_game_fsm;
           end
         end
         PLUS1_TO_RIGHT_HALF_game_fsm: begin
@@ -349,7 +349,7 @@ module game_CU_3_debug_8 (
         BRANCH_P1_LOSE_OR_CARRYON_game_fsm: begin
           we_regfile = 1'h0;
           regfile_read_address_b = 4'h8;
-          if (rb_data[0+0-:1]) begin
+          if (rb_data == 1'h1) begin
             M_game_fsm_d = P2_WINS_game_fsm;
           end else begin
             M_game_fsm_d = P1_LED_LIGHT_UP_game_fsm;
@@ -405,7 +405,7 @@ module game_CU_3_debug_8 (
         BRANCH_FIRST_HALF_game_fsm: begin
           we_regfile = 1'h0;
           regfile_read_address_b = 4'h6;
-          if (rb_data[0+0-:1]) begin
+          if (rb_data == 1'h1) begin
             M_game_fsm_d = CMPLE_SECOND_HALF_game_fsm;
           end else begin
             M_game_fsm_d = IDLE_game_fsm;
@@ -423,7 +423,7 @@ module game_CU_3_debug_8 (
         BRANCH_SECOND_HALF_game_fsm: begin
           we_regfile = 1'h0;
           regfile_read_address_b = 4'h7;
-          if (rb_data[0+0-:1]) begin
+          if (rb_data == 1'h1) begin
             M_game_fsm_d = RESET_RIGHT_HALF_game_fsm;
           end else begin
             M_game_fsm_d = IDLE_game_fsm;
@@ -445,9 +445,7 @@ module game_CU_3_debug_8 (
           if (rb_data == 1'h1) begin
             M_game_fsm_d = CHECK_DRAW_game_fsm;
           end else begin
-            if (rb_data == 1'h0) begin
-              M_game_fsm_d = COUNT_MINUS_1_game_fsm;
-            end
+            M_game_fsm_d = COUNT_MINUS_1_game_fsm;
           end
         end
         COUNT_MINUS_1_game_fsm: begin
@@ -472,7 +470,7 @@ module game_CU_3_debug_8 (
         BRANCH_DRAW_game_fsm: begin
           we_regfile = 1'h0;
           regfile_read_address_b = 4'h8;
-          if (rb_data[0+0-:1]) begin
+          if (rb_data == 1'h1) begin
             M_game_fsm_d = DRAW_game_fsm;
           end else begin
             M_game_fsm_d = CHECK_WINNER_game_fsm;
@@ -499,7 +497,7 @@ module game_CU_3_debug_8 (
           we_regfile = 1'h0;
           regfile_read_address_b = 4'h8;
           wdsel = 4'h3;
-          if (rb_data[0+0-:1]) begin
+          if (rb_data == 1'h1) begin
             M_game_fsm_d = P2_WINS_game_fsm;
           end else begin
             M_game_fsm_d = P1_WINS_game_fsm;
@@ -519,13 +517,13 @@ module game_CU_3_debug_8 (
         end
         LIGHT_LOWER_LEFT_LED_game_fsm: begin
           we_regfile = 1'h1;
-          regfile_write_address = 4'h1;
+          regfile_write_address = 4'h0;
           wdsel = 4'h5;
           M_game_fsm_d = LIGHT_UPPER_RIGHT_LED_game_fsm;
         end
         LIGHT_UPPER_RIGHT_LED_game_fsm: begin
           we_regfile = 1'h1;
-          regfile_write_address = 4'h0;
+          regfile_write_address = 4'h1;
           wdsel = 4'h6;
           M_game_fsm_d = GAMEOVER_game_fsm;
         end
@@ -545,7 +543,7 @@ module game_CU_3_debug_8 (
           we_regfile = 1'h1;
           regfile_write_address = 4'h0;
           wdsel = 4'h6;
-          M_game_fsm_d = LIGHT_UPPER_RIGHT_LED_game_fsm;
+          M_game_fsm_d = LIGHT_LOWER_RIGHT_LED_game_fsm;
         end
         LIGHT_LOWER_RIGHT_LED_game_fsm: begin
           we_regfile = 1'h1;
@@ -554,7 +552,9 @@ module game_CU_3_debug_8 (
           M_game_fsm_d = GAMEOVER_game_fsm;
         end
         GAMEOVER_game_fsm: begin
-          M_game_fsm_d = GAMEOVER_game_fsm;
+          if (reset_button == 1'h1) begin
+            M_game_fsm_d = RESET_SPEED_game_fsm;
+          end
         end
         IDLE_game_fsm: begin
           if (decrease_timer) begin

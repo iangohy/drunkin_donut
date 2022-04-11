@@ -8,7 +8,7 @@
    Parameters:
      DATA_WIDTH = 138
      CAPTURE_DEPTH = 256
-     NONCE = 3915861905
+     NONCE = 3910346179
 */
 module au_debugger_5 (
     input clk,
@@ -17,7 +17,7 @@ module au_debugger_5 (
   
   localparam DATA_WIDTH = 8'h8a;
   localparam CAPTURE_DEPTH = 9'h100;
-  localparam NONCE = 32'he9674f91;
+  localparam NONCE = 32'he91325c3;
   
   
   localparam VERSION = 2'h3;
@@ -227,7 +227,7 @@ module au_debugger_5 (
     
     if (M_info_scan_SEL) begin
       if (M_info_scan_CAPTURE) begin
-        M_status_d = 104'h03000001000000008ae9674f91;
+        M_status_d = 104'h03000001000000008ae91325c3;
       end else begin
         if (M_info_scan_SHIFT) begin
           M_status_d = {M_status_q[0+0-:1], M_status_q[1+102-:103]};

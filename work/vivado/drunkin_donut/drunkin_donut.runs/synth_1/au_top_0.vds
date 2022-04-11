@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Apr 11 22:43:29 2022
-# Process ID: 1295556
+# Start of session at: Tue Apr 12 00:17:49 2022
+# Process ID: 2155299
 # Current directory: /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.runs/synth_1
 # Command line: vivado -log au_top_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source au_top_0.tcl
 # Log file: /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.runs/synth_1/au_top_0.vds
@@ -17,9 +17,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tftg256-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 1295669
+INFO: [Synth 8-7075] Helper process launched with PID 2155304
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2301.223 ; gain = 0.000 ; free physical = 41092 ; free virtual = 55147
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2314.223 ; gain = 0.000 ; free physical = 43055 ; free virtual = 57282
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'au_top_0' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0_debug_0.v:7]
 INFO: [Synth 8-6157] synthesizing module 'reset_conditioner_1' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/reset_conditioner_1.v:11]
@@ -162,7 +162,7 @@ WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic 
 INFO: [Synth 8-6157] synthesizing module 'au_debugger_5' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_debugger_5.v:13]
 	Parameter DATA_WIDTH bound to: 8'b10001010 
 	Parameter CAPTURE_DEPTH bound to: 9'b100000000 
-	Parameter NONCE bound to: -379105391 - type: integer 
+	Parameter NONCE bound to: -384621117 - type: integer 
 	Parameter VERSION bound to: 2'b11 
 	Parameter IDLE_state bound to: 2'b00 
 	Parameter ARMED_state bound to: 2'b01 
@@ -201,18 +201,18 @@ INFO: [Synth 8-155] case statement is not full and has no default [/home/ian/Doc
 INFO: [Synth 8-6155] done synthesizing module 'au_debugger_5' (27#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_debugger_5.v:13]
 INFO: [Synth 8-6155] done synthesizing module 'au_top_0' (28#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0_debug_0.v:7]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2301.223 ; gain = 0.000 ; free physical = 41758 ; free virtual = 55800
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2314.223 ; gain = 0.000 ; free physical = 43444 ; free virtual = 57702
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2301.223 ; gain = 0.000 ; free physical = 41751 ; free virtual = 55796
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2314.223 ; gain = 0.000 ; free physical = 43471 ; free virtual = 57701
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2301.223 ; gain = 0.000 ; free physical = 41751 ; free virtual = 55796
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2314.223 ; gain = 0.000 ; free physical = 43471 ; free virtual = 57701
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2301.223 ; gain = 0.000 ; free physical = 41746 ; free virtual = 55792
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2314.223 ; gain = 0.000 ; free physical = 43453 ; free virtual = 57685
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -232,30 +232,86 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2365.254 ; gain = 0.000 ; free physical = 41755 ; free virtual = 55786
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2378.254 ; gain = 0.000 ; free physical = 43355 ; free virtual = 57586
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2365.254 ; gain = 0.000 ; free physical = 41755 ; free virtual = 55786
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2378.254 ; gain = 0.000 ; free physical = 43349 ; free virtual = 57586
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41849 ; free virtual = 55878
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2378.254 ; gain = 64.031 ; free physical = 43416 ; free virtual = 57682
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tftg256-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41849 ; free virtual = 55878
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2378.254 ; gain = 64.031 ; free physical = 43416 ; free virtual = 57682
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41849 ; free virtual = 55878
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2378.254 ; gain = 64.031 ; free physical = 43417 ; free virtual = 57682
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'M_game_fsm_q_reg' in module 'game_CU_3_debug_8'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+    RESET_SPEED_game_fsm | 000000000000000000000000000000000000000000000000001 |                           000000
+ RESET_P1_SCORE_game_fsm | 000000000000000000000000000000000000000000000000010 |                           000001
+ RESET_P2_SCORE_game_fsm | 000000000000000000000000000000000000000000000000100 |                           000010
+RESET_RIGHT_HALF_game_fsm | 000000000000000000000000000000000000000000000001000 |                           000011
+RESET_LEFT_HALF_game_fsm | 000000000000000000000000000000000000000000000010000 |                           000100
+    RESET_TIMER_game_fsm | 000000000000000000000000000000000000000000000100000 |                           000101
+BRANCH_CHECK_SPEED_game_fsm | 000000000000000000000000000000000000000000001000000 |                           000110
+          READY_game_fsm | 000000000000000000000000000000000000000000010000000 |                           000111
+ SET_COUNT_TO_3_game_fsm | 000000000000000000000000000000000000000000100000000 |                           001000
+ INCREASE_SPEED_game_fsm | 000000000000000000000000000000000000000001000000000 |                           001001
+ COUNTDOWN_IDLE_game_fsm | 000000000000000000000000000000000000000010000000000 |                           001011
+SET_COUNT_TO_60_game_fsm | 000000000000000000000000000000000000000100000000000 |                           001100
+           IDLE_game_fsm | 000000000000000000000000000000000000001000000000000 |                           001101
+CHECK_COUNT_MORETHAN_0_game_fsm | 000000000000000000000000000000000000010000000000000 |                           100110
+   BRANCH_TIMER_game_fsm | 000000000000000000000000000000000000100000000000000 |                           101000
+     CHECK_DRAW_game_fsm | 000000000000000000000000000000000001000000000000000 |                           101010
+  COUNT_MINUS_1_game_fsm | 000000000000000000000000000000000010000000000000000 |                           101001
+  CHECK_P1_LOSE_game_fsm | 000000000000000000000000000000000100000000000000000 |                           011100
+BRANCH_P1_LOSE_OR_CARRYON_game_fsm | 000000000000000000000000000000001000000000000000000 |                           011101
+        P2_WINS_game_fsm | 000000000000000000000000000000010000000000000000000 |                           110011
+       P1_LOSES_game_fsm | 000000000000000000000000000000100000000000000000000 |                           110100
+LIGHT_UPPER_LEFT_LED_game_fsm | 000000000000000000000000000001000000000000000000000 |                           110101
+LIGHT_LOWER_RIGHT_LED_game_fsm | 000000000000000000000000000010000000000000000000000 |                           110110
+P1_LED_LIGHT_UP_game_fsm | 000000000000000000000000000100000000000000000000000 |                           011110
+P1_SCORE_INCREASE_BY_1_game_fsm | 000000000000000000000000001000000000000000000000000 |                           011111
+  CHECK_P2_LOSE_game_fsm | 000000000000000000000000010000000000000000000000000 |                           011000
+BRANCH_P2_LOSE_OR_CARRYON_game_fsm | 000000000000000000000000100000000000000000000000000 |                           011001
+        P1_WINS_game_fsm | 000000000000000000000001000000000000000000000000000 |                           101111
+       P2_LOSES_game_fsm | 000000000000000000000010000000000000000000000000000 |                           110000
+LIGHT_LOWER_LEFT_LED_game_fsm | 000000000000000000000100000000000000000000000000000 |                           110001
+LIGHT_UPPER_RIGHT_LED_game_fsm | 000000000000000000001000000000000000000000000000000 |                           110010
+       GAMEOVER_game_fsm | 000000000000000000010000000000000000000000000000000 |                           110111
+P2_LED_LIGHT_UP_game_fsm | 000000000000000000100000000000000000000000000000000 |                           011010
+P2_SCORE_INCREASE_BY_1_game_fsm | 000000000000000001000000000000000000000000000000000 |                           011011
+CHECK_ANY_LED_FIRST_HALF_NOT_LIT_game_fsm | 000000000000000010000000000000000000000000000000000 |                           100000
+CHECK_ANY_LED_SECOND_HALF_NOT_LIT_game_fsm | 000000000000000100000000000000000000000000000000000 |                           100001
+CMPEQ_FIRST_HALF_game_fsm | 000000000000001000000000000000000000000000000000000 |                           100010
+BRANCH_FIRST_HALF_game_fsm | 000000000000010000000000000000000000000000000000000 |                           100011
+CMPLE_SECOND_HALF_game_fsm | 000000000000100000000000000000000000000000000000000 |                           100100
+BRANCH_SECOND_HALF_game_fsm | 000000000001000000000000000000000000000000000000000 |                           100101
+ SHL_RIGHT_HALF_game_fsm | 000000000010000000000000000000000000000000000000000 |                           001110
+  SHL_LEFT_HALF_game_fsm | 000000000100000000000000000000000000000000000000000 |                           001111
+CHECK_MSB_RIGHT_HALF_game_fsm | 000000001000000000000000000000000000000000000000000 |                           010000
+    CMPEQ_RIGHT_game_fsm | 000000010000000000000000000000000000000000000000000 |                           010001
+BRANCH_CMPEQ_RIGHT_game_fsm | 000000100000000000000000000000000000000000000000000 |                           010010
+PLUS1_TO_LEFT_HALF_game_fsm | 000001000000000000000000000000000000000000000000000 |                           010011
+CHECK_MSB_LEFT_HALF_game_fsm | 000010000000000000000000000000000000000000000000000 |                           010100
+     CMPEQ_LEFT_game_fsm | 000100000000000000000000000000000000000000000000000 |                           010101
+BRANCH_CMPEQ_LEFT_game_fsm | 001000000000000000000000000000000000000000000000000 |                           010110
+PLUS1_TO_RIGHT_HALF_game_fsm | 010000000000000000000000000000000000000000000000000 |                           010111
+      COUNTDOWN_game_fsm | 100000000000000000000000000000000000000000000000000 |                           001010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'M_game_fsm_q_reg' using encoding 'one-hot' in module 'game_CU_3_debug_8'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41846 ; free virtual = 55873
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2378.254 ; gain = 64.031 ; free physical = 43434 ; free virtual = 57666
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -286,27 +342,26 @@ Detailed RTL Component Info :
 	   2 Input  552 Bit        Muxes := 1     
 	   2 Input  138 Bit        Muxes := 6     
 	   2 Input  104 Bit        Muxes := 3     
+	  65 Input   51 Bit        Muxes := 1     
 	   2 Input   16 Bit        Muxes := 15    
 	   4 Input   16 Bit        Muxes := 3     
 	   8 Input   16 Bit        Muxes := 1     
 	   2 Input    8 Bit        Muxes := 13    
 	   4 Input    8 Bit        Muxes := 2     
-	  56 Input    7 Bit        Muxes := 1     
+	  51 Input    7 Bit        Muxes := 1     
 	   2 Input    7 Bit        Muxes := 1     
-	  56 Input    6 Bit        Muxes := 1     
-	   2 Input    6 Bit        Muxes := 7     
-	   2 Input    5 Bit        Muxes := 4     
-	  56 Input    4 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 6     
-	  56 Input    3 Bit        Muxes := 2     
+	  51 Input    6 Bit        Muxes := 1     
+	  51 Input    4 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 2     
+	  51 Input    3 Bit        Muxes := 2     
 	   2 Input    3 Bit        Muxes := 2     
-	  56 Input    2 Bit        Muxes := 2     
+	  51 Input    2 Bit        Muxes := 2     
 	   2 Input    2 Bit        Muxes := 2     
 	   4 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 56    
+	   2 Input    1 Bit        Muxes := 54    
 	   4 Input    1 Bit        Muxes := 4     
 	   5 Input    1 Bit        Muxes := 2     
-	  56 Input    1 Bit        Muxes := 2     
+	  51 Input    1 Bit        Muxes := 2     
 	  10 Input    1 Bit        Muxes := 9     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -325,7 +380,7 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5784] Optimized 1 bits of RAM "ram/mem_reg" due to constant propagation. Old ram width 138 bits, new ram width 137 bits.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41906 ; free virtual = 55920
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:34 ; elapsed = 00:01:37 . Memory (MB): peak = 2378.254 ; gain = 64.031 ; free physical = 43452 ; free virtual = 57684
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -356,13 +411,13 @@ Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-565] redefining clock 'clk_0'
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:19 ; elapsed = 00:01:21 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41789 ; free virtual = 55806
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:39 ; elapsed = 00:01:41 . Memory (MB): peak = 2378.254 ; gain = 64.031 ; free physical = 43351 ; free virtual = 57583
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:40 ; elapsed = 00:01:43 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41628 ; free virtual = 55651
+Finished Timing Optimization : Time (s): cpu = 00:02:46 ; elapsed = 00:02:49 . Memory (MB): peak = 2387.238 ; gain = 73.016 ; free physical = 43335 ; free virtual = 57559
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -392,7 +447,7 @@ Start Technology Mapping
 INFO: [Synth 8-7052] The timing for the instance debugger/ram/mem_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance debugger/ram/mem_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:41 ; elapsed = 00:01:44 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41705 ; free virtual = 55724
+Finished Technology Mapping : Time (s): cpu = 00:02:47 ; elapsed = 00:02:50 . Memory (MB): peak = 2387.238 ; gain = 73.016 ; free physical = 43334 ; free virtual = 57558
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -410,37 +465,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:44 ; elapsed = 00:01:47 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41714 ; free virtual = 55728
+Finished IO Insertion : Time (s): cpu = 00:02:49 ; elapsed = 00:02:52 . Memory (MB): peak = 2387.238 ; gain = 73.016 ; free physical = 43335 ; free virtual = 57559
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:44 ; elapsed = 00:01:47 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41714 ; free virtual = 55728
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:49 ; elapsed = 00:02:52 . Memory (MB): peak = 2387.238 ; gain = 73.016 ; free physical = 43335 ; free virtual = 57559
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:44 ; elapsed = 00:01:47 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41714 ; free virtual = 55728
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:49 ; elapsed = 00:02:52 . Memory (MB): peak = 2387.238 ; gain = 73.016 ; free physical = 43336 ; free virtual = 57560
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:44 ; elapsed = 00:01:47 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41714 ; free virtual = 55728
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:49 ; elapsed = 00:02:52 . Memory (MB): peak = 2387.238 ; gain = 73.016 ; free physical = 43336 ; free virtual = 57560
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:44 ; elapsed = 00:01:47 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41714 ; free virtual = 55728
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:49 ; elapsed = 00:02:52 . Memory (MB): peak = 2387.238 ; gain = 73.016 ; free physical = 43336 ; free virtual = 57560
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:44 ; elapsed = 00:01:47 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41714 ; free virtual = 55728
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:49 ; elapsed = 00:02:52 . Memory (MB): peak = 2387.238 ; gain = 73.016 ; free physical = 43336 ; free virtual = 57560
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -455,6 +510,7 @@ Static Shift Register Report:
 |au_top_0    | debugger/M_status_q_reg[98]           | 6      | 1     | YES          | NO                 | YES               | 1      | 0       | 
 |au_top_0    | debugger/M_status_q_reg[73]           | 23     | 1     | YES          | NO                 | YES               | 0      | 1       | 
 |au_top_0    | debugger/M_status_q_reg[40]           | 32     | 1     | YES          | NO                 | YES               | 0      | 1       | 
+|au_top_0    | debugger/M_status_q_reg[2]            | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
 +------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 
 ---------------------------------------------------------------------------------
@@ -477,43 +533,43 @@ Report Cell Usage:
 |1     |BSCANE2  |     4|
 |2     |BUFG     |     3|
 |3     |CARRY4   |    28|
-|4     |LUT1     |    49|
-|5     |LUT2     |   104|
-|6     |LUT3     |    77|
-|7     |LUT4     |   234|
-|8     |LUT5     |   106|
-|9     |LUT6     |   444|
-|10    |MUXF7    |    21|
+|4     |LUT1     |    51|
+|5     |LUT2     |   122|
+|6     |LUT3     |    95|
+|7     |LUT4     |   296|
+|8     |LUT5     |   158|
+|9     |LUT6     |   476|
+|10    |MUXF7    |    14|
 |11    |RAM16X1D |     1|
 |12    |RAMB36E1 |     2|
-|13    |SRL16E   |     7|
+|13    |SRL16E   |     8|
 |14    |SRLC32E  |     2|
-|15    |FDRE     |  1198|
-|16    |FDSE     |    43|
+|15    |FDRE     |  1242|
+|16    |FDSE     |    45|
 |17    |IBUF     |     6|
 |18    |OBUF     |    45|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:44 ; elapsed = 00:01:47 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41714 ; free virtual = 55728
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:49 ; elapsed = 00:02:52 . Memory (MB): peak = 2387.238 ; gain = 73.016 ; free physical = 43336 ; free virtual = 57560
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:42 ; elapsed = 00:01:45 . Memory (MB): peak = 2365.254 ; gain = 0.000 ; free physical = 41767 ; free virtual = 55781
-Synthesis Optimization Complete : Time (s): cpu = 00:01:44 ; elapsed = 00:01:47 . Memory (MB): peak = 2365.254 ; gain = 64.031 ; free physical = 41767 ; free virtual = 55781
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:47 ; elapsed = 00:02:50 . Memory (MB): peak = 2387.238 ; gain = 8.984 ; free physical = 43387 ; free virtual = 57611
+Synthesis Optimization Complete : Time (s): cpu = 00:02:49 ; elapsed = 00:02:53 . Memory (MB): peak = 2387.246 ; gain = 73.016 ; free physical = 43387 ; free virtual = 57611
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2365.254 ; gain = 0.000 ; free physical = 41854 ; free virtual = 55868
-INFO: [Netlist 29-17] Analyzing 52 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2387.246 ; gain = 0.000 ; free physical = 43476 ; free virtual = 57700
+INFO: [Netlist 29-17] Analyzing 45 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2365.254 ; gain = 0.000 ; free physical = 41805 ; free virtual = 55819
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2419.254 ; gain = 0.000 ; free physical = 43426 ; free virtual = 57651
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
 
 INFO: [Common 17-83] Releasing license: Synthesis
-103 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+104 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:53 ; elapsed = 00:01:51 . Memory (MB): peak = 2365.254 ; gain = 82.906 ; free physical = 41990 ; free virtual = 56004
+synth_design: Time (s): cpu = 00:02:58 ; elapsed = 00:02:57 . Memory (MB): peak = 2419.254 ; gain = 136.906 ; free physical = 43610 ; free virtual = 57834
 INFO: [Common 17-1381] The checkpoint '/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.runs/synth_1/au_top_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file au_top_0_utilization_synth.rpt -pb au_top_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Apr 11 22:45:29 2022...
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 12 00:20:54 2022...

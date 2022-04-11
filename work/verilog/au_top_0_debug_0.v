@@ -110,9 +110,9 @@ module au_top_0 (
     M_game_beta_p1_button = M_p1_btn_edge_out;
     M_game_beta_p2_button = M_p2_btn_edge_out;
     M_game_beta_reset_button = M_rst_btn_edge_out;
-    io_led[16+7-:8] = M_game_beta_countdown_timer_val[0+7-:8];
-    io_led[8+7-:8] = M_game_beta_circle_left[8+7-:8];
-    io_led[0+7-:8] = M_game_beta_circle_left[0+7-:8];
+    io_led[16+7-:8] = M_game_beta_p1_score[0+7-:8];
+    io_led[8+7-:8] = M_game_beta_circle_left[0+7-:8];
+    io_led[0+7-:8] = M_game_beta_circle_right[8+7-:8];
   end
   
   reg [138-1:0] M_debugger_data;

@@ -258,7 +258,7 @@ module game_CU (
             }
           else{
            // Rb_data = 1
-            game_fsm.d = game_fsm.PLUS1_TO_RIGHT_HALF;
+            game_fsm.d = game_fsm.PLUS1_TO_LEFT_HALF;
             }
 
         game_fsm.PLUS1_TO_LEFT_HALF:            
@@ -268,7 +268,7 @@ module game_CU (
           regfile_read_address_a = 4h0; // display bottom half of led at all times
           regfile_write_address = 4h0;  // display bottom half of led at all times
           wdsel = 4h0;                  // ALU output 
-          game_fsm.d = game_fsm.CHECK_MSB_RIGHT_HALF;              
+          game_fsm.d = game_fsm.CHECK_MSB_LEFT_HALF;              
                           
         game_fsm.CHECK_MSB_LEFT_HALF:            
           alufn = 7h18;                  // AND
@@ -299,7 +299,7 @@ module game_CU (
             }
           else{
             // Rb_data = 1
-            game_fsm.d = game_fsm.PLUS1_TO_LEFT_HALF;
+            game_fsm.d = game_fsm.PLUS1_TO_RIGHT_HALF;
             }
             
         game_fsm.PLUS1_TO_RIGHT_HALF:            
@@ -354,7 +354,7 @@ module game_CU (
         game_fsm.CHECK_P1_LOSE:
           alufn = 7h18;                 // AND
           asel = 2h0;                   // Reg[ra]
-          bsel = 2h2;                   // value 0x1 to shift reg[0x0]
+          bsel = 2h2;                   // value 0x1 to AND
           we_regfile = b1;
           regfile_read_address_a = 4h0; // display top half of led at all times
           regfile_write_address = 4h8;  // temp reg
@@ -364,7 +364,7 @@ module game_CU (
         game_fsm.BRANCH_P1_LOSE_OR_CARRYON:  
           we_regfile = b0;
           regfile_read_address_b = 4h8; // temp reg
-          if (rb_data[0]){       // to check implementation
+          if (rb_data == b1){
             // p2 win
             game_fsm.d = game_fsm.P2_WINS;
             }
@@ -423,7 +423,7 @@ module game_CU (
         game_fsm.BRANCH_FIRST_HALF:            
           we_regfile = b0;
           regfile_read_address_b = 4h6; // temp reg
-          if (rb_data[0]){       // to check implementation
+          if (rb_data == b1){       // to check implementation
             // first half fully lit
             game_fsm.d = game_fsm.CMPLE_SECOND_HALF;
             }
@@ -444,7 +444,7 @@ module game_CU (
         game_fsm.BRANCH_SECOND_HALF:
           we_regfile = b0;            
           regfile_read_address_b = 4h7; // temp reg
-          if (rb_data[0]){       // to check implementation
+          if (rb_data == 1){       // to check implementation
             // second half fully liy
             game_fsm.d = game_fsm.RESET_RIGHT_HALF;
             }
@@ -470,7 +470,7 @@ module game_CU (
             // game ended
             game_fsm.d = game_fsm.CHECK_DRAW;
           }
-          else if (rb_data == b0) {
+          else {
             // game not ended
             game_fsm.d = game_fsm.COUNT_MINUS_1;      
           }
@@ -497,7 +497,7 @@ module game_CU (
         game_fsm.BRANCH_DRAW:            
           we_regfile = b0;
           regfile_read_address_b = 4h8; // temp reg
-          if (rb_data[0]){       // to check implementation
+          if (rb_data == b1){       // to check implementation
             // DRAW
             game_fsm.d = game_fsm.DRAW;
             }
@@ -527,7 +527,7 @@ module game_CU (
           we_regfile = b0;       
           regfile_read_address_b = 4h8; // temp reg
           wdsel = 4h3;                  // draw signal, not sure if this is correct 
-          if (rb_data[0]){       // to check implementation
+          if (rb_data == b1){       // to check implementation
             // p2 wins
             game_fsm.d = game_fsm.P2_WINS;
             }
@@ -550,13 +550,13 @@ module game_CU (
             
         game_fsm.LIGHT_LOWER_LEFT_LED:  
           we_regfile = b1;
-          regfile_write_address = 4h1;   // display value of lower half of LEDs, need to check if this is correct
+          regfile_write_address = 4h0;   // left
           wdsel = 4h5;                   // lower half LEDs on        
           game_fsm.d = game_fsm.LIGHT_UPPER_RIGHT_LED;
                           
         game_fsm.LIGHT_UPPER_RIGHT_LED:  
           we_regfile = b1;
-          regfile_write_address = 4h0;   // display value of top half of LEDs, need to check if this is correct
+          regfile_write_address = 4h1;   // right
           wdsel = 4h6;                   // upper half LEDs on        
           game_fsm.d = game_fsm.GAMEOVER ;              
                                       
@@ -576,7 +576,7 @@ module game_CU (
           we_regfile = b1;
           regfile_write_address = 4h0;   // display value of top half of LEDs
           wdsel = 4h6;                   // upper half LEDs on        
-          game_fsm.d = game_fsm.LIGHT_UPPER_RIGHT_LED;
+          game_fsm.d = game_fsm.LIGHT_LOWER_RIGHT_LED;
                           
         game_fsm.LIGHT_LOWER_RIGHT_LED:  
           we_regfile = b1;
@@ -585,7 +585,9 @@ module game_CU (
           game_fsm.d = game_fsm.GAMEOVER ;              
           
         game_fsm.GAMEOVER:            
-          game_fsm.d = game_fsm.GAMEOVER;
+          if (reset_button == b1) {
+             game_fsm.d = game_fsm.RESET_SPEED; 
+          }
                               
           
         game_fsm.IDLE:

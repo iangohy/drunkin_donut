@@ -6,6 +6,7 @@ module circle_clock (
     output debug_counter[8]
   ) {
   
+  // ~0.02s
   counter freq_divider(.rst(rst), .clk(clk), #SIZE(1),#DIV(21));
   edge_detector edge_rise (.clk(clk), #RISE(1), #FALL(0));
   dff ctr[8](.clk(clk), .rst(rst));
@@ -22,12 +23,11 @@ module circle_clock (
     case(speed) {
       b1:    
         // level 1
-        // 12 counts
-        // 0.503s
-        if (ctr.q == b1100) {
+        // 64 counts
+        if (ctr.q == h40) {
           out = b1;
           ctr.d = b0;
-        } else if (ctr.q > b1100) {
+        } else if (ctr.q > h40) {
           ctr.d = b0;
           out = b0;
         } else {
@@ -36,11 +36,11 @@ module circle_clock (
         
       b10:
         // level 2 
-        // 9 counts
-        if (ctr.q == b1001) {
+        // 12 counts
+        if (ctr.q == hC) {
           out = b1;
           ctr.d = b0;
-        } else if (ctr.q > b1001) {
+        } else if (ctr.q > hC) {
           ctr.d = b0;
           out = b0;
         } else {
@@ -49,11 +49,11 @@ module circle_clock (
         
       b11:
         // level 3
-        // 5 counts
-        if (ctr.q == b101) {
+        // 9 counts
+        if (ctr.q == h9) {
           out = b1;
           ctr.d = b0;
-        } else if (ctr.q > b101) {
+        } else if (ctr.q > h9) {
           ctr.d = b0;
           out = b0;
         } else {
@@ -62,12 +62,12 @@ module circle_clock (
         
       b100:
         // level 4
-        // 2 counts
+        // 6 counts
         // 0.336s
-        if (ctr.q == b100) {
+        if (ctr.q == h6) {
           out = b1;
           ctr.d = b0;
-        } else if (ctr.q > b100) {
+        } else if (ctr.q > h6) {
           ctr.d = b0;
           out = b0;
         } else {
@@ -78,10 +78,10 @@ module circle_clock (
         // level 5 (and above)
         // 3 counts
         // 0.251s
-        if (ctr.q == b11) {
+        if (ctr.q == h3) {
           out = b1;
           ctr.d = b0;
-        } else if (ctr.q > b11) {
+        } else if (ctr.q > h3) {
           ctr.d = b0;
           out = b0;
         } else {

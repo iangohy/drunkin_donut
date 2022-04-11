@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Mon Apr 11 22:46:20 2022
+| Date         : Tue Apr 12 00:21:49 2022
 | Host         : DESKTOP-3E3A running 64-bit Ubuntu 20.04.4 LTS
 | Command      : report_control_sets -verbose -file au_top_0_control_sets_placed.rpt
 | Design       : au_top_0
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    31 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    71 |
+| Unused register locations in slices containing registers |    73 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -41,13 +41,13 @@ Table of Contents
 +--------------------+-------+
 | Total control sets |    31 |
 | >= 0 to < 4        |     2 |
-| >= 4 to < 6        |     5 |
-| >= 6 to < 8        |     3 |
-| >= 8 to < 10       |     3 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     2 |
+| >= 8 to < 10       |     4 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     1 |
 | >= 14 to < 16      |     0 |
-| >= 16              |    17 |
+| >= 16              |    18 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,52 +58,52 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             161 |           90 |
+| No           | No                    | No                     |             161 |           84 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              72 |           26 |
-| Yes          | No                    | No                     |             693 |          181 |
+| No           | Yes                   | No                     |              72 |           27 |
+| Yes          | No                    | No                     |             694 |          185 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             339 |          110 |
+| Yes          | Yes                   | No                     |             384 |          143 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+------------------------------+-----------------------------------------------------+--------------------------------------------------+------------------+----------------+--------------+
-|         Clock Signal         |                    Enable Signal                    |                 Set/Reset Signal                 | Slice Load Count | Bel Load Count | Bels / Slice |
-+------------------------------+-----------------------------------------------------+--------------------------------------------------+------------------+----------------+--------------+
-|  debugger/M_config_scan_TCK  | debugger/config_fifo/ram/M_ram_write_en             |                                                  |                1 |              2 |         2.00 |
-|  debugger/M_capture_scan_TCK |                                                     |                                                  |                2 |              3 |         1.50 |
-|  clk_IBUF_BUFG               | game_beta/game_circle_clock/edge_rise/E[0]          | reset_cond/Q[0]                                  |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG               |                                                     | debugger/M_info_scan_RESET                       |                3 |              4 |         1.33 |
-|  clk_IBUF_BUFG               |                                                     | reset_cond/M_reset_cond_in                       |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG               |                                                     | game_beta/game_controlunit/M_game_fsm_q_reg[0]_0 |                3 |              4 |         1.33 |
-|  clk_IBUF_BUFG               |                                                     | game_beta/game_controlunit/M_game_fsm_q_reg[5]_9 |                1 |              4 |         4.00 |
-|  M_info_scan_TCK             | debugger/p_0_in[0]                                  |                                                  |                2 |              6 |         3.00 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_game_fsm_q[5]_i_1_n_0  | reset_cond/Q[0]                                  |                4 |              6 |         1.50 |
-|  clk_IBUF_BUFG               |                                                     | game_beta/game_controlunit/M_stage_q_reg[3]_3    |                4 |              7 |         1.75 |
-|  M_data_scan_TCK             | debugger/M_raddr_q0                                 | debugger/M_raddr_q[7]_i_1_n_0                    |                2 |              8 |         4.00 |
-|  M_data_scan_TCK             | debugger/M_offset_q[7]_i_2_n_0                      | debugger/M_offset_q[7]_i_1_n_0                   |                3 |              8 |         2.67 |
-|  clk_IBUF_BUFG               | debugger/force_sync/E[0]                            | debugger/reset_conditioner/Q[0]                  |                3 |              8 |         2.67 |
-|  debugger/M_config_scan_TCK  |                                                     |                                                  |                3 |             12 |         4.00 |
-|  clk_IBUF_BUFG               | reset_cond/M_game_fsm_q_reg[2][0]                   | reset_cond/Q[0]                                  |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG               | reset_cond/M_stage_q_reg[3]_10[0]                   | reset_cond/Q[0]                                  |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_game_fsm_q_reg[2]_4[0] | reset_cond/Q[0]                                  |                6 |             16 |         2.67 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/E[0]                     | reset_cond/Q[0]                                  |                8 |             16 |         2.00 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_game_fsm_q_reg[2]_5[0] | reset_cond/Q[0]                                  |                6 |             16 |         2.67 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_game_fsm_q_reg[2]_8[0] | reset_cond/Q[0]                                  |                7 |             16 |         2.29 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_game_fsm_q_reg[2]_7[0] | reset_cond/Q[0]                                  |                7 |             16 |         2.29 |
-|  clk_IBUF_BUFG               | rst_btn_cond/M_ctr_q[0]_i_2__3_n_0                  | rst_btn_cond/sync/M_pipe_q_reg[1]_0              |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG               | p2_btn_cond/M_ctr_q[0]_i_2__2_n_0                   | p2_btn_cond/sync/M_pipe_q_reg[1]_0               |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG               | p1_btn_cond/sel                                     | p1_btn_cond/sync/clear                           |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_game_fsm_q_reg[2]_6[0] | reset_cond/Q[0]                                  |                9 |             24 |         2.67 |
-|  clk_IBUF_BUFG               | reset_cond/E[0]                                     | reset_cond/Q[0]                                  |               11 |             32 |         2.91 |
-|  clk_IBUF_BUFG               |                                                     | reset_cond/Q[0]                                  |               13 |             49 |         3.77 |
-|  M_info_scan_TCK             | debugger/p_0_in[0]                                  | debugger/M_status_d[0]                           |               18 |             77 |         4.28 |
-|  M_data_scan_TCK             | debugger/M_rdata_q[137]_i_1_n_0                     |                                                  |               50 |            138 |         2.76 |
-|  clk_IBUF_BUFG               |                                                     |                                                  |               85 |            152 |         1.79 |
-|  clk_IBUF_BUFG               | debugger/config_fifo/E[0]                           |                                                  |              129 |            552 |         4.28 |
-+------------------------------+-----------------------------------------------------+--------------------------------------------------+------------------+----------------+--------------+
++------------------------------+----------------------------------------------------------------+--------------------------------------------------------------+------------------+----------------+--------------+
+|         Clock Signal         |                          Enable Signal                         |                       Set/Reset Signal                       | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------------------+----------------------------------------------------------------+--------------------------------------------------------------+------------------+----------------+--------------+
+|  debugger/M_config_scan_TCK  | debugger/config_fifo/ram/M_ram_write_en                        |                                                              |                1 |              2 |         2.00 |
+|  debugger/M_capture_scan_TCK |                                                                |                                                              |                2 |              3 |         1.50 |
+|  clk_IBUF_BUFG               |                                                                | game_beta/game_controlunit/M_stage_q_reg[3]_4                |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG               |                                                                | debugger/M_info_scan_RESET                                   |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG               |                                                                | reset_cond/M_reset_cond_in                                   |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG               |                                                                | game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[29]_0 |                3 |              4 |         1.33 |
+|  clk_IBUF_BUFG               | game_beta/game_circle_clock/freq_divider/E[0]                  | reset_cond/Q[0]                                              |                4 |              7 |         1.75 |
+|  clk_IBUF_BUFG               |                                                                | game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[28]_0 |                4 |              7 |         1.75 |
+|  M_data_scan_TCK             | debugger/M_raddr_q0                                            | debugger/M_raddr_q[7]_i_1_n_0                                |                4 |              8 |         2.00 |
+|  M_data_scan_TCK             | debugger/M_offset_q[7]_i_2_n_0                                 | debugger/M_offset_q[7]_i_1_n_0                               |                3 |              8 |         2.67 |
+|  M_info_scan_TCK             | debugger/p_0_in[0]                                             |                                                              |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG               | debugger/force_sync/E[0]                                       | debugger/reset_conditioner/Q[0]                              |                3 |              8 |         2.67 |
+|  debugger/M_config_scan_TCK  |                                                                |                                                              |                2 |             12 |         6.00 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_stage_q_reg[3]_23[0]              | reset_cond/Q[0]                                              |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_stage_q_reg[3]_20[0]              | reset_cond/Q[0]                                              |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_stage_q_reg[3]_19[0]              | reset_cond/Q[0]                                              |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_stage_q_reg[3]_18[0]              | reset_cond/Q[0]                                              |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/E[0]                                | reset_cond/Q[0]                                              |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_stage_q_reg[3]_17[0]              | reset_cond/Q[0]                                              |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG               | p2_btn_cond/M_ctr_q[0]_i_2__2_n_0                              | p2_btn_cond/sync/M_pipe_q_reg[1]_0                           |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG               | p1_btn_cond/sel                                                | p1_btn_cond/sync/clear                                       |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG               | rst_btn_cond/M_ctr_q[0]_i_2__3_n_0                             | rst_btn_cond/sync/M_pipe_q_reg[1]_0                          |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_stage_q_reg[3]_21[0]              | reset_cond/Q[0]                                              |               11 |             24 |         2.18 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_stage_q_reg[3]_22[0]              | reset_cond/Q[0]                                              |               10 |             24 |         2.40 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/M_stage_q_reg[3]_24[0]              | reset_cond/Q[0]                                              |               11 |             24 |         2.18 |
+|  clk_IBUF_BUFG               |                                                                | reset_cond/Q[0]                                              |               13 |             49 |         3.77 |
+|  clk_IBUF_BUFG               | game_beta/game_controlunit/FSM_onehot_M_game_fsm_q[50]_i_1_n_0 | reset_cond/Q[0]                                              |               26 |             51 |         1.96 |
+|  M_info_scan_TCK             | debugger/p_0_in[0]                                             | debugger/M_status_d[0]                                       |               15 |             74 |         4.93 |
+|  M_data_scan_TCK             | debugger/M_rdata_q[137]_i_1_n_0                                |                                                              |               48 |            138 |         2.88 |
+|  clk_IBUF_BUFG               |                                                                |                                                              |               80 |            152 |         1.90 |
+|  clk_IBUF_BUFG               | debugger/config_fifo/E[0]                                      |                                                              |              135 |            552 |         4.09 |
++------------------------------+----------------------------------------------------------------+--------------------------------------------------------------+------------------+----------------+--------------+
 
 

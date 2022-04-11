@@ -42,6 +42,19 @@ module circle_clock_11 (
     
     case (speed)
       1'h1: begin
+        if (M_ctr_q == 8'h40) begin
+          out = 1'h1;
+          M_ctr_d = 1'h0;
+        end else begin
+          if (M_ctr_q > 8'h40) begin
+            M_ctr_d = 1'h0;
+            out = 1'h0;
+          end else begin
+            out = 1'h0;
+          end
+        end
+      end
+      2'h2: begin
         if (M_ctr_q == 4'hc) begin
           out = 1'h1;
           M_ctr_d = 1'h0;
@@ -54,7 +67,7 @@ module circle_clock_11 (
           end
         end
       end
-      2'h2: begin
+      2'h3: begin
         if (M_ctr_q == 4'h9) begin
           out = 1'h1;
           M_ctr_d = 1'h0;
@@ -67,25 +80,12 @@ module circle_clock_11 (
           end
         end
       end
-      2'h3: begin
-        if (M_ctr_q == 3'h5) begin
-          out = 1'h1;
-          M_ctr_d = 1'h0;
-        end else begin
-          if (M_ctr_q > 3'h5) begin
-            M_ctr_d = 1'h0;
-            out = 1'h0;
-          end else begin
-            out = 1'h0;
-          end
-        end
-      end
       3'h4: begin
-        if (M_ctr_q == 3'h4) begin
+        if (M_ctr_q == 4'h6) begin
           out = 1'h1;
           M_ctr_d = 1'h0;
         end else begin
-          if (M_ctr_q > 3'h4) begin
+          if (M_ctr_q > 4'h6) begin
             M_ctr_d = 1'h0;
             out = 1'h0;
           end else begin
@@ -94,11 +94,11 @@ module circle_clock_11 (
         end
       end
       default: begin
-        if (M_ctr_q == 2'h3) begin
+        if (M_ctr_q == 4'h3) begin
           out = 1'h1;
           M_ctr_d = 1'h0;
         end else begin
-          if (M_ctr_q > 2'h3) begin
+          if (M_ctr_q > 4'h3) begin
             M_ctr_d = 1'h0;
             out = 1'h0;
           end else begin
