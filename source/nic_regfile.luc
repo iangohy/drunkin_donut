@@ -1,0 +1,81 @@
+module nic_regfile (
+    input clk,  // clock
+    input rst,  // reset
+    
+    input write_enable, //we
+    input write_data[16], //wdata
+    
+    input read_address_a[4], //ra
+    input read_address_b[4], //rb
+    input write_address[4], //rc
+    
+   
+    output read_data_a[16], //radata
+    output read_data_b[16], //rbdata
+    
+    //debug? not too sure how this works
+    output full_circle[30], // full circle, left and right combine?
+    output counter_out[16], // countdown timer - nid to convert using multi_seven_seg
+    output all_score[32], // 2 players score - nid to convert using multi_seven_seg
+    output speed[16] //speed counter
+    
+    ) 
+{
+  .clk(clk){
+    .rst(rst){
+    dff left_circle[15]; //left led  
+    dff right_circle[15]; //right led
+    dff countdown_timer[16];
+    dff p1_score[16]; //? need to convert using multi_seven_seg
+    dff p2_score[16]; //? need to convert using multi_seven_seg
+    dff speed_counter[16]; //?
+    dff temp_reg[16]; // temp registers 
+    }
+   }
+
+  always {
+  
+    //write port 
+    if (write_enable){
+      case(write_address){
+        b0000 : left_circle.d = write_data;
+        b0001 : right_circle.d = write_data;
+        b0010 : countdown_timer.d = write_data;
+        b0011 : p1_score.d = write_data;
+        b0100 : p2_score.d = write_data;
+        b0101 : speed_counter.d = write_data;
+        b1111 : temp_reg.d = write_data;
+        }
+      }
+    
+    // read port a
+    case(read_address_a){
+        b0000 : read_data_a = left_circle.q;
+        b0001 : read_data_a = right_circle.q;
+        b0010 : read_data_a = countdown_timer.q;
+        b0011 : read_data_a = p1_score.q;
+        b0100 : read_data_a = p2_score.q;
+        b0101 : read_data_a = speed_counter.q;
+        b1111 : read_data_a = temp_reg.q;
+        default : read_data_a = 0;
+      }
+    
+    case(read_address_b){
+        b0000 : read_data_b = left_circle.q;
+        b0001 : read_data_b = right_circle.q;
+        b0010 : read_data_b = countdown_timer.q;
+        b0011 : read_data_b = p1_score.q;
+        b0100 : read_data_b = p2_score.q;
+        b0101 : read_data_b = speed_counter.q;
+        b1111 : read_data_b = temp_reg.q;
+        default : read_data_b = 0;
+      }
+    //For debugging i guess?
+    full_circle[14:0] = left_circle.q;
+    full_circle[29:15] = right_circle.q;
+    counter_out = countdown_timer.q;
+    all_score[15:0] = p1_score.q;
+    all_score[31:16] = p2_score.q;
+    speed = speed_counter.q;
+  }
+}
