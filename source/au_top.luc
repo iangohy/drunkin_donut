@@ -90,10 +90,7 @@ module au_top (
     
     io_led[2] = game_beta.countdown_timer_val[7:0];
     io_led[1] = game_beta.circle_left[15:8];
-    io_led[0] = game_beta.circle_left[7:0];
-    
-    
-        
+    io_led[0] = game_beta.circle_left[7:0];        
   }
 }
 

@@ -1,8 +1,5 @@
 Warnings in file /home/ian/Documents/drunkin_donut/source/au_top.luc:
     Line 17, Column 4 : "io_dip" was never used
-Warnings in file /home/ian/Documents/drunkin_donut/source/game_CU.luc:
-    Line 12, Column 4 : "reset_button" was never used
-    Line 5, Column 4 : "circle_clock" was never used
 Starting Vivado...
 Vivado exited.
 

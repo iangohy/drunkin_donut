@@ -15,7 +15,7 @@ module beta_1_debug_4 (
     output reg [15:0] p2_score,
     output reg [15:0] circle_left,
     output reg [15:0] circle_right,
-    output reg [37:0] debug__
+    output reg [137:0] debug__
   );
   
   
@@ -28,15 +28,17 @@ module beta_1_debug_4 (
   
   wire [16-1:0] M_game_alu_out;
   wire [3-1:0] M_game_alu_zvn;
+  wire [55-1:0] M_game_alu_debug__;
   reg [7-1:0] M_game_alu_alufn;
   reg [16-1:0] M_game_alu_a;
   reg [16-1:0] M_game_alu_b;
-  alu_7 game_alu (
+  alu_2_debug_7 game_alu (
     .alufn(M_game_alu_alufn),
     .a(M_game_alu_a),
     .b(M_game_alu_b),
     .out(M_game_alu_out),
-    .zvn(M_game_alu_zvn)
+    .zvn(M_game_alu_zvn),
+    .debug__(M_game_alu_debug__)
   );
   
   wire [1-1:0] M_countdown_rising_edge_out;
@@ -57,17 +59,17 @@ module beta_1_debug_4 (
   wire [6-1:0] M_game_controlunit_debug__;
   reg [1-1:0] M_game_controlunit_decrease_timer;
   reg [1-1:0] M_game_controlunit_circle_clock;
-  reg [16-1:0] M_game_controlunit_regfile_datain;
+  reg [16-1:0] M_game_controlunit_rb_data;
   reg [16-1:0] M_game_controlunit_countdown_time_reg;
   reg [1-1:0] M_game_controlunit_p1_button;
   reg [1-1:0] M_game_controlunit_p2_button;
   reg [1-1:0] M_game_controlunit_reset_button;
-  game_CU_2_debug_8 game_controlunit (
+  game_CU_3_debug_8 game_controlunit (
     .clk(clk),
     .rst(rst),
     .decrease_timer(M_game_controlunit_decrease_timer),
     .circle_clock(M_game_controlunit_circle_clock),
-    .regfile_datain(M_game_controlunit_regfile_datain),
+    .rb_data(M_game_controlunit_rb_data),
     .countdown_time_reg(M_game_controlunit_countdown_time_reg),
     .p1_button(M_game_controlunit_p1_button),
     .p2_button(M_game_controlunit_p2_button),
@@ -90,12 +92,13 @@ module beta_1_debug_4 (
   wire [16-1:0] M_game_regfiles_speed_out;
   wire [16-1:0] M_game_regfiles_circle_left;
   wire [16-1:0] M_game_regfiles_circle_right;
+  wire [13-1:0] M_game_regfiles_debug__;
   reg [4-1:0] M_game_regfiles_write_address;
   reg [1-1:0] M_game_regfiles_we;
   reg [16-1:0] M_game_regfiles_data;
   reg [4-1:0] M_game_regfiles_read_address_a;
   reg [4-1:0] M_game_regfiles_read_address_b;
-  regfile_9 game_regfiles (
+  regfile_4_debug_9 game_regfiles (
     .clk(clk),
     .rst(rst),
     .write_address(M_game_regfiles_write_address),
@@ -110,7 +113,8 @@ module beta_1_debug_4 (
     .countdown_time_out(M_game_regfiles_countdown_time_out),
     .speed_out(M_game_regfiles_speed_out),
     .circle_left(M_game_regfiles_circle_left),
-    .circle_right(M_game_regfiles_circle_right)
+    .circle_right(M_game_regfiles_circle_right),
+    .debug__(M_game_regfiles_debug__)
   );
   wire [1-1:0] M_countdown_timer_value;
   counter_10 countdown_timer (
@@ -137,7 +141,7 @@ module beta_1_debug_4 (
     M_game_regfiles_write_address = M_game_controlunit_regfile_write_address;
     M_game_regfiles_read_address_a = M_game_controlunit_regfile_read_address_a;
     M_game_regfiles_read_address_b = M_game_controlunit_regfile_read_address_b;
-    M_game_controlunit_regfile_datain = M_game_regfiles_out_b;
+    M_game_controlunit_rb_data = M_game_regfiles_out_b;
     M_game_controlunit_countdown_time_reg = M_game_regfiles_countdown_time_out;
     M_countdown_rising_edge_in = M_countdown_timer_value;
     M_game_circle_clock_speed = M_game_regfiles_speed_out;
@@ -215,6 +219,6 @@ module beta_1_debug_4 (
   end
   
   always @* begin
-    debug__ = {wdsel_mux_out, M_game_regfiles_out_b, M_game_controlunit_debug__};
+    debug__ = {wdsel_mux_out, M_game_alu_out, M_game_regfiles_out_a, M_game_regfiles_out_b, M_game_alu_debug__, M_game_controlunit_debug__, M_game_regfiles_debug__};
   end
 endmodule

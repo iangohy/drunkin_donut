@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Mon Apr 11 18:31:56 2022
+| Date         : Mon Apr 11 22:47:13 2022
 | Host         : DESKTOP-3E3A running 64-bit Ubuntu 20.04.4 LTS
 | Command      : report_timing_summary -max_paths 10 -file au_top_0_timing_summary_routed.rpt -pb au_top_0_timing_summary_routed.pb -rpx au_top_0_timing_summary_routed.rpx -warn_on_violation
 | Design       : au_top_0
@@ -39,11 +39,11 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (153)
+1. checking no_clock (256)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (393)
-5. checking no_input_delay (3)
+4. checking unconstrained_internal_endpoints (607)
+5. checking no_input_delay (4)
 6. checking no_output_delay (24)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
@@ -52,13 +52,13 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (153)
+1. checking no_clock (256)
 --------------------------
  There are 3 register/latch pins with no clock driven by root clock pin: debugger/capture_scan/TCK (HIGH)
 
  There are 14 register/latch pins with no clock driven by root clock pin: debugger/config_scan/TCK (HIGH)
 
- There are 53 register/latch pins with no clock driven by root clock pin: debugger/data_scan/TCK (HIGH)
+ There are 156 register/latch pins with no clock driven by root clock pin: debugger/data_scan/TCK (HIGH)
 
  There are 83 register/latch pins with no clock driven by root clock pin: debugger/info_scan/TCK (HIGH)
 
@@ -73,16 +73,16 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (393)
+4. checking unconstrained_internal_endpoints (607)
 --------------------------------------------------
- There are 393 pins that are not constrained for maximum delay. (HIGH)
+ There are 607 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (3)
+5. checking no_input_delay (4)
 ------------------------------
- There are 3 input ports with no input delay specified. (HIGH)
+ There are 4 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
@@ -134,7 +134,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-     -0.196       -1.182                      8                  808        0.150        0.000                      0                  808        4.020        0.000                       0                   364  
+     -3.274     -122.650                    140                 2301        0.008        0.000                      0                 2301        4.020        0.000                       0                  1029  
 
 
 Timing constraints are not met.
@@ -157,7 +157,7 @@ clk_0  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-clk_0              -0.196       -1.182                      8                  808        0.150        0.000                      0                  808        4.020        0.000                       0                   364  
+clk_0              -3.274     -122.650                    140                 2301        0.008        0.000                      0                 2301        4.020        0.000                       0                  1029  
 
 
 ------------------------------------------------------------------------------------------------
@@ -188,28 +188,28 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  clk_0
   To Clock:  clk_0
 
-Setup :            8  Failing Endpoints,  Worst Slack       -0.196ns,  Total Violation       -1.182ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.150ns,  Total Violation        0.000ns
+Setup :          140  Failing Endpoints,  Worst Slack       -3.274ns,  Total Violation     -122.650ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.008ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        4.020ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.274ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/ram/mem_reg/WEBWE[0]
+  Destination:            debugger/ram/mem_reg_1/WEBWE[7]
                             (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.641ns  (logic 2.206ns (22.881%)  route 7.435ns (77.119%))
-  Logic Levels:           13  (LUT2=1 LUT5=6 LUT6=6)
-  Clock Path Skew:        0.012ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.878ns = ( 14.878 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.645ns  (logic 2.192ns (17.335%)  route 10.453ns (82.665%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.062ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.888ns = ( 14.888 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -224,38 +224,40 @@ Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.439     9.676    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.800 r  game_beta/game_controlunit/M_left_half_circle_q[9]_i_7/O
-                         net (fo=4, routed)           0.558    10.359    game_beta/game_controlunit/M_left_half_circle_q[9]_i_7_n_0
-    SLICE_X58Y72         LUT5 (Prop_lut5_I3_O)        0.124    10.483 r  game_beta/game_controlunit/M_left_half_circle_q[13]_i_7/O
-                         net (fo=3, routed)           0.576    11.059    game_beta/game_controlunit/M_left_half_circle_q[13]_i_7_n_0
-    SLICE_X61Y72         LUT6 (Prop_lut6_I5_O)        0.124    11.183 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_3/O
-                         net (fo=1, routed)           0.296    11.479    game_beta/game_controlunit/game_alu/M_adder16_out[10]
-    SLICE_X61Y70         LUT2 (Prop_lut2_I1_O)        0.124    11.603 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_2/O
-                         net (fo=6, routed)           0.323    11.926    debugger/ram/mem_reg_i_31_0
-    SLICE_X59Y70         LUT6 (Prop_lut6_I4_O)        0.124    12.050 r  debugger/ram/mem_reg_i_37/O
-                         net (fo=1, routed)           0.578    12.628    debugger/ram/M_ram_write_en7343_out
-    SLICE_X58Y71         LUT5 (Prop_lut5_I1_O)        0.124    12.752 r  debugger/ram/mem_reg_i_31/O
-                         net (fo=3, routed)           0.600    13.352    debugger/force_sync/mem_reg_1
-    SLICE_X58Y72         LUT6 (Prop_lut6_I1_O)        0.124    13.476 r  debugger/force_sync/mem_reg_i_29/O
-                         net (fo=4, routed)           0.460    13.936    debugger/force_sync/M_pipe_q_reg[1]_0
-    SLICE_X58Y71         LUT6 (Prop_lut6_I3_O)        0.124    14.060 r  debugger/force_sync/mem_reg_i_22/O
-                         net (fo=8, routed)           0.704    14.764    debugger/ram/WEBWE[0]
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/WEBWE[0]
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.786    17.855    debugger/ram/write_en
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/WEBWE[7]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -264,32 +266,32 @@ Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.473    14.878    debugger/ram/clk_IBUF_BUFG
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/CLKBWRCLK
-                         clock pessimism              0.258    15.135    
-                         clock uncertainty           -0.035    15.100    
-    RAMB36_X2Y14         RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[0])
-                                                     -0.532    14.568    debugger/ram/mem_reg
+                         net (fo=1028, routed)        1.484    14.888    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/CLKBWRCLK
+                         clock pessimism              0.259    15.148    
+                         clock uncertainty           -0.035    15.113    
+    RAMB36_X1Y6          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[7])
+                                                     -0.532    14.581    debugger/ram/mem_reg_1
   -------------------------------------------------------------------
-                         required time                         14.568    
-                         arrival time                         -14.764    
+                         required time                         14.581    
+                         arrival time                         -17.855    
   -------------------------------------------------------------------
-                         slack                                 -0.196    
+                         slack                                 -3.274    
 
-Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.272ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/ram/mem_reg/WEBWE[3]
+  Destination:            debugger/ram/mem_reg_0/WEBWE[0]
                             (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.641ns  (logic 2.206ns (22.881%)  route 7.435ns (77.119%))
-  Logic Levels:           13  (LUT2=1 LUT5=6 LUT6=6)
-  Clock Path Skew:        0.012ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.878ns = ( 14.878 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.648ns  (logic 2.192ns (17.331%)  route 10.456ns (82.669%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.057ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.893ns = ( 14.893 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -304,38 +306,40 @@ Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.439     9.676    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.800 r  game_beta/game_controlunit/M_left_half_circle_q[9]_i_7/O
-                         net (fo=4, routed)           0.558    10.359    game_beta/game_controlunit/M_left_half_circle_q[9]_i_7_n_0
-    SLICE_X58Y72         LUT5 (Prop_lut5_I3_O)        0.124    10.483 r  game_beta/game_controlunit/M_left_half_circle_q[13]_i_7/O
-                         net (fo=3, routed)           0.576    11.059    game_beta/game_controlunit/M_left_half_circle_q[13]_i_7_n_0
-    SLICE_X61Y72         LUT6 (Prop_lut6_I5_O)        0.124    11.183 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_3/O
-                         net (fo=1, routed)           0.296    11.479    game_beta/game_controlunit/game_alu/M_adder16_out[10]
-    SLICE_X61Y70         LUT2 (Prop_lut2_I1_O)        0.124    11.603 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_2/O
-                         net (fo=6, routed)           0.323    11.926    debugger/ram/mem_reg_i_31_0
-    SLICE_X59Y70         LUT6 (Prop_lut6_I4_O)        0.124    12.050 r  debugger/ram/mem_reg_i_37/O
-                         net (fo=1, routed)           0.578    12.628    debugger/ram/M_ram_write_en7343_out
-    SLICE_X58Y71         LUT5 (Prop_lut5_I1_O)        0.124    12.752 r  debugger/ram/mem_reg_i_31/O
-                         net (fo=3, routed)           0.600    13.352    debugger/force_sync/mem_reg_1
-    SLICE_X58Y72         LUT6 (Prop_lut6_I1_O)        0.124    13.476 r  debugger/force_sync/mem_reg_i_29/O
-                         net (fo=4, routed)           0.460    13.936    debugger/force_sync/M_pipe_q_reg[1]_0
-    SLICE_X58Y71         LUT6 (Prop_lut6_I3_O)        0.124    14.060 r  debugger/force_sync/mem_reg_i_22/O
-                         net (fo=8, routed)           0.704    14.764    debugger/ram/WEBWE[0]
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/WEBWE[3]
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.789    17.857    debugger/ram/write_en
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/WEBWE[0]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -344,32 +348,32 @@ Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.473    14.878    debugger/ram/clk_IBUF_BUFG
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/CLKBWRCLK
-                         clock pessimism              0.258    15.135    
-                         clock uncertainty           -0.035    15.100    
-    RAMB36_X2Y14         RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[3])
-                                                     -0.532    14.568    debugger/ram/mem_reg
+                         net (fo=1028, routed)        1.489    14.893    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/CLKBWRCLK
+                         clock pessimism              0.259    15.153    
+                         clock uncertainty           -0.035    15.118    
+    RAMB36_X1Y7          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[0])
+                                                     -0.532    14.586    debugger/ram/mem_reg_0
   -------------------------------------------------------------------
-                         required time                         14.568    
-                         arrival time                         -14.764    
+                         required time                         14.586    
+                         arrival time                         -17.857    
   -------------------------------------------------------------------
-                         slack                                 -0.196    
+                         slack                                 -3.272    
 
-Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.272ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/ram/mem_reg/WEBWE[4]
+  Destination:            debugger/ram/mem_reg_0/WEBWE[3]
                             (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.641ns  (logic 2.206ns (22.881%)  route 7.435ns (77.119%))
-  Logic Levels:           13  (LUT2=1 LUT5=6 LUT6=6)
-  Clock Path Skew:        0.012ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.878ns = ( 14.878 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.648ns  (logic 2.192ns (17.331%)  route 10.456ns (82.669%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.057ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.893ns = ( 14.893 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -384,38 +388,40 @@ Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.439     9.676    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.800 r  game_beta/game_controlunit/M_left_half_circle_q[9]_i_7/O
-                         net (fo=4, routed)           0.558    10.359    game_beta/game_controlunit/M_left_half_circle_q[9]_i_7_n_0
-    SLICE_X58Y72         LUT5 (Prop_lut5_I3_O)        0.124    10.483 r  game_beta/game_controlunit/M_left_half_circle_q[13]_i_7/O
-                         net (fo=3, routed)           0.576    11.059    game_beta/game_controlunit/M_left_half_circle_q[13]_i_7_n_0
-    SLICE_X61Y72         LUT6 (Prop_lut6_I5_O)        0.124    11.183 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_3/O
-                         net (fo=1, routed)           0.296    11.479    game_beta/game_controlunit/game_alu/M_adder16_out[10]
-    SLICE_X61Y70         LUT2 (Prop_lut2_I1_O)        0.124    11.603 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_2/O
-                         net (fo=6, routed)           0.323    11.926    debugger/ram/mem_reg_i_31_0
-    SLICE_X59Y70         LUT6 (Prop_lut6_I4_O)        0.124    12.050 r  debugger/ram/mem_reg_i_37/O
-                         net (fo=1, routed)           0.578    12.628    debugger/ram/M_ram_write_en7343_out
-    SLICE_X58Y71         LUT5 (Prop_lut5_I1_O)        0.124    12.752 r  debugger/ram/mem_reg_i_31/O
-                         net (fo=3, routed)           0.600    13.352    debugger/force_sync/mem_reg_1
-    SLICE_X58Y72         LUT6 (Prop_lut6_I1_O)        0.124    13.476 r  debugger/force_sync/mem_reg_i_29/O
-                         net (fo=4, routed)           0.460    13.936    debugger/force_sync/M_pipe_q_reg[1]_0
-    SLICE_X58Y71         LUT6 (Prop_lut6_I3_O)        0.124    14.060 r  debugger/force_sync/mem_reg_i_22/O
-                         net (fo=8, routed)           0.704    14.764    debugger/ram/WEBWE[0]
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/WEBWE[4]
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.789    17.857    debugger/ram/write_en
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/WEBWE[3]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -424,32 +430,32 @@ Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.473    14.878    debugger/ram/clk_IBUF_BUFG
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/CLKBWRCLK
-                         clock pessimism              0.258    15.135    
-                         clock uncertainty           -0.035    15.100    
-    RAMB36_X2Y14         RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[4])
-                                                     -0.532    14.568    debugger/ram/mem_reg
+                         net (fo=1028, routed)        1.489    14.893    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/CLKBWRCLK
+                         clock pessimism              0.259    15.153    
+                         clock uncertainty           -0.035    15.118    
+    RAMB36_X1Y7          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[3])
+                                                     -0.532    14.586    debugger/ram/mem_reg_0
   -------------------------------------------------------------------
-                         required time                         14.568    
-                         arrival time                         -14.764    
+                         required time                         14.586    
+                         arrival time                         -17.857    
   -------------------------------------------------------------------
-                         slack                                 -0.196    
+                         slack                                 -3.272    
 
-Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.272ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/ram/mem_reg/WEBWE[7]
+  Destination:            debugger/ram/mem_reg_0/WEBWE[4]
                             (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.641ns  (logic 2.206ns (22.881%)  route 7.435ns (77.119%))
-  Logic Levels:           13  (LUT2=1 LUT5=6 LUT6=6)
-  Clock Path Skew:        0.012ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.878ns = ( 14.878 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.648ns  (logic 2.192ns (17.331%)  route 10.456ns (82.669%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.057ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.893ns = ( 14.893 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -464,38 +470,40 @@ Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.439     9.676    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.800 r  game_beta/game_controlunit/M_left_half_circle_q[9]_i_7/O
-                         net (fo=4, routed)           0.558    10.359    game_beta/game_controlunit/M_left_half_circle_q[9]_i_7_n_0
-    SLICE_X58Y72         LUT5 (Prop_lut5_I3_O)        0.124    10.483 r  game_beta/game_controlunit/M_left_half_circle_q[13]_i_7/O
-                         net (fo=3, routed)           0.576    11.059    game_beta/game_controlunit/M_left_half_circle_q[13]_i_7_n_0
-    SLICE_X61Y72         LUT6 (Prop_lut6_I5_O)        0.124    11.183 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_3/O
-                         net (fo=1, routed)           0.296    11.479    game_beta/game_controlunit/game_alu/M_adder16_out[10]
-    SLICE_X61Y70         LUT2 (Prop_lut2_I1_O)        0.124    11.603 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_2/O
-                         net (fo=6, routed)           0.323    11.926    debugger/ram/mem_reg_i_31_0
-    SLICE_X59Y70         LUT6 (Prop_lut6_I4_O)        0.124    12.050 r  debugger/ram/mem_reg_i_37/O
-                         net (fo=1, routed)           0.578    12.628    debugger/ram/M_ram_write_en7343_out
-    SLICE_X58Y71         LUT5 (Prop_lut5_I1_O)        0.124    12.752 r  debugger/ram/mem_reg_i_31/O
-                         net (fo=3, routed)           0.600    13.352    debugger/force_sync/mem_reg_1
-    SLICE_X58Y72         LUT6 (Prop_lut6_I1_O)        0.124    13.476 r  debugger/force_sync/mem_reg_i_29/O
-                         net (fo=4, routed)           0.460    13.936    debugger/force_sync/M_pipe_q_reg[1]_0
-    SLICE_X58Y71         LUT6 (Prop_lut6_I3_O)        0.124    14.060 r  debugger/force_sync/mem_reg_i_22/O
-                         net (fo=8, routed)           0.704    14.764    debugger/ram/WEBWE[0]
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/WEBWE[7]
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.789    17.857    debugger/ram/write_en
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/WEBWE[4]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -504,32 +512,32 @@ Slack (VIOLATED) :        -0.196ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.473    14.878    debugger/ram/clk_IBUF_BUFG
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/CLKBWRCLK
-                         clock pessimism              0.258    15.135    
-                         clock uncertainty           -0.035    15.100    
-    RAMB36_X2Y14         RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[7])
-                                                     -0.532    14.568    debugger/ram/mem_reg
+                         net (fo=1028, routed)        1.489    14.893    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/CLKBWRCLK
+                         clock pessimism              0.259    15.153    
+                         clock uncertainty           -0.035    15.118    
+    RAMB36_X1Y7          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[4])
+                                                     -0.532    14.586    debugger/ram/mem_reg_0
   -------------------------------------------------------------------
-                         required time                         14.568    
-                         arrival time                         -14.764    
+                         required time                         14.586    
+                         arrival time                         -17.857    
   -------------------------------------------------------------------
-                         slack                                 -0.196    
+                         slack                                 -3.272    
 
-Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.272ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/ram/mem_reg/WEBWE[1]
+  Destination:            debugger/ram/mem_reg_0/WEBWE[7]
                             (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.545ns  (logic 2.206ns (23.112%)  route 7.339ns (76.888%))
-  Logic Levels:           13  (LUT2=1 LUT5=6 LUT6=6)
-  Clock Path Skew:        0.012ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.878ns = ( 14.878 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.648ns  (logic 2.192ns (17.331%)  route 10.456ns (82.669%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.057ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.893ns = ( 14.893 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -544,38 +552,40 @@ Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.439     9.676    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.800 r  game_beta/game_controlunit/M_left_half_circle_q[9]_i_7/O
-                         net (fo=4, routed)           0.558    10.359    game_beta/game_controlunit/M_left_half_circle_q[9]_i_7_n_0
-    SLICE_X58Y72         LUT5 (Prop_lut5_I3_O)        0.124    10.483 r  game_beta/game_controlunit/M_left_half_circle_q[13]_i_7/O
-                         net (fo=3, routed)           0.576    11.059    game_beta/game_controlunit/M_left_half_circle_q[13]_i_7_n_0
-    SLICE_X61Y72         LUT6 (Prop_lut6_I5_O)        0.124    11.183 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_3/O
-                         net (fo=1, routed)           0.296    11.479    game_beta/game_controlunit/game_alu/M_adder16_out[10]
-    SLICE_X61Y70         LUT2 (Prop_lut2_I1_O)        0.124    11.603 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_2/O
-                         net (fo=6, routed)           0.323    11.926    debugger/ram/mem_reg_i_31_0
-    SLICE_X59Y70         LUT6 (Prop_lut6_I4_O)        0.124    12.050 r  debugger/ram/mem_reg_i_37/O
-                         net (fo=1, routed)           0.578    12.628    debugger/ram/M_ram_write_en7343_out
-    SLICE_X58Y71         LUT5 (Prop_lut5_I1_O)        0.124    12.752 r  debugger/ram/mem_reg_i_31/O
-                         net (fo=3, routed)           0.600    13.352    debugger/force_sync/mem_reg_1
-    SLICE_X58Y72         LUT6 (Prop_lut6_I1_O)        0.124    13.476 r  debugger/force_sync/mem_reg_i_29/O
-                         net (fo=4, routed)           0.460    13.936    debugger/force_sync/M_pipe_q_reg[1]_0
-    SLICE_X58Y71         LUT6 (Prop_lut6_I3_O)        0.124    14.060 r  debugger/force_sync/mem_reg_i_22/O
-                         net (fo=8, routed)           0.607    14.668    debugger/ram/WEBWE[0]
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/WEBWE[1]
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.789    17.857    debugger/ram/write_en
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/WEBWE[7]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -584,32 +594,32 @@ Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.473    14.878    debugger/ram/clk_IBUF_BUFG
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/CLKBWRCLK
-                         clock pessimism              0.258    15.135    
-                         clock uncertainty           -0.035    15.100    
-    RAMB36_X2Y14         RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[1])
-                                                     -0.532    14.568    debugger/ram/mem_reg
+                         net (fo=1028, routed)        1.489    14.893    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/CLKBWRCLK
+                         clock pessimism              0.259    15.153    
+                         clock uncertainty           -0.035    15.118    
+    RAMB36_X1Y7          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[7])
+                                                     -0.532    14.586    debugger/ram/mem_reg_0
   -------------------------------------------------------------------
-                         required time                         14.568    
-                         arrival time                         -14.668    
+                         required time                         14.586    
+                         arrival time                         -17.857    
   -------------------------------------------------------------------
-                         slack                                 -0.100    
+                         slack                                 -3.272    
 
-Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.192ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/ram/mem_reg/WEBWE[2]
+  Destination:            debugger/ram/mem_reg_1/WEBWE[0]
                             (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.545ns  (logic 2.206ns (23.112%)  route 7.339ns (76.888%))
-  Logic Levels:           13  (LUT2=1 LUT5=6 LUT6=6)
-  Clock Path Skew:        0.012ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.878ns = ( 14.878 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.563ns  (logic 2.192ns (17.448%)  route 10.371ns (82.552%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.062ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.888ns = ( 14.888 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -624,38 +634,40 @@ Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.439     9.676    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.800 r  game_beta/game_controlunit/M_left_half_circle_q[9]_i_7/O
-                         net (fo=4, routed)           0.558    10.359    game_beta/game_controlunit/M_left_half_circle_q[9]_i_7_n_0
-    SLICE_X58Y72         LUT5 (Prop_lut5_I3_O)        0.124    10.483 r  game_beta/game_controlunit/M_left_half_circle_q[13]_i_7/O
-                         net (fo=3, routed)           0.576    11.059    game_beta/game_controlunit/M_left_half_circle_q[13]_i_7_n_0
-    SLICE_X61Y72         LUT6 (Prop_lut6_I5_O)        0.124    11.183 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_3/O
-                         net (fo=1, routed)           0.296    11.479    game_beta/game_controlunit/game_alu/M_adder16_out[10]
-    SLICE_X61Y70         LUT2 (Prop_lut2_I1_O)        0.124    11.603 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_2/O
-                         net (fo=6, routed)           0.323    11.926    debugger/ram/mem_reg_i_31_0
-    SLICE_X59Y70         LUT6 (Prop_lut6_I4_O)        0.124    12.050 r  debugger/ram/mem_reg_i_37/O
-                         net (fo=1, routed)           0.578    12.628    debugger/ram/M_ram_write_en7343_out
-    SLICE_X58Y71         LUT5 (Prop_lut5_I1_O)        0.124    12.752 r  debugger/ram/mem_reg_i_31/O
-                         net (fo=3, routed)           0.600    13.352    debugger/force_sync/mem_reg_1
-    SLICE_X58Y72         LUT6 (Prop_lut6_I1_O)        0.124    13.476 r  debugger/force_sync/mem_reg_i_29/O
-                         net (fo=4, routed)           0.460    13.936    debugger/force_sync/M_pipe_q_reg[1]_0
-    SLICE_X58Y71         LUT6 (Prop_lut6_I3_O)        0.124    14.060 r  debugger/force_sync/mem_reg_i_22/O
-                         net (fo=8, routed)           0.607    14.668    debugger/ram/WEBWE[0]
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/WEBWE[2]
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.704    17.772    debugger/ram/write_en
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/WEBWE[0]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -664,32 +676,32 @@ Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.473    14.878    debugger/ram/clk_IBUF_BUFG
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/CLKBWRCLK
-                         clock pessimism              0.258    15.135    
-                         clock uncertainty           -0.035    15.100    
-    RAMB36_X2Y14         RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[2])
-                                                     -0.532    14.568    debugger/ram/mem_reg
+                         net (fo=1028, routed)        1.484    14.888    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/CLKBWRCLK
+                         clock pessimism              0.259    15.148    
+                         clock uncertainty           -0.035    15.113    
+    RAMB36_X1Y6          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[0])
+                                                     -0.532    14.581    debugger/ram/mem_reg_1
   -------------------------------------------------------------------
-                         required time                         14.568    
-                         arrival time                         -14.668    
+                         required time                         14.581    
+                         arrival time                         -17.772    
   -------------------------------------------------------------------
-                         slack                                 -0.100    
+                         slack                                 -3.192    
 
-Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.192ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/ram/mem_reg/WEBWE[5]
+  Destination:            debugger/ram/mem_reg_1/WEBWE[3]
                             (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.545ns  (logic 2.206ns (23.112%)  route 7.339ns (76.888%))
-  Logic Levels:           13  (LUT2=1 LUT5=6 LUT6=6)
-  Clock Path Skew:        0.012ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.878ns = ( 14.878 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.563ns  (logic 2.192ns (17.448%)  route 10.371ns (82.552%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.062ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.888ns = ( 14.888 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -704,38 +716,40 @@ Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.439     9.676    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.800 r  game_beta/game_controlunit/M_left_half_circle_q[9]_i_7/O
-                         net (fo=4, routed)           0.558    10.359    game_beta/game_controlunit/M_left_half_circle_q[9]_i_7_n_0
-    SLICE_X58Y72         LUT5 (Prop_lut5_I3_O)        0.124    10.483 r  game_beta/game_controlunit/M_left_half_circle_q[13]_i_7/O
-                         net (fo=3, routed)           0.576    11.059    game_beta/game_controlunit/M_left_half_circle_q[13]_i_7_n_0
-    SLICE_X61Y72         LUT6 (Prop_lut6_I5_O)        0.124    11.183 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_3/O
-                         net (fo=1, routed)           0.296    11.479    game_beta/game_controlunit/game_alu/M_adder16_out[10]
-    SLICE_X61Y70         LUT2 (Prop_lut2_I1_O)        0.124    11.603 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_2/O
-                         net (fo=6, routed)           0.323    11.926    debugger/ram/mem_reg_i_31_0
-    SLICE_X59Y70         LUT6 (Prop_lut6_I4_O)        0.124    12.050 r  debugger/ram/mem_reg_i_37/O
-                         net (fo=1, routed)           0.578    12.628    debugger/ram/M_ram_write_en7343_out
-    SLICE_X58Y71         LUT5 (Prop_lut5_I1_O)        0.124    12.752 r  debugger/ram/mem_reg_i_31/O
-                         net (fo=3, routed)           0.600    13.352    debugger/force_sync/mem_reg_1
-    SLICE_X58Y72         LUT6 (Prop_lut6_I1_O)        0.124    13.476 r  debugger/force_sync/mem_reg_i_29/O
-                         net (fo=4, routed)           0.460    13.936    debugger/force_sync/M_pipe_q_reg[1]_0
-    SLICE_X58Y71         LUT6 (Prop_lut6_I3_O)        0.124    14.060 r  debugger/force_sync/mem_reg_i_22/O
-                         net (fo=8, routed)           0.607    14.668    debugger/ram/WEBWE[0]
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/WEBWE[5]
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.704    17.772    debugger/ram/write_en
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/WEBWE[3]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -744,32 +758,32 @@ Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.473    14.878    debugger/ram/clk_IBUF_BUFG
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/CLKBWRCLK
-                         clock pessimism              0.258    15.135    
-                         clock uncertainty           -0.035    15.100    
-    RAMB36_X2Y14         RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[5])
-                                                     -0.532    14.568    debugger/ram/mem_reg
+                         net (fo=1028, routed)        1.484    14.888    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/CLKBWRCLK
+                         clock pessimism              0.259    15.148    
+                         clock uncertainty           -0.035    15.113    
+    RAMB36_X1Y6          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[3])
+                                                     -0.532    14.581    debugger/ram/mem_reg_1
   -------------------------------------------------------------------
-                         required time                         14.568    
-                         arrival time                         -14.668    
+                         required time                         14.581    
+                         arrival time                         -17.772    
   -------------------------------------------------------------------
-                         slack                                 -0.100    
+                         slack                                 -3.192    
 
-Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.192ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/ram/mem_reg/WEBWE[6]
+  Destination:            debugger/ram/mem_reg_1/WEBWE[4]
                             (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.545ns  (logic 2.206ns (23.112%)  route 7.339ns (76.888%))
-  Logic Levels:           13  (LUT2=1 LUT5=6 LUT6=6)
-  Clock Path Skew:        0.012ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.878ns = ( 14.878 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.563ns  (logic 2.192ns (17.448%)  route 10.371ns (82.552%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.062ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.888ns = ( 14.888 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -784,38 +798,40 @@ Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.439     9.676    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.800 r  game_beta/game_controlunit/M_left_half_circle_q[9]_i_7/O
-                         net (fo=4, routed)           0.558    10.359    game_beta/game_controlunit/M_left_half_circle_q[9]_i_7_n_0
-    SLICE_X58Y72         LUT5 (Prop_lut5_I3_O)        0.124    10.483 r  game_beta/game_controlunit/M_left_half_circle_q[13]_i_7/O
-                         net (fo=3, routed)           0.576    11.059    game_beta/game_controlunit/M_left_half_circle_q[13]_i_7_n_0
-    SLICE_X61Y72         LUT6 (Prop_lut6_I5_O)        0.124    11.183 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_3/O
-                         net (fo=1, routed)           0.296    11.479    game_beta/game_controlunit/game_alu/M_adder16_out[10]
-    SLICE_X61Y70         LUT2 (Prop_lut2_I1_O)        0.124    11.603 r  game_beta/game_controlunit/M_left_half_circle_q[10]_i_2/O
-                         net (fo=6, routed)           0.323    11.926    debugger/ram/mem_reg_i_31_0
-    SLICE_X59Y70         LUT6 (Prop_lut6_I4_O)        0.124    12.050 r  debugger/ram/mem_reg_i_37/O
-                         net (fo=1, routed)           0.578    12.628    debugger/ram/M_ram_write_en7343_out
-    SLICE_X58Y71         LUT5 (Prop_lut5_I1_O)        0.124    12.752 r  debugger/ram/mem_reg_i_31/O
-                         net (fo=3, routed)           0.600    13.352    debugger/force_sync/mem_reg_1
-    SLICE_X58Y72         LUT6 (Prop_lut6_I1_O)        0.124    13.476 r  debugger/force_sync/mem_reg_i_29/O
-                         net (fo=4, routed)           0.460    13.936    debugger/force_sync/M_pipe_q_reg[1]_0
-    SLICE_X58Y71         LUT6 (Prop_lut6_I3_O)        0.124    14.060 r  debugger/force_sync/mem_reg_i_22/O
-                         net (fo=8, routed)           0.607    14.668    debugger/ram/WEBWE[0]
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/WEBWE[6]
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.704    17.772    debugger/ram/write_en
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/WEBWE[4]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -824,32 +840,32 @@ Slack (VIOLATED) :        -0.100ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.473    14.878    debugger/ram/clk_IBUF_BUFG
-    RAMB36_X2Y14         RAMB36E1                                     r  debugger/ram/mem_reg/CLKBWRCLK
-                         clock pessimism              0.258    15.135    
-                         clock uncertainty           -0.035    15.100    
-    RAMB36_X2Y14         RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[6])
-                                                     -0.532    14.568    debugger/ram/mem_reg
+                         net (fo=1028, routed)        1.484    14.888    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/CLKBWRCLK
+                         clock pessimism              0.259    15.148    
+                         clock uncertainty           -0.035    15.113    
+    RAMB36_X1Y6          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[4])
+                                                     -0.532    14.581    debugger/ram/mem_reg_1
   -------------------------------------------------------------------
-                         required time                         14.568    
-                         arrival time                         -14.668    
+                         required time                         14.581    
+                         arrival time                         -17.772    
   -------------------------------------------------------------------
-                         slack                                 -0.100    
+                         slack                                 -3.192    
 
-Slack (MET) :             0.232ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.178ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_waddr_q_reg[0]/CE
-                            (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            debugger/ram/mem_reg_1/WEBWE[6]
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.563ns  (logic 2.206ns (23.067%)  route 7.357ns (76.933%))
-  Logic Levels:           13  (LUT5=4 LUT6=9)
-  Clock Path Skew:        0.036ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.901ns = ( 14.901 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.549ns  (logic 2.192ns (17.468%)  route 10.357ns (82.532%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.062ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.888ns = ( 14.888 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -864,38 +880,40 @@ Slack (MET) :             0.232ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.287     9.524    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT6 (Prop_lut6_I5_O)        0.124     9.648 f  game_beta/game_controlunit/M_left_half_circle_q[6]_i_3/O
-                         net (fo=2, routed)           0.832    10.481    game_beta/game_controlunit/game_alu/M_adder16_out[6]
-    SLICE_X58Y72         LUT5 (Prop_lut5_I0_O)        0.124    10.605 r  game_beta/game_controlunit/M_left_half_circle_q[0]_i_12/O
-                         net (fo=1, routed)           0.403    11.008    game_beta/game_controlunit/M_left_half_circle_q[0]_i_12_n_0
-    SLICE_X59Y72         LUT6 (Prop_lut6_I1_O)        0.124    11.132 r  game_beta/game_controlunit/M_left_half_circle_q[0]_i_10/O
-                         net (fo=1, routed)           0.433    11.565    game_beta/game_controlunit/M_left_half_circle_q[0]_i_10_n_0
-    SLICE_X59Y72         LUT6 (Prop_lut6_I1_O)        0.124    11.689 r  game_beta/game_controlunit/M_left_half_circle_q[0]_i_5/O
-                         net (fo=3, routed)           0.508    12.198    game_beta/game_controlunit/M_left_half_circle_q[0]_i_5_n_0
-    SLICE_X59Y71         LUT6 (Prop_lut6_I0_O)        0.124    12.322 r  game_beta/game_controlunit/mem_reg_i_43/O
-                         net (fo=1, routed)           0.264    12.586    debugger/ram/M_state_q[1]_i_2_0
-    SLICE_X59Y71         LUT6 (Prop_lut6_I3_O)        0.124    12.710 r  debugger/ram/mem_reg_i_33/O
-                         net (fo=3, routed)           0.595    13.305    debugger/ram/M_trigger_data_q_reg[90]
-    SLICE_X59Y72         LUT6 (Prop_lut6_I5_O)        0.124    13.429 r  debugger/ram/mem_reg_i_27/O
-                         net (fo=2, routed)           0.602    14.030    debugger/force_sync/p_638_in
-    SLICE_X59Y71         LUT6 (Prop_lut6_I2_O)        0.124    14.154 r  debugger/force_sync/M_waddr_q[7]_i_1/O
-                         net (fo=8, routed)           0.532    14.686    debugger/force_sync_n_2
-    SLICE_X59Y70         FDRE                                         r  debugger/M_waddr_q_reg[0]/CE
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.690    17.758    debugger/ram/write_en
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/WEBWE[6]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -904,31 +922,32 @@ Slack (MET) :             0.232ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.497    14.901    debugger/clk_IBUF_BUFG
-    SLICE_X59Y70         FDRE                                         r  debugger/M_waddr_q_reg[0]/C
-                         clock pessimism              0.258    15.159    
-                         clock uncertainty           -0.035    15.124    
-    SLICE_X59Y70         FDRE (Setup_fdre_C_CE)      -0.205    14.919    debugger/M_waddr_q_reg[0]
+                         net (fo=1028, routed)        1.484    14.888    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y6          RAMB36E1                                     r  debugger/ram/mem_reg_1/CLKBWRCLK
+                         clock pessimism              0.259    15.148    
+                         clock uncertainty           -0.035    15.113    
+    RAMB36_X1Y6          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[6])
+                                                     -0.532    14.581    debugger/ram/mem_reg_1
   -------------------------------------------------------------------
-                         required time                         14.919    
-                         arrival time                         -14.686    
+                         required time                         14.581    
+                         arrival time                         -17.758    
   -------------------------------------------------------------------
-                         slack                                  0.232    
+                         slack                                 -3.178    
 
-Slack (MET) :             0.232ns  (required time - arrival time)
-  Source:                 game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+Slack (VIOLATED) :        -3.175ns  (required time - arrival time)
+  Source:                 game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_waddr_q_reg[3]/CE
-                            (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            debugger/ram/mem_reg_0/WEBWE[1]
+                            (rising edge-triggered cell RAMB36E1 clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (clk_0 rise@10.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        9.563ns  (logic 2.206ns (23.067%)  route 7.357ns (76.933%))
-  Logic Levels:           13  (LUT5=4 LUT6=9)
-  Clock Path Skew:        0.036ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.901ns = ( 14.901 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.123ns
-    Clock Pessimism Removal (CPR):    0.258ns
+  Data Path Delay:        12.551ns  (logic 2.192ns (17.464%)  route 10.359ns (82.536%))
+  Logic Levels:           14  (LUT2=2 LUT3=1 LUT5=5 LUT6=6)
+  Clock Path Skew:        -0.057ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.893ns = ( 14.893 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.209ns
+    Clock Pessimism Removal (CPR):    0.259ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Total Input Jitter      (TIJ):    0.000ns
@@ -943,38 +962,40 @@ Slack (MET) :             0.232ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.517     1.517 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.972     3.488    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.584 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.539     5.123    game_beta/game_controlunit/clk_IBUF_BUFG
-    SLICE_X55Y75         FDRE                                         r  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/C
+                         net (fo=1028, routed)        1.625     5.209    game_beta/game_controlunit/clk_IBUF_BUFG
+    SLICE_X63Y29         FDRE                                         r  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y75         FDRE (Prop_fdre_C_Q)         0.419     5.542 f  game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg[14]/Q
-                         net (fo=27, routed)          1.124     6.666    game_beta/game_controlunit/FSM_onehot_M_game_fsm_q_reg_n_0_[14]
-    SLICE_X58Y76         LUT6 (Prop_lut6_I4_O)        0.299     6.965 r  game_beta/game_controlunit/M_left_half_circle_q[15]_i_21/O
-                         net (fo=12, routed)          0.845     7.810    game_beta/game_controlunit/M_left_half_circle_q[15]_i_21_n_0
-    SLICE_X58Y75         LUT6 (Prop_lut6_I2_O)        0.124     7.934 r  game_beta/game_controlunit/M_left_half_circle_q[1]_i_4/O
-                         net (fo=2, routed)           0.170     8.104    game_beta/game_controlunit/M_game_alu_a[1]
-    SLICE_X58Y75         LUT5 (Prop_lut5_I4_O)        0.124     8.228 r  game_beta/game_controlunit/M_left_half_circle_q[2]_i_5/O
-                         net (fo=3, routed)           0.349     8.577    game_beta/game_controlunit/M_left_half_circle_q[2]_i_5_n_0
-    SLICE_X59Y73         LUT5 (Prop_lut5_I3_O)        0.124     8.701 r  game_beta/game_controlunit/M_left_half_circle_q[4]_i_5/O
-                         net (fo=3, routed)           0.412     9.113    game_beta/game_controlunit/M_left_half_circle_q[4]_i_5_n_0
-    SLICE_X57Y73         LUT5 (Prop_lut5_I2_O)        0.124     9.237 r  game_beta/game_controlunit/M_left_half_circle_q[7]_i_6/O
-                         net (fo=4, routed)           0.287     9.524    game_beta/game_controlunit/M_left_half_circle_q[7]_i_6_n_0
-    SLICE_X57Y73         LUT6 (Prop_lut6_I5_O)        0.124     9.648 f  game_beta/game_controlunit/M_left_half_circle_q[6]_i_3/O
-                         net (fo=2, routed)           0.832    10.481    game_beta/game_controlunit/game_alu/M_adder16_out[6]
-    SLICE_X58Y72         LUT5 (Prop_lut5_I0_O)        0.124    10.605 r  game_beta/game_controlunit/M_left_half_circle_q[0]_i_12/O
-                         net (fo=1, routed)           0.403    11.008    game_beta/game_controlunit/M_left_half_circle_q[0]_i_12_n_0
-    SLICE_X59Y72         LUT6 (Prop_lut6_I1_O)        0.124    11.132 r  game_beta/game_controlunit/M_left_half_circle_q[0]_i_10/O
-                         net (fo=1, routed)           0.433    11.565    game_beta/game_controlunit/M_left_half_circle_q[0]_i_10_n_0
-    SLICE_X59Y72         LUT6 (Prop_lut6_I1_O)        0.124    11.689 r  game_beta/game_controlunit/M_left_half_circle_q[0]_i_5/O
-                         net (fo=3, routed)           0.508    12.198    game_beta/game_controlunit/M_left_half_circle_q[0]_i_5_n_0
-    SLICE_X59Y71         LUT6 (Prop_lut6_I0_O)        0.124    12.322 r  game_beta/game_controlunit/mem_reg_i_43/O
-                         net (fo=1, routed)           0.264    12.586    debugger/ram/M_state_q[1]_i_2_0
-    SLICE_X59Y71         LUT6 (Prop_lut6_I3_O)        0.124    12.710 r  debugger/ram/mem_reg_i_33/O
-                         net (fo=3, routed)           0.595    13.305    debugger/ram/M_trigger_data_q_reg[90]
-    SLICE_X59Y72         LUT6 (Prop_lut6_I5_O)        0.124    13.429 r  debugger/ram/mem_reg_i_27/O
-                         net (fo=2, routed)           0.602    14.030    debugger/force_sync/p_638_in
-    SLICE_X59Y71         LUT6 (Prop_lut6_I2_O)        0.124    14.154 r  debugger/force_sync/M_waddr_q[7]_i_1/O
-                         net (fo=8, routed)           0.532    14.686    debugger/force_sync_n_2
-    SLICE_X59Y70         FDRE                                         r  debugger/M_waddr_q_reg[3]/CE
+    SLICE_X63Y29         FDRE (Prop_fdre_C_Q)         0.456     5.665 f  game_beta/game_controlunit/M_game_fsm_q_reg[4]_replica/Q
+                         net (fo=17, routed)          0.821     6.487    reset_cond/Q[4]_repN_alias
+    SLICE_X60Y33         LUT2 (Prop_lut2_I1_O)        0.124     6.611 f  reset_cond/mem_reg_0_i_85/O
+                         net (fo=4, routed)           0.507     7.118    game_beta/game_controlunit/mem_reg_0_9
+    SLICE_X61Y33         LUT6 (Prop_lut6_I1_O)        0.124     7.242 r  game_beta/game_controlunit/mem_reg_0_i_86/O
+                         net (fo=35, routed)          0.561     7.802    game_beta/game_regfiles/mem_reg_1
+    SLICE_X63Y32         LUT6 (Prop_lut6_I3_O)        0.124     7.926 r  game_beta/game_regfiles/mem_reg_1_i_69/O
+                         net (fo=1, routed)           0.940     8.866    game_beta/game_regfiles/mem_reg_1_i_69_n_0
+    SLICE_X57Y32         LUT5 (Prop_lut5_I4_O)        0.124     8.990 r  game_beta/game_regfiles/mem_reg_1_i_28/O
+                         net (fo=6, routed)           0.612     9.602    game_beta/game_regfiles/write_data[16]
+    SLICE_X56Y34         LUT2 (Prop_lut2_I0_O)        0.124     9.726 r  game_beta/game_regfiles/mem_reg_0_i_54/O
+                         net (fo=56, routed)          1.112    10.838    game_beta/game_controlunit/mem_reg_0_0[0]
+    SLICE_X58Y35         LUT5 (Prop_lut5_I2_O)        0.124    10.962 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_14/O
+                         net (fo=3, routed)           0.645    11.607    game_beta/game_controlunit/mem_reg_0_i_109
+    SLICE_X59Y37         LUT3 (Prop_lut3_I2_O)        0.124    11.731 f  game_beta/game_controlunit/M_left_half_circle_q[4]_i_9/O
+                         net (fo=2, routed)           0.699    12.429    game_beta/game_controlunit/M_left_half_circle_q[4]_i_9_n_0
+    SLICE_X57Y40         LUT5 (Prop_lut5_I4_O)        0.124    12.553 r  game_beta/game_controlunit/M_left_half_circle_q[3]_i_3/O
+                         net (fo=1, routed)           0.707    13.261    reset_cond/mem_reg_0_9
+    SLICE_X57Y41         LUT5 (Prop_lut5_I1_O)        0.124    13.385 r  reset_cond/M_left_half_circle_q[3]_i_2/O
+                         net (fo=9, routed)           0.363    13.748    debugger/ram/M_state_q[1]_i_18_1
+    SLICE_X55Y41         LUT6 (Prop_lut6_I0_O)        0.124    13.872 f  debugger/ram/mem_reg_0_i_294/O
+                         net (fo=2, routed)           1.086    14.958    debugger/ram/M_trigger_data_q_reg[89]
+    SLICE_X53Y29         LUT5 (Prop_lut5_I0_O)        0.124    15.082 f  debugger/ram/mem_reg_0_i_191/O
+                         net (fo=1, routed)           0.643    15.725    debugger/ram/mem_reg_0_i_191_n_0
+    SLICE_X53Y31         LUT6 (Prop_lut6_I4_O)        0.124    15.849 f  debugger/ram/mem_reg_0_i_187_comp/O
+                         net (fo=1, routed)           0.289    16.138    debugger/ram/mem_reg_0_i_187_n_0
+    SLICE_X53Y32         LUT6 (Prop_lut6_I4_O)        0.124    16.262 f  debugger/ram/mem_reg_0_i_123_comp/O
+                         net (fo=2, routed)           0.682    16.944    debugger/force_sync/mem_reg_0
+    SLICE_X52Y32         LUT6 (Prop_lut6_I0_O)        0.124    17.068 r  debugger/force_sync/mem_reg_0_i_68_comp/O
+                         net (fo=16, routed)          0.693    17.761    debugger/ram/write_en
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/WEBWE[1]
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)     10.000    10.000 r  
@@ -983,16 +1004,17 @@ Slack (MET) :             0.232ns  (required time - arrival time)
     N14                  IBUF (Prop_ibuf_I_O)         1.446    11.446 r  clk_IBUF_inst/O
                          net (fo=1, routed)           1.868    13.314    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.405 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         1.497    14.901    debugger/clk_IBUF_BUFG
-    SLICE_X59Y70         FDRE                                         r  debugger/M_waddr_q_reg[3]/C
-                         clock pessimism              0.258    15.159    
-                         clock uncertainty           -0.035    15.124    
-    SLICE_X59Y70         FDRE (Setup_fdre_C_CE)      -0.205    14.919    debugger/M_waddr_q_reg[3]
+                         net (fo=1028, routed)        1.489    14.893    debugger/ram/clk_IBUF_BUFG
+    RAMB36_X1Y7          RAMB36E1                                     r  debugger/ram/mem_reg_0/CLKBWRCLK
+                         clock pessimism              0.259    15.153    
+                         clock uncertainty           -0.035    15.118    
+    RAMB36_X1Y7          RAMB36E1 (Setup_ramb36e1_CLKBWRCLK_WEBWE[1])
+                                                     -0.532    14.586    debugger/ram/mem_reg_0
   -------------------------------------------------------------------
-                         required time                         14.919    
-                         arrival time                         -14.686    
+                         required time                         14.586    
+                         arrival time                         -17.761    
   -------------------------------------------------------------------
-                         slack                                  0.232    
+                         slack                                 -3.175    
 
 
 
@@ -1000,20 +1022,20 @@ Slack (MET) :             0.232ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.150ns  (arrival time - required time)
-  Source:                 debugger/config_fifo/ram/read_data_reg[0]/C
+Slack (MET) :             0.008ns  (arrival time - required time)
+  Source:                 debugger/M_trigger_data_q_reg[337]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[151]/D
+  Destination:            debugger/M_trigger_data_q_reg[336]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.254ns  (logic 0.141ns (55.522%)  route 0.113ns (44.478%))
+  Data Path Delay:        0.352ns  (logic 0.164ns (46.571%)  route 0.188ns (53.429%))
   Logic Levels:           0  
-  Clock Path Skew:        0.034ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.009ns
-    Source Clock Delay      (SCD):    1.496ns
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.268ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.052ns
+    Source Clock Delay      (SCD):    1.539ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1023,12 +1045,12 @@ Slack (MET) :             0.150ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.552     1.496    debugger/config_fifo/ram/clk_IBUF_BUFG
-    SLICE_X55Y76         FDRE                                         r  debugger/config_fifo/ram/read_data_reg[0]/C
+                         net (fo=1028, routed)        0.595     1.539    debugger/clk_IBUF_BUFG
+    SLICE_X60Y49         FDRE                                         r  debugger/M_trigger_data_q_reg[337]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X55Y76         FDRE (Prop_fdre_C_Q)         0.141     1.637 r  debugger/config_fifo/ram/read_data_reg[0]/Q
-                         net (fo=1, routed)           0.113     1.750    debugger/M_config_fifo_dout
-    SLICE_X57Y76         FDRE                                         r  debugger/M_trigger_data_q_reg[151]/D
+    SLICE_X60Y49         FDRE (Prop_fdre_C_Q)         0.164     1.703 r  debugger/M_trigger_data_q_reg[337]/Q
+                         net (fo=2, routed)           0.188     1.891    debugger/M_trigger_data_q_reg_n_0_[337]
+    SLICE_X60Y50         FDRE                                         r  debugger/M_trigger_data_q_reg[336]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1037,30 +1059,30 @@ Slack (MET) :             0.150ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.819     2.009    debugger/clk_IBUF_BUFG
-    SLICE_X57Y76         FDRE                                         r  debugger/M_trigger_data_q_reg[151]/C
-                         clock pessimism             -0.480     1.530    
-    SLICE_X57Y76         FDRE (Hold_fdre_C_D)         0.070     1.600    debugger/M_trigger_data_q_reg[151]
+                         net (fo=1028, routed)        0.863     2.052    debugger/clk_IBUF_BUFG
+    SLICE_X60Y50         FDRE                                         r  debugger/M_trigger_data_q_reg[336]/C
+                         clock pessimism             -0.246     1.807    
+    SLICE_X60Y50         FDRE (Hold_fdre_C_D)         0.076     1.883    debugger/M_trigger_data_q_reg[336]
   -------------------------------------------------------------------
-                         required time                         -1.600    
-                         arrival time                           1.750    
+                         required time                         -1.883    
+                         arrival time                           1.891    
   -------------------------------------------------------------------
-                         slack                                  0.150    
+                         slack                                  0.008    
 
-Slack (MET) :             0.159ns  (arrival time - required time)
-  Source:                 debugger/M_trigger_data_q_reg[134]/C
+Slack (MET) :             0.038ns  (arrival time - required time)
+  Source:                 debugger/M_trigger_data_q_reg[387]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[133]/D
+  Destination:            debugger/M_trigger_data_q_reg[386]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.266ns  (logic 0.141ns (52.987%)  route 0.125ns (47.013%))
+  Data Path Delay:        0.372ns  (logic 0.141ns (37.858%)  route 0.231ns (62.142%))
   Logic Levels:           0  
-  Clock Path Skew:        0.037ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.042ns
-    Source Clock Delay      (SCD):    1.526ns
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.272ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.055ns
+    Source Clock Delay      (SCD):    1.537ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1070,12 +1092,12 @@ Slack (MET) :             0.159ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.582     1.526    debugger/clk_IBUF_BUFG
-    SLICE_X61Y71         FDRE                                         r  debugger/M_trigger_data_q_reg[134]/C
+                         net (fo=1028, routed)        0.593     1.537    debugger/clk_IBUF_BUFG
+    SLICE_X59Y50         FDRE                                         r  debugger/M_trigger_data_q_reg[387]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X61Y71         FDRE (Prop_fdre_C_Q)         0.141     1.667 r  debugger/M_trigger_data_q_reg[134]/Q
-                         net (fo=2, routed)           0.125     1.792    debugger/M_trigger_data_q_reg_n_0_[134]
-    SLICE_X63Y70         FDRE                                         r  debugger/M_trigger_data_q_reg[133]/D
+    SLICE_X59Y50         FDRE (Prop_fdre_C_Q)         0.141     1.678 r  debugger/M_trigger_data_q_reg[387]/Q
+                         net (fo=2, routed)           0.231     1.909    debugger/M_trigger_data_q_reg_n_0_[387]
+    SLICE_X60Y47         FDRE                                         r  debugger/M_trigger_data_q_reg[386]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1084,30 +1106,30 @@ Slack (MET) :             0.159ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.852     2.042    debugger/clk_IBUF_BUFG
-    SLICE_X63Y70         FDRE                                         r  debugger/M_trigger_data_q_reg[133]/C
-                         clock pessimism             -0.480     1.563    
-    SLICE_X63Y70         FDRE (Hold_fdre_C_D)         0.070     1.633    debugger/M_trigger_data_q_reg[133]
+                         net (fo=1028, routed)        0.865     2.055    debugger/clk_IBUF_BUFG
+    SLICE_X60Y47         FDRE                                         r  debugger/M_trigger_data_q_reg[386]/C
+                         clock pessimism             -0.246     1.809    
+    SLICE_X60Y47         FDRE (Hold_fdre_C_D)         0.063     1.872    debugger/M_trigger_data_q_reg[386]
   -------------------------------------------------------------------
-                         required time                         -1.633    
-                         arrival time                           1.792    
+                         required time                         -1.872    
+                         arrival time                           1.909    
   -------------------------------------------------------------------
-                         slack                                  0.159    
+                         slack                                  0.038    
 
-Slack (MET) :             0.172ns  (arrival time - required time)
-  Source:                 debugger/M_trigger_data_q_reg[76]/C
+Slack (MET) :             0.049ns  (arrival time - required time)
+  Source:                 debugger/M_trigger_data_q_reg[298]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[75]/D
+  Destination:            debugger/M_trigger_data_q_reg[297]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.257ns  (logic 0.141ns (54.761%)  route 0.116ns (45.239%))
+  Data Path Delay:        0.336ns  (logic 0.148ns (44.013%)  route 0.188ns (55.987%))
   Logic Levels:           0  
-  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.040ns
-    Source Clock Delay      (SCD):    1.527ns
-    Clock Pessimism Removal (CPR):    0.501ns
+  Clock Path Skew:        0.269ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.025ns
+    Source Clock Delay      (SCD):    1.511ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1117,12 +1139,12 @@ Slack (MET) :             0.172ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.583     1.527    debugger/clk_IBUF_BUFG
-    SLICE_X65Y78         FDRE                                         r  debugger/M_trigger_data_q_reg[76]/C
+                         net (fo=1028, routed)        0.567     1.511    debugger/clk_IBUF_BUFG
+    SLICE_X52Y49         FDRE                                         r  debugger/M_trigger_data_q_reg[298]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y78         FDRE (Prop_fdre_C_Q)         0.141     1.668 r  debugger/M_trigger_data_q_reg[76]/Q
-                         net (fo=2, routed)           0.116     1.784    debugger/M_trigger_data_q_reg_n_0_[76]
-    SLICE_X62Y77         FDRE                                         r  debugger/M_trigger_data_q_reg[75]/D
+    SLICE_X52Y49         FDRE (Prop_fdre_C_Q)         0.148     1.659 r  debugger/M_trigger_data_q_reg[298]/Q
+                         net (fo=2, routed)           0.188     1.847    debugger/M_trigger_data_q_reg_n_0_[298]
+    SLICE_X53Y50         FDRE                                         r  debugger/M_trigger_data_q_reg[297]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1131,30 +1153,30 @@ Slack (MET) :             0.172ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.850     2.040    debugger/clk_IBUF_BUFG
-    SLICE_X62Y77         FDRE                                         r  debugger/M_trigger_data_q_reg[75]/C
-                         clock pessimism             -0.501     1.540    
-    SLICE_X62Y77         FDRE (Hold_fdre_C_D)         0.072     1.612    debugger/M_trigger_data_q_reg[75]
+                         net (fo=1028, routed)        0.835     2.025    debugger/clk_IBUF_BUFG
+    SLICE_X53Y50         FDRE                                         r  debugger/M_trigger_data_q_reg[297]/C
+                         clock pessimism             -0.246     1.780    
+    SLICE_X53Y50         FDRE (Hold_fdre_C_D)         0.018     1.798    debugger/M_trigger_data_q_reg[297]
   -------------------------------------------------------------------
-                         required time                         -1.612    
-                         arrival time                           1.784    
+                         required time                         -1.798    
+                         arrival time                           1.847    
   -------------------------------------------------------------------
-                         slack                                  0.172    
+                         slack                                  0.049    
 
-Slack (MET) :             0.174ns  (arrival time - required time)
-  Source:                 debugger/M_trigger_data_q_reg[78]/C
+Slack (MET) :             0.061ns  (arrival time - required time)
+  Source:                 debugger/M_trigger_data_q_reg[231]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[77]/D
+  Destination:            debugger/M_trigger_data_q_reg[230]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.253ns  (logic 0.141ns (55.730%)  route 0.112ns (44.270%))
+  Data Path Delay:        0.397ns  (logic 0.164ns (41.353%)  route 0.233ns (58.647%))
   Logic Levels:           0  
-  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.041ns
-    Source Clock Delay      (SCD):    1.528ns
-    Clock Pessimism Removal (CPR):    0.501ns
+  Clock Path Skew:        0.273ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.028ns
+    Source Clock Delay      (SCD):    1.509ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1164,12 +1186,12 @@ Slack (MET) :             0.174ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.584     1.528    debugger/clk_IBUF_BUFG
-    SLICE_X65Y79         FDRE                                         r  debugger/M_trigger_data_q_reg[78]/C
+                         net (fo=1028, routed)        0.565     1.509    debugger/clk_IBUF_BUFG
+    SLICE_X54Y51         FDRE                                         r  debugger/M_trigger_data_q_reg[231]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y79         FDRE (Prop_fdre_C_Q)         0.141     1.669 r  debugger/M_trigger_data_q_reg[78]/Q
-                         net (fo=2, routed)           0.112     1.781    debugger/M_trigger_data_q_reg_n_0_[78]
-    SLICE_X65Y78         FDRE                                         r  debugger/M_trigger_data_q_reg[77]/D
+    SLICE_X54Y51         FDRE (Prop_fdre_C_Q)         0.164     1.673 r  debugger/M_trigger_data_q_reg[231]/Q
+                         net (fo=2, routed)           0.233     1.905    debugger/M_trigger_data_q_reg_n_0_[231]
+    SLICE_X52Y48         FDRE                                         r  debugger/M_trigger_data_q_reg[230]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1178,30 +1200,30 @@ Slack (MET) :             0.174ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.851     2.041    debugger/clk_IBUF_BUFG
-    SLICE_X65Y78         FDRE                                         r  debugger/M_trigger_data_q_reg[77]/C
-                         clock pessimism             -0.501     1.541    
-    SLICE_X65Y78         FDRE (Hold_fdre_C_D)         0.066     1.607    debugger/M_trigger_data_q_reg[77]
+                         net (fo=1028, routed)        0.838     2.028    debugger/clk_IBUF_BUFG
+    SLICE_X52Y48         FDRE                                         r  debugger/M_trigger_data_q_reg[230]/C
+                         clock pessimism             -0.246     1.782    
+    SLICE_X52Y48         FDRE (Hold_fdre_C_D)         0.063     1.845    debugger/M_trigger_data_q_reg[230]
   -------------------------------------------------------------------
-                         required time                         -1.607    
-                         arrival time                           1.781    
+                         required time                         -1.845    
+                         arrival time                           1.905    
   -------------------------------------------------------------------
-                         slack                                  0.174    
+                         slack                                  0.061    
 
-Slack (MET) :             0.183ns  (arrival time - required time)
-  Source:                 debugger/M_trigger_data_q_reg[71]/C
+Slack (MET) :             0.069ns  (arrival time - required time)
+  Source:                 debugger/M_trigger_data_q_reg[184]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[70]/D
+  Destination:            debugger/M_trigger_data_q_reg[183]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.262ns  (logic 0.141ns (53.893%)  route 0.121ns (46.107%))
+  Data Path Delay:        0.408ns  (logic 0.141ns (34.595%)  route 0.267ns (65.405%))
   Logic Levels:           0  
-  Clock Path Skew:        0.032ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.038ns
-    Source Clock Delay      (SCD):    1.527ns
-    Clock Pessimism Removal (CPR):    0.480ns
+  Clock Path Skew:        0.268ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.024ns
+    Source Clock Delay      (SCD):    1.511ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1211,12 +1233,12 @@ Slack (MET) :             0.183ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.583     1.527    debugger/clk_IBUF_BUFG
-    SLICE_X63Y77         FDRE                                         r  debugger/M_trigger_data_q_reg[71]/C
+                         net (fo=1028, routed)        0.567     1.511    debugger/clk_IBUF_BUFG
+    SLICE_X55Y49         FDRE                                         r  debugger/M_trigger_data_q_reg[184]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X63Y77         FDRE (Prop_fdre_C_Q)         0.141     1.668 r  debugger/M_trigger_data_q_reg[71]/Q
-                         net (fo=2, routed)           0.121     1.788    debugger/M_trigger_data_q_reg_n_0_[71]
-    SLICE_X59Y77         FDRE                                         r  debugger/M_trigger_data_q_reg[70]/D
+    SLICE_X55Y49         FDRE (Prop_fdre_C_Q)         0.141     1.652 r  debugger/M_trigger_data_q_reg[184]/Q
+                         net (fo=2, routed)           0.267     1.918    debugger/M_trigger_data_q_reg_n_0_[184]
+    SLICE_X55Y53         FDRE                                         r  debugger/M_trigger_data_q_reg[183]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1225,30 +1247,30 @@ Slack (MET) :             0.183ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.849     2.038    debugger/clk_IBUF_BUFG
-    SLICE_X59Y77         FDRE                                         r  debugger/M_trigger_data_q_reg[70]/C
-                         clock pessimism             -0.480     1.559    
-    SLICE_X59Y77         FDRE (Hold_fdre_C_D)         0.047     1.606    debugger/M_trigger_data_q_reg[70]
+                         net (fo=1028, routed)        0.834     2.024    debugger/clk_IBUF_BUFG
+    SLICE_X55Y53         FDRE                                         r  debugger/M_trigger_data_q_reg[183]/C
+                         clock pessimism             -0.246     1.779    
+    SLICE_X55Y53         FDRE (Hold_fdre_C_D)         0.071     1.850    debugger/M_trigger_data_q_reg[183]
   -------------------------------------------------------------------
-                         required time                         -1.606    
-                         arrival time                           1.788    
+                         required time                         -1.850    
+                         arrival time                           1.918    
   -------------------------------------------------------------------
-                         slack                                  0.183    
+                         slack                                  0.069    
 
-Slack (MET) :             0.186ns  (arrival time - required time)
-  Source:                 debugger/M_trigger_data_q_reg[31]/C
+Slack (MET) :             0.071ns  (arrival time - required time)
+  Source:                 debugger/M_trigger_data_q_reg[156]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[30]/D
+  Destination:            debugger/M_trigger_data_q_reg[155]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.262ns  (logic 0.141ns (53.837%)  route 0.121ns (46.163%))
+  Data Path Delay:        0.421ns  (logic 0.164ns (38.923%)  route 0.257ns (61.077%))
   Logic Levels:           0  
-  Clock Path Skew:        0.013ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.036ns
-    Source Clock Delay      (SCD):    1.524ns
-    Clock Pessimism Removal (CPR):    0.500ns
+  Clock Path Skew:        0.274ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.028ns
+    Source Clock Delay      (SCD):    1.508ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1258,12 +1280,12 @@ Slack (MET) :             0.186ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.580     1.524    debugger/clk_IBUF_BUFG
-    SLICE_X61Y76         FDRE                                         r  debugger/M_trigger_data_q_reg[31]/C
+                         net (fo=1028, routed)        0.564     1.508    debugger/clk_IBUF_BUFG
+    SLICE_X50Y54         FDRE                                         r  debugger/M_trigger_data_q_reg[156]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X61Y76         FDRE (Prop_fdre_C_Q)         0.141     1.665 r  debugger/M_trigger_data_q_reg[31]/Q
-                         net (fo=2, routed)           0.121     1.786    debugger/M_trigger_data_q_reg_n_0_[31]
-    SLICE_X60Y76         FDRE                                         r  debugger/M_trigger_data_q_reg[30]/D
+    SLICE_X50Y54         FDRE (Prop_fdre_C_Q)         0.164     1.672 r  debugger/M_trigger_data_q_reg[156]/Q
+                         net (fo=2, routed)           0.257     1.929    debugger/M_trigger_data_q_reg_n_0_[156]
+    SLICE_X53Y47         FDRE                                         r  debugger/M_trigger_data_q_reg[155]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1272,30 +1294,30 @@ Slack (MET) :             0.186ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.846     2.036    debugger/clk_IBUF_BUFG
-    SLICE_X60Y76         FDRE                                         r  debugger/M_trigger_data_q_reg[30]/C
-                         clock pessimism             -0.500     1.537    
-    SLICE_X60Y76         FDRE (Hold_fdre_C_D)         0.063     1.600    debugger/M_trigger_data_q_reg[30]
+                         net (fo=1028, routed)        0.838     2.028    debugger/clk_IBUF_BUFG
+    SLICE_X53Y47         FDRE                                         r  debugger/M_trigger_data_q_reg[155]/C
+                         clock pessimism             -0.246     1.782    
+    SLICE_X53Y47         FDRE (Hold_fdre_C_D)         0.076     1.858    debugger/M_trigger_data_q_reg[155]
   -------------------------------------------------------------------
-                         required time                         -1.600    
-                         arrival time                           1.786    
+                         required time                         -1.858    
+                         arrival time                           1.929    
   -------------------------------------------------------------------
-                         slack                                  0.186    
+                         slack                                  0.071    
 
-Slack (MET) :             0.186ns  (arrival time - required time)
-  Source:                 debugger/M_trigger_data_q_reg[140]/C
+Slack (MET) :             0.084ns  (arrival time - required time)
+  Source:                 debugger/M_trigger_data_q_reg[212]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[139]/D
+  Destination:            debugger/M_trigger_data_q_reg[211]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.276ns  (logic 0.164ns (59.419%)  route 0.112ns (40.581%))
+  Data Path Delay:        0.414ns  (logic 0.141ns (34.020%)  route 0.273ns (65.980%))
   Logic Levels:           0  
-  Clock Path Skew:        0.014ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.039ns
-    Source Clock Delay      (SCD):    1.526ns
-    Clock Pessimism Removal (CPR):    0.500ns
+  Clock Path Skew:        0.271ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.026ns
+    Source Clock Delay      (SCD):    1.509ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1305,12 +1327,12 @@ Slack (MET) :             0.186ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.582     1.526    debugger/clk_IBUF_BUFG
-    SLICE_X60Y72         FDRE                                         r  debugger/M_trigger_data_q_reg[140]/C
+                         net (fo=1028, routed)        0.565     1.509    debugger/clk_IBUF_BUFG
+    SLICE_X51Y52         FDRE                                         r  debugger/M_trigger_data_q_reg[212]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X60Y72         FDRE (Prop_fdre_C_Q)         0.164     1.690 r  debugger/M_trigger_data_q_reg[140]/Q
-                         net (fo=2, routed)           0.112     1.802    debugger/M_trigger_data_q_reg_n_0_[140]
-    SLICE_X61Y71         FDRE                                         r  debugger/M_trigger_data_q_reg[139]/D
+    SLICE_X51Y52         FDRE (Prop_fdre_C_Q)         0.141     1.650 r  debugger/M_trigger_data_q_reg[212]/Q
+                         net (fo=2, routed)           0.273     1.923    debugger/M_trigger_data_q_reg_n_0_[212]
+    SLICE_X50Y42         FDRE                                         r  debugger/M_trigger_data_q_reg[211]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1319,30 +1341,30 @@ Slack (MET) :             0.186ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.850     2.039    debugger/clk_IBUF_BUFG
-    SLICE_X61Y71         FDRE                                         r  debugger/M_trigger_data_q_reg[139]/C
-                         clock pessimism             -0.500     1.540    
-    SLICE_X61Y71         FDRE (Hold_fdre_C_D)         0.076     1.616    debugger/M_trigger_data_q_reg[139]
+                         net (fo=1028, routed)        0.836     2.026    debugger/clk_IBUF_BUFG
+    SLICE_X50Y42         FDRE                                         r  debugger/M_trigger_data_q_reg[211]/C
+                         clock pessimism             -0.246     1.780    
+    SLICE_X50Y42         FDRE (Hold_fdre_C_D)         0.060     1.840    debugger/M_trigger_data_q_reg[211]
   -------------------------------------------------------------------
-                         required time                         -1.616    
-                         arrival time                           1.802    
+                         required time                         -1.840    
+                         arrival time                           1.923    
   -------------------------------------------------------------------
-                         slack                                  0.186    
+                         slack                                  0.084    
 
-Slack (MET) :             0.194ns  (arrival time - required time)
-  Source:                 debugger/M_trigger_data_q_reg[108]/C
+Slack (MET) :             0.091ns  (arrival time - required time)
+  Source:                 game_beta/countdown_timer/M_ctr_q_reg[15]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[107]/D
+  Destination:            game_beta/countdown_timer/M_ctr_q_reg[16]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.284ns  (logic 0.164ns (57.737%)  route 0.120ns (42.263%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.014ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.012ns
-    Source Clock Delay      (SCD):    1.498ns
-    Clock Pessimism Removal (CPR):    0.501ns
+  Data Path Delay:        0.464ns  (logic 0.355ns (76.531%)  route 0.109ns (23.469%))
+  Logic Levels:           2  (CARRY4=2)
+  Clock Path Skew:        0.268ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.052ns
+    Source Clock Delay      (SCD):    1.539ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1352,12 +1374,18 @@ Slack (MET) :             0.194ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.554     1.498    debugger/clk_IBUF_BUFG
-    SLICE_X54Y72         FDRE                                         r  debugger/M_trigger_data_q_reg[108]/C
+                         net (fo=1028, routed)        0.595     1.539    game_beta/countdown_timer/clk_IBUF_BUFG
+    SLICE_X61Y49         FDRE                                         r  game_beta/countdown_timer/M_ctr_q_reg[15]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X54Y72         FDRE (Prop_fdre_C_Q)         0.164     1.662 r  debugger/M_trigger_data_q_reg[108]/Q
-                         net (fo=2, routed)           0.120     1.782    debugger/M_trigger_data_q_reg_n_0_[108]
-    SLICE_X54Y71         FDRE                                         r  debugger/M_trigger_data_q_reg[107]/D
+    SLICE_X61Y49         FDRE (Prop_fdre_C_Q)         0.141     1.680 r  game_beta/countdown_timer/M_ctr_q_reg[15]/Q
+                         net (fo=1, routed)           0.108     1.788    game_beta/countdown_timer/M_ctr_q_reg_n_0_[15]
+    SLICE_X61Y49         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.160     1.948 r  game_beta/countdown_timer/M_ctr_q_reg[12]_i_1__0/CO[3]
+                         net (fo=1, routed)           0.001     1.949    game_beta/countdown_timer/M_ctr_q_reg[12]_i_1__0_n_0
+    SLICE_X61Y50         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.054     2.003 r  game_beta/countdown_timer/M_ctr_q_reg[16]_i_1__0/O[0]
+                         net (fo=1, routed)           0.000     2.003    game_beta/countdown_timer/M_ctr_q_reg[16]_i_1__0_n_7
+    SLICE_X61Y50         FDRE                                         r  game_beta/countdown_timer/M_ctr_q_reg[16]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1366,30 +1394,30 @@ Slack (MET) :             0.194ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.822     2.012    debugger/clk_IBUF_BUFG
-    SLICE_X54Y71         FDRE                                         r  debugger/M_trigger_data_q_reg[107]/C
-                         clock pessimism             -0.501     1.512    
-    SLICE_X54Y71         FDRE (Hold_fdre_C_D)         0.076     1.588    debugger/M_trigger_data_q_reg[107]
+                         net (fo=1028, routed)        0.863     2.052    game_beta/countdown_timer/clk_IBUF_BUFG
+    SLICE_X61Y50         FDRE                                         r  game_beta/countdown_timer/M_ctr_q_reg[16]/C
+                         clock pessimism             -0.246     1.807    
+    SLICE_X61Y50         FDRE (Hold_fdre_C_D)         0.105     1.912    game_beta/countdown_timer/M_ctr_q_reg[16]
   -------------------------------------------------------------------
-                         required time                         -1.588    
-                         arrival time                           1.782    
+                         required time                         -1.912    
+                         arrival time                           2.003    
   -------------------------------------------------------------------
-                         slack                                  0.194    
+                         slack                                  0.091    
 
-Slack (MET) :             0.198ns  (arrival time - required time)
-  Source:                 debugger/M_trigger_data_q_reg[10]/C
+Slack (MET) :             0.099ns  (arrival time - required time)
+  Source:                 debugger/M_trigger_data_q_reg[195]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[9]/D
+  Destination:            debugger/M_trigger_data_q_reg[194]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.270ns  (logic 0.141ns (52.276%)  route 0.129ns (47.724%))
+  Data Path Delay:        0.434ns  (logic 0.164ns (37.802%)  route 0.270ns (62.198%))
   Logic Levels:           0  
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.035ns
-    Source Clock Delay      (SCD):    1.523ns
-    Clock Pessimism Removal (CPR):    0.513ns
+  Clock Path Skew:        0.272ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.027ns
+    Source Clock Delay      (SCD):    1.509ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1399,12 +1427,12 @@ Slack (MET) :             0.198ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.579     1.523    debugger/clk_IBUF_BUFG
-    SLICE_X58Y75         FDRE                                         r  debugger/M_trigger_data_q_reg[10]/C
+                         net (fo=1028, routed)        0.565     1.509    debugger/clk_IBUF_BUFG
+    SLICE_X52Y50         FDRE                                         r  debugger/M_trigger_data_q_reg[195]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X58Y75         FDRE (Prop_fdre_C_Q)         0.141     1.664 r  debugger/M_trigger_data_q_reg[10]/Q
-                         net (fo=2, routed)           0.129     1.793    debugger/M_trigger_data_q_reg_n_0_[10]
-    SLICE_X58Y75         FDRE                                         r  debugger/M_trigger_data_q_reg[9]/D
+    SLICE_X52Y50         FDRE (Prop_fdre_C_Q)         0.164     1.673 r  debugger/M_trigger_data_q_reg[195]/Q
+                         net (fo=2, routed)           0.270     1.943    debugger/M_trigger_data_q_reg_n_0_[195]
+    SLICE_X54Y44         FDRE                                         r  debugger/M_trigger_data_q_reg[194]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1413,30 +1441,30 @@ Slack (MET) :             0.198ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.845     2.035    debugger/clk_IBUF_BUFG
-    SLICE_X58Y75         FDRE                                         r  debugger/M_trigger_data_q_reg[9]/C
-                         clock pessimism             -0.513     1.523    
-    SLICE_X58Y75         FDRE (Hold_fdre_C_D)         0.072     1.595    debugger/M_trigger_data_q_reg[9]
+                         net (fo=1028, routed)        0.837     2.027    debugger/clk_IBUF_BUFG
+    SLICE_X54Y44         FDRE                                         r  debugger/M_trigger_data_q_reg[194]/C
+                         clock pessimism             -0.246     1.781    
+    SLICE_X54Y44         FDRE (Hold_fdre_C_D)         0.063     1.844    debugger/M_trigger_data_q_reg[194]
   -------------------------------------------------------------------
-                         required time                         -1.595    
-                         arrival time                           1.793    
+                         required time                         -1.844    
+                         arrival time                           1.943    
   -------------------------------------------------------------------
-                         slack                                  0.198    
+                         slack                                  0.099    
 
-Slack (MET) :             0.201ns  (arrival time - required time)
-  Source:                 debugger/M_trigger_data_q_reg[3]/C
+Slack (MET) :             0.102ns  (arrival time - required time)
+  Source:                 game_beta/countdown_timer/M_ctr_q_reg[15]/C
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            debugger/M_trigger_data_q_reg[2]/D
+  Destination:            game_beta/countdown_timer/M_ctr_q_reg[18]/D
                             (rising edge-triggered cell FDRE clocked by clk_0  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             clk_0
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (clk_0 rise@0.000ns - clk_0 rise@0.000ns)
-  Data Path Delay:        0.289ns  (logic 0.164ns (56.718%)  route 0.125ns (43.282%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.035ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    2.012ns
-    Source Clock Delay      (SCD):    1.498ns
-    Clock Pessimism Removal (CPR):    0.480ns
+  Data Path Delay:        0.475ns  (logic 0.366ns (77.074%)  route 0.109ns (22.926%))
+  Logic Levels:           2  (CARRY4=2)
+  Clock Path Skew:        0.268ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.052ns
+    Source Clock Delay      (SCD):    1.539ns
+    Clock Pessimism Removal (CPR):    0.246ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1446,12 +1474,18 @@ Slack (MET) :             0.201ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.284     0.284 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.634     0.918    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.944 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.554     1.498    debugger/clk_IBUF_BUFG
-    SLICE_X54Y71         FDRE                                         r  debugger/M_trigger_data_q_reg[3]/C
+                         net (fo=1028, routed)        0.595     1.539    game_beta/countdown_timer/clk_IBUF_BUFG
+    SLICE_X61Y49         FDRE                                         r  game_beta/countdown_timer/M_ctr_q_reg[15]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X54Y71         FDRE (Prop_fdre_C_Q)         0.164     1.662 r  debugger/M_trigger_data_q_reg[3]/Q
-                         net (fo=2, routed)           0.125     1.787    debugger/M_trigger_data_q_reg_n_0_[3]
-    SLICE_X56Y71         FDRE                                         r  debugger/M_trigger_data_q_reg[2]/D
+    SLICE_X61Y49         FDRE (Prop_fdre_C_Q)         0.141     1.680 r  game_beta/countdown_timer/M_ctr_q_reg[15]/Q
+                         net (fo=1, routed)           0.108     1.788    game_beta/countdown_timer/M_ctr_q_reg_n_0_[15]
+    SLICE_X61Y49         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.160     1.948 r  game_beta/countdown_timer/M_ctr_q_reg[12]_i_1__0/CO[3]
+                         net (fo=1, routed)           0.001     1.949    game_beta/countdown_timer/M_ctr_q_reg[12]_i_1__0_n_0
+    SLICE_X61Y50         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.065     2.014 r  game_beta/countdown_timer/M_ctr_q_reg[16]_i_1__0/O[2]
+                         net (fo=1, routed)           0.000     2.014    game_beta/countdown_timer/M_ctr_q_reg[16]_i_1__0_n_5
+    SLICE_X61Y50         FDRE                                         r  game_beta/countdown_timer/M_ctr_q_reg[18]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock clk_0 rise edge)      0.000     0.000 r  
@@ -1460,15 +1494,15 @@ Slack (MET) :             0.201ns  (arrival time - required time)
     N14                  IBUF (Prop_ibuf_I_O)         0.472     0.472 r  clk_IBUF_inst/O
                          net (fo=1, routed)           0.689     1.161    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.190 r  clk_IBUF_BUFG_inst/O
-                         net (fo=363, routed)         0.822     2.012    debugger/clk_IBUF_BUFG
-    SLICE_X56Y71         FDRE                                         r  debugger/M_trigger_data_q_reg[2]/C
-                         clock pessimism             -0.480     1.533    
-    SLICE_X56Y71         FDRE (Hold_fdre_C_D)         0.053     1.586    debugger/M_trigger_data_q_reg[2]
+                         net (fo=1028, routed)        0.863     2.052    game_beta/countdown_timer/clk_IBUF_BUFG
+    SLICE_X61Y50         FDRE                                         r  game_beta/countdown_timer/M_ctr_q_reg[18]/C
+                         clock pessimism             -0.246     1.807    
+    SLICE_X61Y50         FDRE (Hold_fdre_C_D)         0.105     1.912    game_beta/countdown_timer/M_ctr_q_reg[18]
   -------------------------------------------------------------------
-                         required time                         -1.586    
-                         arrival time                           1.787    
+                         required time                         -1.912    
+                         arrival time                           2.014    
   -------------------------------------------------------------------
-                         slack                                  0.201    
+                         slack                                  0.102    
 
 
 
@@ -1482,36 +1516,36 @@ Period(ns):         10.000
 Sources:            { clk }
 
 Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
-Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB36_X2Y14   debugger/ram/mem_reg/CLKBWRCLK
+Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB36_X1Y7    debugger/ram/mem_reg_0/CLKBWRCLK
+Min Period        n/a     RAMB36E1/CLKBWRCLK  n/a            2.576         10.000      7.424      RAMB36_X1Y6    debugger/ram/mem_reg_1/CLKBWRCLK
 Min Period        n/a     BUFG/I              n/a            2.155         10.000      7.845      BUFGCTRL_X0Y0  clk_IBUF_BUFG_inst/I
-Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X57Y71   debugger/M_data_old_q_reg[0]/C
-Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X60Y77   debugger/M_data_old_q_reg[10]/C
-Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X59Y76   debugger/M_data_old_q_reg[11]/C
-Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X59Y76   debugger/M_data_old_q_reg[12]/C
-Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X59Y76   debugger/M_data_old_q_reg[13]/C
-Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X60Y77   debugger/M_data_old_q_reg[14]/C
-Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X59Y76   debugger/M_data_old_q_reg[15]/C
-Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X60Y77   debugger/M_data_old_q_reg[16]/C
-Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[3]_srl2/CLK
-Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[4]_srl2/CLK
-Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[5]_srl2/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[3]_srl2/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[4]_srl2/CLK
-Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[5]_srl2/CLK
-Low Pulse Width   Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X62Y76   debugger/M_data_old_q_reg[18]/C
-Low Pulse Width   Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X58Y71   debugger/M_trigger_data_q_reg[89]/C
-Low Pulse Width   Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X58Y71   debugger/M_trigger_data_q_reg[90]/C
-Low Pulse Width   Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X63Y73   game_beta/game_regfiles/M_countdown_time_q_reg[10]/C
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[3]_srl2/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[4]_srl2/CLK
-High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[5]_srl2/CLK
-High Pulse Width  Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[3]_srl2/CLK
-High Pulse Width  Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[4]_srl2/CLK
-High Pulse Width  Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X56Y80   debugger/config_fifo/M_rsync_q_reg[5]_srl2/CLK
-High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X57Y71   debugger/M_data_old_q_reg[0]/C
-High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X54Y70   debugger/M_data_old_q_reg[1]/C
-High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X64Y80   debugger/M_data_old_q_reg[20]/C
-High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X59Y75   debugger/M_data_old_q_reg[24]/C
+Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X61Y53   debugger/M_data_old_q_reg[0]/C
+Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X57Y53   debugger/M_data_old_q_reg[100]/C
+Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X56Y48   debugger/M_data_old_q_reg[101]/C
+Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X58Y53   debugger/M_data_old_q_reg[102]/C
+Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X60Y51   debugger/M_data_old_q_reg[103]/C
+Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X63Y46   debugger/M_data_old_q_reg[104]/C
+Min Period        n/a     FDRE/C              n/a            1.000         10.000      9.000      SLICE_X65Y39   debugger/M_data_old_q_reg[105]/C
+Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[3]_srl2/CLK
+Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[4]_srl2/CLK
+Low Pulse Width   Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[5]_srl2/CLK
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[3]_srl2/CLK
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[4]_srl2/CLK
+Low Pulse Width   Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[5]_srl2/CLK
+Low Pulse Width   Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X61Y53   debugger/M_data_old_q_reg[0]/C
+Low Pulse Width   Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X58Y53   debugger/M_data_old_q_reg[102]/C
+Low Pulse Width   Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X63Y46   debugger/M_data_old_q_reg[104]/C
+Low Pulse Width   Fast    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X54Y43   debugger/M_trigger_data_q_reg[237]/C
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[3]_srl2/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[4]_srl2/CLK
+High Pulse Width  Slow    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[5]_srl2/CLK
+High Pulse Width  Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[3]_srl2/CLK
+High Pulse Width  Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[4]_srl2/CLK
+High Pulse Width  Fast    SRL16E/CLK          n/a            0.980         5.000       4.020      SLICE_X52Y30   debugger/config_fifo/M_rsync_q_reg[5]_srl2/CLK
+High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X61Y53   debugger/M_data_old_q_reg[0]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X58Y53   debugger/M_data_old_q_reg[102]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X63Y46   debugger/M_data_old_q_reg[104]/C
+High Pulse Width  Slow    FDRE/C              n/a            0.500         5.000       4.500      SLICE_X53Y30   debugger/M_data_old_q_reg[106]/C
 
 
 

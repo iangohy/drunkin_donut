@@ -75,7 +75,7 @@ module au_top_0 (
   wire [16-1:0] M_game_beta_p2_score;
   wire [16-1:0] M_game_beta_circle_left;
   wire [16-1:0] M_game_beta_circle_right;
-  wire [38-1:0] M_game_beta_debug__;
+  wire [138-1:0] M_game_beta_debug__;
   reg [1-1:0] M_game_beta_p1_button;
   reg [1-1:0] M_game_beta_p2_button;
   reg [1-1:0] M_game_beta_reset_button;
@@ -115,7 +115,7 @@ module au_top_0 (
     io_led[0+7-:8] = M_game_beta_circle_left[0+7-:8];
   end
   
-  reg [38-1:0] M_debugger_data;
+  reg [138-1:0] M_debugger_data;
   au_debugger_5 debugger (
     .clk(clk),
     .data(M_debugger_data)

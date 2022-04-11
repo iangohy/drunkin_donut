@@ -4,12 +4,13 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module alu_7 (
+module alu_2_debug_7 (
     input [6:0] alufn,
     input [15:0] a,
     input [15:0] b,
     output reg [15:0] out,
-    output reg [2:0] zvn
+    output reg [2:0] zvn,
+    output reg [54:0] debug__
   );
   
   
@@ -157,5 +158,9 @@ module alu_7 (
     M_mux4_c = boole;
     M_mux4_d = cmp;
     out = M_mux4_out;
+  end
+  
+  always @* begin
+    debug__ = {alufn, a, b, M_mux4_out};
   end
 endmodule

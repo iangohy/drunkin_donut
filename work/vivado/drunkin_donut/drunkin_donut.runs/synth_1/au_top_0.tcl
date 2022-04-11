@@ -85,7 +85,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/add_sub_14.v
-  /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/alu_7.v
+  /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/alu_2_debug_7.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/async_fifo_12.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_debugger_5.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_1_debug_4.v
@@ -97,12 +97,12 @@ read_verilog -library xil_defaultlib {
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_21.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/edge_detector_3.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/full_adder_23.v
-  /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_2_debug_8.v
+  /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_3_debug_8.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multiplier_18.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_19.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_4_20.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/pipeline_6.v
-  /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_9.v
+  /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_4_debug_9.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/reset_conditioner_1.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_17.v
   /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/simple_dual_ram_13.v

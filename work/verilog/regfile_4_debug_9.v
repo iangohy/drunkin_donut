@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module regfile_9 (
+module regfile_4_debug_9 (
     input clk,
     input rst,
     input [3:0] write_address,
@@ -19,7 +19,8 @@ module regfile_9 (
     output reg [15:0] countdown_time_out,
     output reg [15:0] speed_out,
     output reg [15:0] circle_left,
-    output reg [15:0] circle_right
+    output reg [15:0] circle_right,
+    output reg [12:0] debug__
   );
   
   
@@ -30,12 +31,16 @@ module regfile_9 (
   reg [15:0] M_player1_score_d, M_player1_score_q = 1'h0;
   reg [15:0] M_player2_score_d, M_player2_score_q = 1'h0;
   reg [15:0] M_speed_counter_d, M_speed_counter_q = 1'h0;
-  reg [15:0] M_temp_var_d, M_temp_var_q = 1'h0;
+  reg [15:0] M_temp_var1_d, M_temp_var1_q = 1'h0;
+  reg [15:0] M_temp_var2_d, M_temp_var2_q = 1'h0;
+  reg [15:0] M_temp_var3_d, M_temp_var3_q = 1'h0;
   
   always @* begin
     M_left_half_circle_d = M_left_half_circle_q;
     M_countdown_time_d = M_countdown_time_q;
-    M_temp_var_d = M_temp_var_q;
+    M_temp_var1_d = M_temp_var1_q;
+    M_temp_var2_d = M_temp_var2_q;
+    M_temp_var3_d = M_temp_var3_q;
     M_player1_score_d = M_player1_score_q;
     M_player2_score_d = M_player2_score_q;
     M_right_half_circle_d = M_right_half_circle_q;
@@ -63,7 +68,13 @@ module regfile_9 (
           M_speed_counter_d = data;
         end
         4'h6: begin
-          M_temp_var_d = data;
+          M_temp_var1_d = data;
+        end
+        4'h7: begin
+          M_temp_var2_d = data;
+        end
+        4'h8: begin
+          M_temp_var3_d = data;
         end
       endcase
     end
@@ -88,7 +99,13 @@ module regfile_9 (
         out_a = M_speed_counter_q;
       end
       4'h6: begin
-        out_a = M_temp_var_q;
+        out_a = M_temp_var1_q;
+      end
+      4'h7: begin
+        out_a = M_temp_var2_q;
+      end
+      4'h8: begin
+        out_a = M_temp_var3_q;
       end
       default: begin
         out_a = 16'h0000;
@@ -108,14 +125,20 @@ module regfile_9 (
       4'h3: begin
         out_b = M_player1_score_q;
       end
-      4'h7: begin
+      4'h4: begin
         out_b = M_player2_score_q;
       end
-      4'h8: begin
+      4'h5: begin
         out_b = M_speed_counter_q;
       end
-      4'hf: begin
-        out_b = M_temp_var_q;
+      4'h6: begin
+        out_b = M_temp_var1_q;
+      end
+      4'h7: begin
+        out_b = M_temp_var2_q;
+      end
+      4'h8: begin
+        out_b = M_temp_var3_q;
       end
       default: begin
         out_b = 16'h0000;
@@ -129,6 +152,10 @@ module regfile_9 (
     circle_right = M_right_half_circle_q;
   end
   
+  always @* begin
+    debug__ = {write_address, we, read_address_a, read_address_b};
+  end
+  
   always @(posedge clk) begin
     if (rst == 1'b1) begin
       M_left_half_circle_q <= 1'h0;
@@ -137,7 +164,9 @@ module regfile_9 (
       M_player1_score_q <= 1'h0;
       M_player2_score_q <= 1'h0;
       M_speed_counter_q <= 1'h0;
-      M_temp_var_q <= 1'h0;
+      M_temp_var1_q <= 1'h0;
+      M_temp_var2_q <= 1'h0;
+      M_temp_var3_q <= 1'h0;
     end else begin
       M_left_half_circle_q <= M_left_half_circle_d;
       M_right_half_circle_q <= M_right_half_circle_d;
@@ -145,7 +174,9 @@ module regfile_9 (
       M_player1_score_q <= M_player1_score_d;
       M_player2_score_q <= M_player2_score_d;
       M_speed_counter_q <= M_speed_counter_d;
-      M_temp_var_q <= M_temp_var_d;
+      M_temp_var1_q <= M_temp_var1_d;
+      M_temp_var2_q <= M_temp_var2_d;
+      M_temp_var3_q <= M_temp_var3_d;
     end
   end
   

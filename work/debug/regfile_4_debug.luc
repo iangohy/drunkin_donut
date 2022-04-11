@@ -1,4 +1,4 @@
-module regfile (
+module regfile_4_debug (
     input clk,  // clock
     input rst,  // reset
     input write_address[4], // write address
@@ -16,7 +16,7 @@ module regfile (
     output countdown_time_out[16], //7seg for countdown timer
     output speed_out[16],
     output circle_left[16],
-    output circle_right[16]
+    output circle_right[16], output debug__ [13]
 
   ) 
 
@@ -89,4 +89,5 @@ module regfile (
     circle_left = left_half_circle.q[15:0];
     circle_right = right_half_circle.q[15:0];
   }
+always debug__ = c{$flatten(write_address), $flatten(we), $flatten(read_address_a), $flatten(read_address_b)};
 }

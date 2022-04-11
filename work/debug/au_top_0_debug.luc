@@ -95,7 +95,7 @@ module au_top (
     
         
   }
-au_debugger debugger (#NONCE(1293505402), #DATA_WIDTH(38), #CAPTURE_DEPTH(256), .clk(clk));always debugger.data = c{$flatten(game_beta.debug__)};
+au_debugger debugger (#NONCE(3915861905), #DATA_WIDTH(138), #CAPTURE_DEPTH(256), .clk(clk));always debugger.data = c{$flatten(game_beta.debug__)};
 }
 
 

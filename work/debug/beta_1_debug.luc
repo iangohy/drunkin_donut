@@ -9,7 +9,7 @@ module beta_1_debug (
     output p1_score[16],
     output p2_score[16],
     output circle_left[16],
-    output circle_right[16], output debug__ [38]
+    output circle_right[16], output debug__ [138]
   
 ) {
   
@@ -17,7 +17,7 @@ module beta_1_debug (
   sig alu_input_b[16];
   sig wdsel_mux_out[16];
   
-  alu game_alu;
+  alu_2_debug game_alu;
   
   .clk(clk){
     // not very sure about edge detectors and our circle_clock + timer inputs to FSM/control unit
@@ -25,10 +25,10 @@ module beta_1_debug (
     
     .rst(rst){
       // INIT FSM
-      game_CU_2_debug game_controlunit;
+      game_CU_3_debug game_controlunit;
       
       // INIT REGFILE
-      regfile game_regfiles;
+      regfile_4_debug game_regfiles;
       
       // INIT TIMER AND CIRCLE CLOCK
       counter countdown_timer(#SIZE(1),#DIV(26));
@@ -49,7 +49,7 @@ module beta_1_debug (
     game_regfiles.read_address_b = game_controlunit.regfile_read_address_b;
     
     // regfile rb output connect to FSM
-    game_controlunit.regfile_datain = game_regfiles.out_b;
+    game_controlunit.rb_data = game_regfiles.out_b;
     game_controlunit.countdown_time_reg = game_regfiles.countdown_time_out;
     
     // setup timers
@@ -105,5 +105,5 @@ module beta_1_debug (
     circle_left = game_regfiles.circle_left;
     circle_right = game_regfiles.circle_right;
   }
-always debug__ = c{$flatten(wdsel_mux_out), $flatten(game_regfiles.out_b), $flatten(game_controlunit.debug__)};
+always debug__ = c{$flatten(wdsel_mux_out), $flatten(game_alu.out), $flatten(game_regfiles.out_a), $flatten(game_regfiles.out_b), $flatten(game_alu.debug__), $flatten(game_controlunit.debug__), $flatten(game_regfiles.debug__)};
 }
