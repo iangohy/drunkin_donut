@@ -4,6 +4,7 @@ module game_CU (
     input decrease_timer, //SEC
     input circle_clock,   // CC 
     input regfile_datain[16], //direct reading of regfile data from read_address_b
+    input countdown_time_reg[16],
     
     //3 buttons
     input p1_button,
@@ -17,9 +18,8 @@ module game_CU (
     output regfile_write_address[4], // rc 4 bits
     output regfile_read_address_a[4], // ra 4 bits
     output regfile_read_address_b[4], // rb 4 bits
-    output we_regfile,// we
-       
-    output debug[4] //?
+    output we_regfile// we
+      
   ) {
     .clk(clk){
       fsm game_fsm={
@@ -34,6 +34,7 @@ module game_CU (
         SET_COUNT_TO_3, // blue balls (before game starts)
         INCREASE_SPEED,
         COUNTDOWN,
+        COUNTDOWN_IDLE,
         SET_COUNT_TO_60,
         IDLE, // IDLE
         SHL_RIGHT_HALF, // red balls
@@ -93,8 +94,6 @@ module game_CU (
     wdsel = 0;
     
     
-    debug = 0000;
-    
     if (rst){
         game_fsm.d = game_fsm.RESET_SPEED;
       }
@@ -143,24 +142,24 @@ module game_CU (
           we_regfile = b0;
           regfile_read_address_b = 4h5; // speed counter
             
-          if (~regfile_datain[0]){  
+          if (regfile_datain != b0) {  
             // if rb_data !=0
             game_fsm.d = game_fsm.SET_COUNT_TO_3;
-            }
-          else{                    
+          }
+          else {                    
             // if rb_data ==0
             game_fsm.d = game_fsm.READY;            
-            }
+          }
             
         game_fsm.READY:            
           we_regfile = b0;
-          if (p1_button && p2_button){ 
+          if (p1_button || p2_button){ 
                // if both players press button
             game_fsm.d = game_fsm.SET_COUNT_TO_3;
               }
           else{
             game_fsm.d = game_fsm.READY;
-            }
+           }
           
         game_fsm.SET_COUNT_TO_3:
           alufn = 7h40;                 // INC
@@ -169,12 +168,14 @@ module game_CU (
           regfile_read_address_a = 4h2; // countdown timer reg
           regfile_write_address = 4h2;  // countdown timer reg
           wdsel = 4h0;                  // ALU output 
-          if (regfile_datain[1]){       // direct read in, not sure if this implementation is right)
+          if (countdown_time_reg == b11){
             game_fsm.d = game_fsm.INCREASE_SPEED;
           }
+            /*
           else{
             game_fsm.d = game_fsm.SET_COUNT_TO_3;            
             }
+        */
                           
         game_fsm.INCREASE_SPEED:            
           alufn = 7h40;                  // INC
@@ -192,12 +193,16 @@ module game_CU (
           regfile_read_address_a = 4h2; // countdown timer reg
           regfile_write_address = 4h2;  // countdown timer
           wdsel = 4h0;                  // ALU output 
-          if (~regfile_datain[1] && decrease_timer){ // not sure if this implementation is correct
-            game_fsm.d = game_fsm.COUNTDOWN;
-            }
-          else{
+          game_fsm.d = game_fsm.COUNTDOWN_IDLE;
+          
+        game_fsm.COUNTDOWN_IDLE: 
+          we_regfile = b0;
+          if (countdown_time_reg == b0){
             game_fsm.d = game_fsm.SET_COUNT_TO_60;
-            }          
+          }
+          else if (decrease_timer == b1) {
+            game_fsm.d = game_fsm.COUNTDOWN;
+          }    
                           
         game_fsm.SET_COUNT_TO_60:            
           alufn = 7h0;                   // ADD

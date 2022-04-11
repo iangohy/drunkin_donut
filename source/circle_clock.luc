@@ -1,0 +1,94 @@
+module circle_clock (
+    input clk,  // clock
+    input rst,  // reset
+    input speed[16],
+    output out,
+    output debug_counter[8]
+  ) {
+  
+  counter freq_divider(.rst(rst), .clk(clk), #SIZE(1),#DIV(21));
+  edge_detector edge_rise (.clk(clk), #RISE(1), #FALL(0));
+  dff ctr[8](.clk(clk), .rst(rst));
+
+  always {
+    edge_rise.in = freq_divider.value;
+    debug_counter = ctr.q;
+    
+    if (edge_rise.out == b1) {
+      // increase ctr
+      ctr.d = ctr.q + 1; 
+    }
+    
+    case(speed) {
+      b1:    
+        // level 1
+        // 12 counts
+        // 0.503s
+        if (ctr.q == b1100) {
+          out = b1;
+          ctr.d = b0;
+        } else if (ctr.q > b1100) {
+          ctr.d = b0;
+          out = b0;
+        } else {
+          out = b0;
+        }
+        
+      b10:
+        // level 2 
+        // 9 counts
+        if (ctr.q == b1001) {
+          out = b1;
+          ctr.d = b0;
+        } else if (ctr.q > b1001) {
+          ctr.d = b0;
+          out = b0;
+        } else {
+          out = b0;
+        }
+        
+      b11:
+        // level 3
+        // 5 counts
+        if (ctr.q == b101) {
+          out = b1;
+          ctr.d = b0;
+        } else if (ctr.q > b101) {
+          ctr.d = b0;
+          out = b0;
+        } else {
+          out = b0;
+        }
+        
+      b100:
+        // level 4
+        // 2 counts
+        // 0.336s
+        if (ctr.q == b100) {
+          out = b1;
+          ctr.d = b0;
+        } else if (ctr.q > b100) {
+          ctr.d = b0;
+          out = b0;
+        } else {
+          out = b0;
+        }
+        
+      default:
+        // level 5 (and above)
+        // 3 counts
+        // 0.251s
+        if (ctr.q == b11) {
+          out = b1;
+          ctr.d = b0;
+        } else if (ctr.q > b11) {
+          ctr.d = b0;
+          out = b0;
+        } else {
+          out = b0;
+        }
+        
+    }
+        
+  }
+}

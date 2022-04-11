@@ -1,0 +1,578 @@
+
+*** Running vivado
+    with args -log au_top_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source au_top_0.tcl
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source au_top_0.tcl -notrace
+Command: synth_design -top au_top_0 -part xc7a35tftg256-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tftg256-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 807247
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2332.223 ; gain = 0.000 ; free physical = 41674 ; free virtual = 52259
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'au_top_0' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0_debug_0.v:7]
+INFO: [Synth 8-6157] synthesizing module 'reset_conditioner_1' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/reset_conditioner_1.v:11]
+	Parameter STAGES bound to: 3'b100 
+INFO: [Synth 8-6155] done synthesizing module 'reset_conditioner_1' (1#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/reset_conditioner_1.v:11]
+INFO: [Synth 8-6157] synthesizing module 'button_conditioner_2' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/button_conditioner_2.v:13]
+	Parameter CLK_FREQ bound to: 26'b10111110101111000010000000 
+	Parameter MIN_DELAY bound to: 5'b10100 
+	Parameter NUM_SYNC bound to: 2'b10 
+INFO: [Synth 8-6157] synthesizing module 'pipeline_6' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/pipeline_6.v:11]
+	Parameter DEPTH bound to: 2'b10 
+INFO: [Synth 8-6155] done synthesizing module 'pipeline_6' (2#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/pipeline_6.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'button_conditioner_2' (3#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/button_conditioner_2.v:13]
+INFO: [Synth 8-6157] synthesizing module 'edge_detector_3' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/edge_detector_3.v:12]
+	Parameter RISE bound to: 1'b1 
+	Parameter FALL bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'edge_detector_3' (4#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/edge_detector_3.v:12]
+INFO: [Synth 8-6157] synthesizing module 'beta_1_debug_4' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_1_debug_4.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_7' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/alu_7.v:7]
+INFO: [Synth 8-6157] synthesizing module 'mux_2_19' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_19.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_19.v:18]
+INFO: [Synth 8-6155] done synthesizing module 'mux_2_19' (5#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_19.v:7]
+INFO: [Synth 8-6157] synthesizing module 'add_sub_14' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/add_sub_14.v:7]
+INFO: [Synth 8-6157] synthesizing module 'full_adder_23' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/full_adder_23.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'full_adder_23' (6#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/full_adder_23.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'add_sub_14' (7#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/add_sub_14.v:7]
+INFO: [Synth 8-6157] synthesizing module 'compare_15' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/compare_15.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'compare_15' (8#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/compare_15.v:7]
+INFO: [Synth 8-6157] synthesizing module 'boolean_16' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/boolean_16.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'boolean_16' (9#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/boolean_16.v:7]
+INFO: [Synth 8-6157] synthesizing module 'shifter_17' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_17.v:7]
+INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_shiftleft_24' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_24.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_24.v:21]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_24.v:34]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_24.v:47]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_24.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_shiftleft_24' (10#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_24.v:7]
+INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_shiftright_25' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_25.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_25.v:21]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_25.v:34]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_25.v:47]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_25.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_shiftright_25' (11#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_25.v:7]
+INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_sra_26' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_26.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_26.v:21]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_26.v:34]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_26.v:47]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_26.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_sra_26' (12#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_26.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_17.v:51]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_17.v:54]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_17.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'shifter_17' (13#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_17.v:7]
+INFO: [Synth 8-6157] synthesizing module 'multiplier_18' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multiplier_18.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'multiplier_18' (14#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multiplier_18.v:7]
+INFO: [Synth 8-6157] synthesizing module 'mux_4_20' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_4_20.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4_20' (15#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_4_20.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'alu_7' (16#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/alu_7.v:7]
+INFO: [Synth 8-6157] synthesizing module 'game_CU_2_debug_8' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_2_debug_8.v:7]
+	Parameter RESET_SPEED_game_fsm bound to: 6'b000000 
+	Parameter RESET_P1_SCORE_game_fsm bound to: 6'b000001 
+	Parameter RESET_P2_SCORE_game_fsm bound to: 6'b000010 
+	Parameter RESET_RIGHT_HALF_game_fsm bound to: 6'b000011 
+	Parameter RESET_LEFT_HALF_game_fsm bound to: 6'b000100 
+	Parameter RESET_TIMER_game_fsm bound to: 6'b000101 
+	Parameter BRANCH_CHECK_SPEED_game_fsm bound to: 6'b000110 
+	Parameter READY_game_fsm bound to: 6'b000111 
+	Parameter SET_COUNT_TO_3_game_fsm bound to: 6'b001000 
+	Parameter INCREASE_SPEED_game_fsm bound to: 6'b001001 
+	Parameter COUNTDOWN_game_fsm bound to: 6'b001010 
+	Parameter COUNTDOWN_IDLE_game_fsm bound to: 6'b001011 
+	Parameter SET_COUNT_TO_60_game_fsm bound to: 6'b001100 
+	Parameter IDLE_game_fsm bound to: 6'b001101 
+	Parameter SHL_RIGHT_HALF_game_fsm bound to: 6'b001110 
+	Parameter SHL_LEFT_HALF_game_fsm bound to: 6'b001111 
+	Parameter CHECK_MSB_RIGHT_HALF_game_fsm bound to: 6'b010000 
+	Parameter CMPEQ_RIGHT_game_fsm bound to: 6'b010001 
+	Parameter BRANCH_CMPEQ_RIGHT_game_fsm bound to: 6'b010010 
+	Parameter PLUS1_TO_RIGHT_HALF_game_fsm bound to: 6'b010011 
+	Parameter CHECK_MSB_LEFT_HALF_game_fsm bound to: 6'b010100 
+	Parameter CMPEQ_LEFT_game_fsm bound to: 6'b010101 
+	Parameter BRANCH_CMPEQ_LEFT_game_fsm bound to: 6'b010110 
+	Parameter PLUS1_TO_LEFT_HALF_game_fsm bound to: 6'b010111 
+	Parameter CHECK_P2_LOSE_game_fsm bound to: 6'b011000 
+	Parameter BRANCH_P2_LOSE_OR_CARRYON_game_fsm bound to: 6'b011001 
+	Parameter P2_LED_LIGHT_UP_game_fsm bound to: 6'b011010 
+	Parameter P2_SCORE_INCREASE_BY_1_game_fsm bound to: 6'b011011 
+	Parameter CHECK_P1_LOSE_game_fsm bound to: 6'b011100 
+	Parameter BRANCH_P1_LOSE_OR_CARRYON_game_fsm bound to: 6'b011101 
+	Parameter P1_LED_LIGHT_UP_game_fsm bound to: 6'b011110 
+	Parameter P1_SCORE_INCREASE_BY_1_game_fsm bound to: 6'b011111 
+	Parameter CHECK_ANY_LED_FIRST_HALF_NOT_LIT_game_fsm bound to: 6'b100000 
+	Parameter CHECK_ANY_LED_SECOND_HALF_NOT_LIT_game_fsm bound to: 6'b100001 
+	Parameter CMPEQ_FIRST_HALF_game_fsm bound to: 6'b100010 
+	Parameter BRANCH_FIRST_HALF_game_fsm bound to: 6'b100011 
+	Parameter CMPLE_SECOND_HALF_game_fsm bound to: 6'b100100 
+	Parameter BRANCH_SECOND_HALF_game_fsm bound to: 6'b100101 
+	Parameter CHECK_COUNT_MORETHAN_0_game_fsm bound to: 6'b100110 
+	Parameter BRANCH_TIMER_game_fsm bound to: 6'b100111 
+	Parameter COUNT_MINUS_1_game_fsm bound to: 6'b101000 
+	Parameter CHECK_DRAW_game_fsm bound to: 6'b101001 
+	Parameter BRANCH_DRAW_game_fsm bound to: 6'b101010 
+	Parameter DRAW_game_fsm bound to: 6'b101011 
+	Parameter CHECK_WINNER_game_fsm bound to: 6'b101100 
+	Parameter BRANCH_WINNER_game_fsm bound to: 6'b101101 
+	Parameter P1_WINS_game_fsm bound to: 6'b101110 
+	Parameter P2_LOSES_game_fsm bound to: 6'b101111 
+	Parameter LIGHT_LOWER_LEFT_LED_game_fsm bound to: 6'b110000 
+	Parameter LIGHT_UPPER_RIGHT_LED_game_fsm bound to: 6'b110001 
+	Parameter P2_WINS_game_fsm bound to: 6'b110010 
+	Parameter P1_LOSES_game_fsm bound to: 6'b110011 
+	Parameter LIGHT_UPPER_LEFT_LED_game_fsm bound to: 6'b110100 
+	Parameter LIGHT_LOWER_RIGHT_LED_game_fsm bound to: 6'b110101 
+	Parameter GAMEOVER_game_fsm bound to: 6'b110110 
+INFO: [Synth 8-155] case statement is not full and has no default [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_2_debug_8.v:103]
+INFO: [Synth 8-6155] done synthesizing module 'game_CU_2_debug_8' (17#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_2_debug_8.v:7]
+INFO: [Synth 8-6157] synthesizing module 'regfile_9' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_9.v:7]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_9.v:46]
+INFO: [Synth 8-6155] done synthesizing module 'regfile_9' (18#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_9.v:7]
+INFO: [Synth 8-6157] synthesizing module 'counter_10' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_10.v:14]
+	Parameter SIZE bound to: 1'b1 
+	Parameter DIV bound to: 5'b11010 
+	Parameter TOP bound to: 1'b0 
+	Parameter UP bound to: 1'b1 
+	Parameter MAX_VALUE bound to: 27'b011111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'counter_10' (19#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_10.v:14]
+INFO: [Synth 8-6157] synthesizing module 'circle_clock_11' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/circle_clock_11.v:7]
+INFO: [Synth 8-6157] synthesizing module 'counter_21' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_21.v:14]
+	Parameter SIZE bound to: 1'b1 
+	Parameter DIV bound to: 5'b10101 
+	Parameter TOP bound to: 1'b0 
+	Parameter UP bound to: 1'b1 
+	Parameter MAX_VALUE bound to: 22'b0111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'counter_21' (20#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_21.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'circle_clock_11' (21#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/circle_clock_11.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_1_debug_4.v:162]
+INFO: [Synth 8-6155] done synthesizing module 'beta_1_debug_4' (22#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_1_debug_4.v:7]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0_debug_0.v:119]
+INFO: [Synth 8-6157] synthesizing module 'au_debugger_5' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_debugger_5.v:13]
+	Parameter DATA_WIDTH bound to: 7'b1100110 
+	Parameter CAPTURE_DEPTH bound to: 9'b100000000 
+	Parameter NONCE bound to: -2029785255 - type: integer 
+	Parameter VERSION bound to: 2'b11 
+	Parameter IDLE_state bound to: 2'b00 
+	Parameter ARMED_state bound to: 2'b01 
+	Parameter FIRED_state bound to: 2'b10 
+	Parameter CAPTURED_state bound to: 2'b11 
+INFO: [Synth 8-6157] synthesizing module 'BSCANE2' [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
+	Parameter DISABLE_JTAG bound to: FALSE - type: string 
+	Parameter JTAG_CHAIN bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'BSCANE2' (23#1) [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
+INFO: [Synth 8-6157] synthesizing module 'BSCANE2__parameterized0' [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
+	Parameter DISABLE_JTAG bound to: FALSE - type: string 
+	Parameter JTAG_CHAIN bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'BSCANE2__parameterized0' (23#1) [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
+INFO: [Synth 8-6157] synthesizing module 'BSCANE2__parameterized1' [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
+	Parameter DISABLE_JTAG bound to: FALSE - type: string 
+	Parameter JTAG_CHAIN bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'BSCANE2__parameterized1' (23#1) [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
+INFO: [Synth 8-6157] synthesizing module 'BSCANE2__parameterized2' [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
+	Parameter DISABLE_JTAG bound to: FALSE - type: string 
+	Parameter JTAG_CHAIN bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'BSCANE2__parameterized2' (23#1) [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
+INFO: [Synth 8-6157] synthesizing module 'async_fifo_12' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/async_fifo_12.v:12]
+	Parameter SIZE bound to: 1'b1 
+	Parameter DEPTH bound to: 4'b1000 
+	Parameter ADDR_SIZE bound to: 2'b11 
+INFO: [Synth 8-6157] synthesizing module 'simple_dual_ram_22' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/simple_dual_ram_22.v:48]
+	Parameter SIZE bound to: 1'b1 
+	Parameter DEPTH bound to: 4'b1000 
+INFO: [Synth 8-6155] done synthesizing module 'simple_dual_ram_22' (24#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/simple_dual_ram_22.v:48]
+INFO: [Synth 8-6155] done synthesizing module 'async_fifo_12' (25#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/async_fifo_12.v:12]
+INFO: [Synth 8-6157] synthesizing module 'simple_dual_ram_13' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/simple_dual_ram_13.v:48]
+	Parameter SIZE bound to: 7'b1100110 
+	Parameter DEPTH bound to: 9'b100000000 
+INFO: [Synth 8-6155] done synthesizing module 'simple_dual_ram_13' (26#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/simple_dual_ram_13.v:48]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_debugger_5.v:251]
+INFO: [Synth 8-6155] done synthesizing module 'au_debugger_5' (27#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_debugger_5.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'au_top_0' (28#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0_debug_0.v:7]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2332.223 ; gain = 0.000 ; free physical = 42340 ; free virtual = 52927
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2332.223 ; gain = 0.000 ; free physical = 42342 ; free virtual = 52928
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2332.223 ; gain = 0.000 ; free physical = 42342 ; free virtual = 52928
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2332.223 ; gain = 0.000 ; free physical = 42333 ; free virtual = 52919
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/ian/Documents/drunkin_donut/constraint/alchitry.xdc]
+Finished Parsing XDC File [/home/ian/Documents/drunkin_donut/constraint/alchitry.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/ian/Documents/drunkin_donut/constraint/alchitry.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [/home/ian/Documents/drunkin_donut/constraint/io.xdc]
+Finished Parsing XDC File [/home/ian/Documents/drunkin_donut/constraint/io.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/ian/Documents/drunkin_donut/constraint/io.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [/home/ian/Documents/drunkin_donut/work/constraint/alchitry.xdc]
+WARNING: [Constraints 18-619] A clock with name 'clk_0' already exists, overwriting the previous clock with the same name. [/home/ian/Documents/drunkin_donut/work/constraint/alchitry.xdc:2]
+Finished Parsing XDC File [/home/ian/Documents/drunkin_donut/work/constraint/alchitry.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/ian/Documents/drunkin_donut/work/constraint/alchitry.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2396.254 ; gain = 0.000 ; free physical = 42242 ; free virtual = 52828
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2396.254 ; gain = 0.000 ; free physical = 42242 ; free virtual = 52828
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42320 ; free virtual = 52906
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tftg256-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42320 ; free virtual = 52906
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42322 ; free virtual = 52908
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'M_game_fsm_q_reg' in module 'game_CU_2_debug_8'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+    RESET_SPEED_game_fsm | 000000000000000000000000000000000000000000000000000001 |                           000000
+ RESET_P1_SCORE_game_fsm | 000000000000000000000000000000000000000000000000000010 |                           000001
+ RESET_P2_SCORE_game_fsm | 000000000000000000000000000000000000000000000000000100 |                           000010
+RESET_RIGHT_HALF_game_fsm | 000000000000000000000000000000000000000000000000001000 |                           000011
+RESET_LEFT_HALF_game_fsm | 000000000000000000000000000000000000000000000000010000 |                           000100
+    RESET_TIMER_game_fsm | 000000000000000000000000000000000000000000000000100000 |                           000101
+BRANCH_CHECK_SPEED_game_fsm | 000000000000000000000000000000000000000000000001000000 |                           000110
+          READY_game_fsm | 000000000000000000000000000000000000000000000010000000 |                           000111
+ SET_COUNT_TO_3_game_fsm | 000000000000000000000000000000000000000000000100000000 |                           001000
+ INCREASE_SPEED_game_fsm | 000000000000000000000000000000000000000000001000000000 |                           001001
+      COUNTDOWN_game_fsm | 000000000000000000000000000000000000000000010000000000 |                           001010
+ COUNTDOWN_IDLE_game_fsm | 000000000000000000000000000000000000000000100000000000 |                           001011
+SET_COUNT_TO_60_game_fsm | 000000000000000000000000000000000000000001000000000000 |                           001100
+           IDLE_game_fsm | 000000000000000000000000000000000000000010000000000000 |                           001101
+CHECK_COUNT_MORETHAN_0_game_fsm | 000000000000000000000000000000000000000100000000000000 |                           100110
+   BRANCH_TIMER_game_fsm | 000000000000000000000000000000000000001000000000000000 |                           100111
+     CHECK_DRAW_game_fsm | 000000000000000000000000000000000000010000000000000000 |                           101001
+    BRANCH_DRAW_game_fsm | 000000000000000000000000000000000000100000000000000000 |                           101010
+           DRAW_game_fsm | 000000000000000000000000000000000001000000000000000000 |                           101011
+   CHECK_WINNER_game_fsm | 000000000000000000000000000000000010000000000000000000 |                           101100
+  BRANCH_WINNER_game_fsm | 000000000000000000000000000000000100000000000000000000 |                           101101
+  COUNT_MINUS_1_game_fsm | 000000000000000000000000000000001000000000000000000000 |                           101000
+  CHECK_P1_LOSE_game_fsm | 000000000000000000000000000000010000000000000000000000 |                           011100
+BRANCH_P1_LOSE_OR_CARRYON_game_fsm | 000000000000000000000000000000100000000000000000000000 |                           011101
+        P2_WINS_game_fsm | 000000000000000000000000000001000000000000000000000000 |                           110010
+       P1_LOSES_game_fsm | 000000000000000000000000000010000000000000000000000000 |                           110011
+LIGHT_UPPER_LEFT_LED_game_fsm | 000000000000000000000000000100000000000000000000000000 |                           110100
+P1_LED_LIGHT_UP_game_fsm | 000000000000000000000000001000000000000000000000000000 |                           011110
+P1_SCORE_INCREASE_BY_1_game_fsm | 000000000000000000000000010000000000000000000000000000 |                           011111
+  CHECK_P2_LOSE_game_fsm | 000000000000000000000000100000000000000000000000000000 |                           011000
+BRANCH_P2_LOSE_OR_CARRYON_game_fsm | 000000000000000000000001000000000000000000000000000000 |                           011001
+        P1_WINS_game_fsm | 000000000000000000000010000000000000000000000000000000 |                           101110
+       P2_LOSES_game_fsm | 000000000000000000000100000000000000000000000000000000 |                           101111
+LIGHT_LOWER_LEFT_LED_game_fsm | 000000000000000000001000000000000000000000000000000000 |                           110000
+LIGHT_UPPER_RIGHT_LED_game_fsm | 000000000000000000010000000000000000000000000000000000 |                           110001
+       GAMEOVER_game_fsm | 000000000000000000100000000000000000000000000000000000 |                           110110
+P2_LED_LIGHT_UP_game_fsm | 000000000000000001000000000000000000000000000000000000 |                           011010
+P2_SCORE_INCREASE_BY_1_game_fsm | 000000000000000010000000000000000000000000000000000000 |                           011011
+CHECK_ANY_LED_FIRST_HALF_NOT_LIT_game_fsm | 000000000000000100000000000000000000000000000000000000 |                           100000
+CHECK_ANY_LED_SECOND_HALF_NOT_LIT_game_fsm | 000000000000001000000000000000000000000000000000000000 |                           100001
+CMPEQ_FIRST_HALF_game_fsm | 000000000000010000000000000000000000000000000000000000 |                           100010
+BRANCH_FIRST_HALF_game_fsm | 000000000000100000000000000000000000000000000000000000 |                           100011
+CMPLE_SECOND_HALF_game_fsm | 000000000001000000000000000000000000000000000000000000 |                           100100
+BRANCH_SECOND_HALF_game_fsm | 000000000010000000000000000000000000000000000000000000 |                           100101
+ SHL_RIGHT_HALF_game_fsm | 000000000100000000000000000000000000000000000000000000 |                           001110
+  SHL_LEFT_HALF_game_fsm | 000000001000000000000000000000000000000000000000000000 |                           001111
+CHECK_MSB_RIGHT_HALF_game_fsm | 000000010000000000000000000000000000000000000000000000 |                           010000
+    CMPEQ_RIGHT_game_fsm | 000000100000000000000000000000000000000000000000000000 |                           010001
+BRANCH_CMPEQ_RIGHT_game_fsm | 000001000000000000000000000000000000000000000000000000 |                           010010
+CHECK_MSB_LEFT_HALF_game_fsm | 000010000000000000000000000000000000000000000000000000 |                           010100
+     CMPEQ_LEFT_game_fsm | 000100000000000000000000000000000000000000000000000000 |                           010101
+BRANCH_CMPEQ_LEFT_game_fsm | 001000000000000000000000000000000000000000000000000000 |                           010110
+PLUS1_TO_LEFT_HALF_game_fsm | 010000000000000000000000000000000000000000000000000000 |                           010111
+PLUS1_TO_RIGHT_HALF_game_fsm | 100000000000000000000000000000000000000000000000000000 |                           010011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'M_game_fsm_q_reg' using encoding 'one-hot' in module 'game_CU_2_debug_8'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42309 ; free virtual = 52896
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    8 Bit       Adders := 3     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 3     
++---XORs : 
+	   2 Input     16 Bit         XORs := 2     
+	   2 Input      3 Bit         XORs := 3     
+	   3 Input      1 Bit         XORs := 136   
+	   2 Input      1 Bit         XORs := 2     
++---Registers : 
+	              104 Bit    Registers := 1     
+	              102 Bit    Registers := 2     
+	               16 Bit    Registers := 7     
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 3     
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 7     
+	                1 Bit    Registers := 7     
++---RAMs : 
+	              25K Bit	(256 X 102 bit)          RAMs := 1     
+	                8 Bit	(8 X 1 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input  408 Bit        Muxes := 1     
+	   2 Input  104 Bit        Muxes := 3     
+	   2 Input  102 Bit        Muxes := 5     
+	  72 Input   54 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 16    
+	   4 Input   16 Bit        Muxes := 3     
+	   8 Input   16 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 11    
+	   4 Input    8 Bit        Muxes := 2     
+	  54 Input    7 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 2     
+	  54 Input    6 Bit        Muxes := 1     
+	  54 Input    4 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 2     
+	  54 Input    3 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 2     
+	  54 Input    2 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 2     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 60    
+	   4 Input    1 Bit        Muxes := 4     
+	  54 Input    1 Bit        Muxes := 2     
+	   8 Input    1 Bit        Muxes := 7     
+	   5 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:14 ; elapsed = 00:01:16 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42261 ; free virtual = 52856
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping	Report (see note below)
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object  | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|debugger    | ram/mem_reg | 256 x 102(NO_CHANGE)   | W |   | 256 x 102(WRITE_FIRST) |   | R | Port A and B     | 1      | 1      | 
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping	Report (see note below)
++------------+-------------------------+-----------+----------------------+---------------+
+|Module Name | RTL Object              | Inference | Size (Depth x Width) | Primitives    | 
++------------+-------------------------+-----------+----------------------+---------------+
+|debugger    | config_fifo/ram/mem_reg | Implied   | 8 x 1                | RAM16X1D x 1	 | 
++------------+-------------------------+-----------+----------------------+---------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-565] redefining clock 'clk_0'
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:18 ; elapsed = 00:01:20 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42148 ; free virtual = 52743
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:33 ; elapsed = 00:01:34 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42072 ; free virtual = 52667
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping	Report
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object  | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|debugger    | ram/mem_reg | 256 x 102(NO_CHANGE)   | W |   | 256 x 102(WRITE_FIRST) |   | R | Port A and B     | 1      | 1      | 
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping	Report
++------------+-------------------------+-----------+----------------------+---------------+
+|Module Name | RTL Object              | Inference | Size (Depth x Width) | Primitives    | 
++------------+-------------------------+-----------+----------------------+---------------+
+|debugger    | config_fifo/ram/mem_reg | Implied   | 8 x 1                | RAM16X1D x 1	 | 
++------------+-------------------------+-----------+----------------------+---------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance debugger/ram/mem_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance debugger/ram/mem_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:33 ; elapsed = 00:01:35 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42056 ; free virtual = 52658
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:36 ; elapsed = 00:01:37 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42041 ; free virtual = 52644
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:36 ; elapsed = 00:01:37 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42041 ; free virtual = 52644
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:36 ; elapsed = 00:01:38 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42041 ; free virtual = 52644
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:36 ; elapsed = 00:01:38 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42041 ; free virtual = 52644
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:36 ; elapsed = 00:01:38 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42041 ; free virtual = 52644
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:36 ; elapsed = 00:01:38 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42041 ; free virtual = 52644
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                              | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|au_top_0    | debugger/config_fifo/M_rsync_q_reg[8] | 3      | 3     | NO           | NO                 | YES               | 3      | 0       | 
+|au_top_0    | debugger/config_fifo/M_wsync_q_reg[8] | 3      | 3     | NO           | NO                 | YES               | 3      | 0       | 
+|au_top_0    | debugger/M_status_q_reg[98]           | 6      | 2     | YES          | NO                 | YES               | 2      | 0       | 
+|au_top_0    | debugger/M_status_q_reg[73]           | 23     | 1     | YES          | NO                 | YES               | 0      | 1       | 
+|au_top_0    | debugger/M_status_q_reg[39]           | 33     | 1     | YES          | NO                 | YES               | 0      | 1       | 
+|au_top_0    | debugger/M_status_q_reg[27]           | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BSCANE2  |     4|
+|2     |BUFG     |     3|
+|3     |CARRY4   |    28|
+|4     |LUT1     |    16|
+|5     |LUT2     |    95|
+|6     |LUT3     |    68|
+|7     |LUT4     |   115|
+|8     |LUT5     |   234|
+|9     |LUT6     |   428|
+|10    |MUXF7    |     1|
+|11    |RAM16X1D |     1|
+|12    |RAMB18E1 |     1|
+|13    |RAMB36E1 |     1|
+|14    |SRL16E   |     9|
+|15    |SRLC32E  |     2|
+|16    |FDRE     |  1002|
+|17    |FDSE     |    33|
+|18    |IBUF     |     6|
+|19    |OBUF     |    45|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:36 ; elapsed = 00:01:38 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42041 ; free virtual = 52644
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:34 ; elapsed = 00:01:36 . Memory (MB): peak = 2396.254 ; gain = 0.000 ; free physical = 42093 ; free virtual = 52696
+Synthesis Optimization Complete : Time (s): cpu = 00:01:36 ; elapsed = 00:01:38 . Memory (MB): peak = 2396.254 ; gain = 64.031 ; free physical = 42093 ; free virtual = 52696
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2396.254 ; gain = 0.000 ; free physical = 42178 ; free virtual = 52778
+INFO: [Netlist 29-17] Analyzing 32 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2396.254 ; gain = 0.000 ; free physical = 42130 ; free virtual = 52730
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
+
+INFO: [Common 17-83] Releasing license: Synthesis
+103 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:43 ; elapsed = 00:01:41 . Memory (MB): peak = 2396.254 ; gain = 113.906 ; free physical = 42334 ; free virtual = 52934
+INFO: [Common 17-1381] The checkpoint '/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.runs/synth_1/au_top_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file au_top_0_utilization_synth.rpt -pb au_top_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Apr 11 17:28:47 2022...

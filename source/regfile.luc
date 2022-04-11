@@ -11,9 +11,12 @@ module regfile (
     output out_a[16], //read port a
     output out_b[16], //read port b
     
-    output p1_score_out[4][4], //7seg for player 1 score
-    output p2_score_out[4][4], //7seg for player 2 score
-    output countdown_time_out[4][4] //7seg for countdown timer
+    output p1_score_out[16], //7seg for player 1 score
+    output p2_score_out[16], //7seg for player 2 score
+    output countdown_time_out[16], //7seg for countdown timer
+    output speed_out[16],
+    output circle_left[16],
+    output circle_right[16]
 
   ) 
 
@@ -55,7 +58,7 @@ module regfile (
         b0100 : out_a = player2_score.q;
         b0101 : out_a = speed_counter.q;
         b0110 : out_a = temp_var.q;
-        default : out_a = 0;
+        default : out_a = 16b0;
     }
     
     //read port b
@@ -67,23 +70,15 @@ module regfile (
         b0111 : out_b = player2_score.q;
         b1000 : out_b = speed_counter.q;
         b1111 : out_b = temp_var.q;
-        default : out_b = 0;
+        default : out_b = 16b0;
     }
     
-    p1_score_out[0] = player1_score.q[3:0];
-    p1_score_out[1] = player1_score.q[7:4];
-    p1_score_out[2] = player1_score.q[11:8];
-    p1_score_out[3] = player1_score.q[15:12];
+    p1_score_out = player1_score.q[15:0];
+    p2_score_out = player2_score.q[15:0];
     
-    p2_score_out[0] = player2_score.q[3:0];
-    p2_score_out[1] = player2_score.q[7:4];
-    p2_score_out[2] = player2_score.q[11:8];
-    p2_score_out[3] = player2_score.q[15:12];
-    
-    countdown_time_out[0] = countdown_time.q[3:0];
-    countdown_time_out[1] = countdown_time.q[7:4];
-    countdown_time_out[2] = countdown_time.q[11:8];
-    countdown_time_out[3] = countdown_time.q[15:12];
-      
+    countdown_time_out = countdown_time.q[15:0];
+    speed_out = speed_counter.q[15:0];
+    circle_left = left_half_circle.q[15:0];
+    circle_right = right_half_circle.q[15:0];
   }
 }

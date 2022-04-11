@@ -15,23 +15,23 @@
     <component>counter.luc</component>
     <src>alu.luc</src>
     <src>rca_five.luc</src>
-    <src>tester.luc</src>
-    <src>automanual.luc</src>
+    <component>decoder.luc</component>
     <component>reset_conditioner.luc</component>
     <src>sixteen_bit_shiftright.luc</src>
     <component>edge_detector.luc</component>
-    <src>nic_regfile.luc</src>
     <src>beta.luc</src>
+    <src>circle_clock.luc</src>
     <src>full_adder.luc</src>
-    <src>tester_rom.luc</src>
     <src>multiplier.luc</src>
     <src>multi_seven_seg.luc</src>
+    <component>pipeline.luc</component>
+    <component>button_conditioner.luc</component>
     <src>sixteen_bit_shiftleft.luc</src>
     <src>mux_2.luc</src>
-    <src>alu_control.luc</src>
     <src>shifter.luc</src>
     <src>add_sub.luc</src>
-    <constraint>newau.xdc</constraint>
-    <constraint>custom.acf</constraint>
+    <constraint>alchitry.xdc</constraint>
+    <constraint>io.xdc</constraint>
+    <constraint>alchitry.acf</constraint>
   </files>
 </project>

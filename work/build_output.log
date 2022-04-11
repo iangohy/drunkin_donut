@@ -1,3 +1,5 @@
+Warnings in file /home/ian/Documents/drunkin_donut/source/au_top.luc:
+    Line 17, Column 4 : "io_dip" was never used
 Starting Vivado...
 Vivado exited.
 

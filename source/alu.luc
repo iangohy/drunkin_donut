@@ -1,6 +1,5 @@
 module alu (
-    input alufn[6],
-    input alufn_6,
+    input alufn[7],
     input a[16],  
     input b[16],
     output out[16],
@@ -28,7 +27,7 @@ module alu (
     adder16.alufn = alufn[0];
     adder16.a = a;
     adder16.b = b;
-    adder16.alufn6=alufn_6;
+    adder16.alufn6=alufn[6];
     s = adder16.out;
     zvn[2] = adder16.z;
     zvn[1] = adder16.v;
