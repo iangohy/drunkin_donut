@@ -492,7 +492,8 @@ module game_CU_3_debug (
           regfile_read_address_a = 4h3; // draw signal
           regfile_read_address_b = 4h4; // reset signal
           regfile_write_address = 4h8;  // temp reg
-          wdsel = 4h0;                  // ALU output           
+          wdsel = 4h0;                  // ALU output
+          game_fsm.d = game_fsm.BRANCH_DRAW;          
             
         game_fsm.BRANCH_DRAW:            
           we_regfile = b0;

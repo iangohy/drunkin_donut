@@ -13,6 +13,8 @@ module au_top_0 (
     output reg [23:0] io_led,
     output reg [7:0] io_seg,
     output reg [3:0] io_sel,
+    output reg [7:0] multi_sev,
+    output reg [3:0] multi_sel,
     input [4:0] io_button,
     input [23:0] io_dip
   );
@@ -92,6 +94,18 @@ module au_top_0 (
     .circle_right(M_game_beta_circle_right),
     .debug__(M_game_beta_debug__)
   );
+  wire [4-1:0] M_p1_score_decoder_out_7segsel;
+  wire [8-1:0] M_p1_score_decoder_out_7seg;
+  wire [16-1:0] M_p1_score_decoder_debug__;
+  reg [16-1:0] M_p1_score_decoder_data;
+  custom_seven_seg_5_debug_5 p1_score_decoder (
+    .clk(clk),
+    .rst(rst),
+    .data(M_p1_score_decoder_data),
+    .out_7segsel(M_p1_score_decoder_out_7segsel),
+    .out_7seg(M_p1_score_decoder_out_7seg),
+    .debug__(M_p1_score_decoder_debug__)
+  );
   
   always @* begin
     M_reset_cond_in = ~rst_n;
@@ -110,18 +124,21 @@ module au_top_0 (
     M_game_beta_p1_button = M_p1_btn_edge_out;
     M_game_beta_p2_button = M_p2_btn_edge_out;
     M_game_beta_reset_button = M_rst_btn_edge_out;
-    io_led[16+7-:8] = M_game_beta_p1_score[0+7-:8];
+    M_p1_score_decoder_data = M_game_beta_p1_score;
+    multi_sev = M_p1_score_decoder_out_7seg;
+    multi_sel = M_p1_score_decoder_out_7segsel;
+    io_led[16+7-:8] = M_game_beta_countdown_timer_val[0+7-:8];
     io_led[8+7-:8] = M_game_beta_circle_left[0+7-:8];
     io_led[0+7-:8] = M_game_beta_circle_right[8+7-:8];
   end
   
-  reg [138-1:0] M_debugger_data;
-  au_debugger_5 debugger (
+  reg [154-1:0] M_debugger_data;
+  au_debugger_6 debugger (
     .clk(clk),
     .data(M_debugger_data)
   );
   
   always @* begin
-    M_debugger_data = {M_game_beta_debug__};
+    M_debugger_data = {M_game_beta_debug__, M_p1_score_decoder_debug__};
   end
 endmodule

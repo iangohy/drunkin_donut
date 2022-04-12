@@ -137,9 +137,8 @@ OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.runs/synth_1/au_top_0.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc /home/ian/Documents/drunkin_donut/constraint/alchitry.xdc
-  read_xdc /home/ian/Documents/drunkin_donut/constraint/io.xdc
-  read_xdc /home/ian/Documents/drunkin_donut/work/constraint/alchitry.xdc
+  read_xdc /home/ian/Documents/drunkin_donut/constraint/newau.xdc
+  read_xdc /home/ian/Documents/drunkin_donut/work/constraint/custom.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

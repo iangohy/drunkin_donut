@@ -7,7 +7,7 @@ module circle_clock (
   ) {
   
   // ~0.02s
-  counter freq_divider(.rst(rst), .clk(clk), #SIZE(1),#DIV(21));
+  counter freq_divider(.rst(rst), .clk(clk), #SIZE(1),#DIV(23));
   edge_detector edge_rise (.clk(clk), #RISE(1), #FALL(0));
   dff ctr[8](.clk(clk), .rst(rst));
 

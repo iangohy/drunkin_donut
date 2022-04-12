@@ -32,7 +32,7 @@ module beta_1_debug_4 (
   reg [7-1:0] M_game_alu_alufn;
   reg [16-1:0] M_game_alu_a;
   reg [16-1:0] M_game_alu_b;
-  alu_2_debug_7 game_alu (
+  alu_2_debug_8 game_alu (
     .alufn(M_game_alu_alufn),
     .a(M_game_alu_a),
     .b(M_game_alu_b),
@@ -64,7 +64,7 @@ module beta_1_debug_4 (
   reg [1-1:0] M_game_controlunit_p1_button;
   reg [1-1:0] M_game_controlunit_p2_button;
   reg [1-1:0] M_game_controlunit_reset_button;
-  game_CU_3_debug_8 game_controlunit (
+  game_CU_3_debug_9 game_controlunit (
     .clk(clk),
     .rst(rst),
     .decrease_timer(M_game_controlunit_decrease_timer),
@@ -98,7 +98,7 @@ module beta_1_debug_4 (
   reg [16-1:0] M_game_regfiles_data;
   reg [4-1:0] M_game_regfiles_read_address_a;
   reg [4-1:0] M_game_regfiles_read_address_b;
-  regfile_4_debug_9 game_regfiles (
+  regfile_4_debug_10 game_regfiles (
     .clk(clk),
     .rst(rst),
     .write_address(M_game_regfiles_write_address),
@@ -117,7 +117,7 @@ module beta_1_debug_4 (
     .debug__(M_game_regfiles_debug__)
   );
   wire [1-1:0] M_countdown_timer_value;
-  counter_10 countdown_timer (
+  counter_11 countdown_timer (
     .clk(clk),
     .rst(rst),
     .value(M_countdown_timer_value)
@@ -125,7 +125,7 @@ module beta_1_debug_4 (
   wire [1-1:0] M_game_circle_clock_out;
   wire [8-1:0] M_game_circle_clock_debug_counter;
   reg [16-1:0] M_game_circle_clock_speed;
-  circle_clock_11 game_circle_clock (
+  circle_clock_12 game_circle_clock (
     .clk(clk),
     .rst(rst),
     .speed(M_game_circle_clock_speed),

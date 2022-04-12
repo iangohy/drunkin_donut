@@ -7,9 +7,9 @@ module au_top (
     output io_led [3][8],   // LEDs on IO Shield
     output io_seg [8],      // 7-segment LEDs on IO Shield
     output io_sel [4],      // Digit select on IO Shield
-    /*
     output multi_sev[8],
     output multi_sel[4],
+       /*
     output circle_led[30],
     input reset_button,
     */
@@ -37,6 +37,7 @@ module au_top (
     edge_detector rst_btn_edge(#RISE(1), #FALL(0));
     .rst(rst) {
         beta game_beta;
+        custom_seven_seg p1_score_decoder;
     }
 
   }
@@ -86,10 +87,12 @@ module au_top (
     game_beta.p1_button = p1_btn_edge.out;
     game_beta.p2_button = p2_btn_edge.out;
     game_beta.reset_button = rst_btn_edge.out;
+    p1_score_decoder.data = game_beta.p1_score;
     
-    
-    // io_led[2] = game_beta.countdown_timer_val[7:0];
-    io_led[2] = game_beta.p1_score[7:0];
+    multi_sev = p1_score_decoder.out_7seg;
+    multi_sel = p1_score_decoder.out_7segsel;
+    // io_led[2] = game_beta.p1_score[7:0];
+    io_led[2] = game_beta.countdown_timer_val[7:0];
     io_led[1] = game_beta.circle_left[7:0]; 
     io_led[0] = game_beta.circle_right[15:8];
   }

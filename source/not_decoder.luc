@@ -1,0 +1,12 @@
+module not_decoder #(
+    WIDTH : WIDTH > 0 // width of the input
+   )(
+    input in[WIDTH],
+    output out[c{1,WIDTHx{1b0}}] // width is 2^WIDTH
+  ) {
+  
+  always {
+    out = b1111;     // default to 0
+    out[in] = 0; // set selected bit to 1
+  }
+}

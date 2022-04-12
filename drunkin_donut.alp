@@ -18,6 +18,7 @@
     <component>decoder.luc</component>
     <component>reset_conditioner.luc</component>
     <src>sixteen_bit_shiftright.luc</src>
+    <src>not_decoder.luc</src>
     <component>edge_detector.luc</component>
     <src>beta.luc</src>
     <src>circle_clock.luc</src>
@@ -31,8 +32,7 @@
     <src>custom_seven_seg.luc</src>
     <src>shifter.luc</src>
     <src>add_sub.luc</src>
-    <constraint>alchitry.xdc</constraint>
-    <constraint>io.xdc</constraint>
-    <constraint>alchitry.acf</constraint>
+    <constraint>newau.xdc</constraint>
+    <constraint>custom.acf</constraint>
   </files>
 </project>

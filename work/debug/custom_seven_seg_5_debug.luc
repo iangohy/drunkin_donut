@@ -1,0 +1,42 @@
+module custom_seven_seg_5_debug (
+    input clk,  // clock
+    input rst,  // reset
+    input data[16],
+    output out_7segsel[4],
+    output out_7seg[8], output debug__ [16]
+  ) {
+
+  multi_seven_seg seg(.clk(clk),.rst(rst));
+  sig first_digit[4];
+  sig second_digit[4];
+  sig third_digit[4];
+  sig fourth_digit[4];
+  
+  always {
+    out_7segsel = seg.sel;
+    out_7seg = seg.seg;
+    
+    case(data) {
+      // Win signal
+      hFFFF:
+        seg.values = {4hb,4hc,4h1, 4ha}; 
+        
+      // Lose signal
+      hF000:
+        seg.values = {4he,4h0,4h5,4hd};
+        
+      // Draw Signal
+      hF001:
+        seg.values = {4h8,4h8,4h8,4h8};
+        
+     default:
+        first_digit = data - (10 * (data / 10));
+        second_digit = data / 10;
+        third_digit = data / 100;
+        fourth_digit = data / 1000;
+        seg.values = {fourth_digit, third_digit, second_digit, first_digit};
+        
+    }
+  }
+always debug__ = c{$flatten(data)};
+}

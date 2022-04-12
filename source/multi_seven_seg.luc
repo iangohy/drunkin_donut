@@ -1,6 +1,6 @@
 module multi_seven_seg #(
     DIGITS = 4 : DIGITS > 0,
-    DIV = 16 : DIV >= 0
+    DIV = 10 : DIV >= 0
   )(
     input clk,                // clock
     input rst,                // reset
@@ -17,7 +17,7 @@ module multi_seven_seg #(
   }
  
   seven_seg seg_dec;                      // segment decoder
-  decoder digit_dec (#WIDTH(DIGIT_BITS)); // digit decoder
+  not_decoder digit_dec (#WIDTH(DIGIT_BITS)); // digit decoder
  
   always {
     seg_dec.char = values[ctr.value];     // select the value for the active digit
