@@ -2,8 +2,8 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Apr 12 21:48:15 2022
-# Process ID: 688452
+# Start of session at: Tue Apr 12 22:52:53 2022
+# Process ID: 773208
 # Current directory: /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.runs/synth_1
 # Command line: vivado -log au_top_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source au_top_0.tcl
 # Log file: /home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.runs/synth_1/au_top_0.vds
@@ -17,11 +17,11 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tftg256-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 688521
+INFO: [Synth 8-7075] Helper process launched with PID 773271
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2318.191 ; gain = 0.000 ; free physical = 47103 ; free virtual = 54771
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2313.195 ; gain = 0.000 ; free physical = 45023 ; free virtual = 52831
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'au_top_0' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0_debug_0.v:7]
+INFO: [Synth 8-6157] synthesizing module 'au_top_0' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0.v:7]
 INFO: [Synth 8-6157] synthesizing module 'reset_conditioner_1' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/reset_conditioner_1.v:11]
 	Parameter STAGES bound to: 3'b100 
 INFO: [Synth 8-6155] done synthesizing module 'reset_conditioner_1' (1#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/reset_conditioner_1.v:11]
@@ -29,56 +29,56 @@ INFO: [Synth 8-6157] synthesizing module 'button_conditioner_2' [/home/ian/Docum
 	Parameter CLK_FREQ bound to: 26'b10111110101111000010000000 
 	Parameter MIN_DELAY bound to: 5'b10100 
 	Parameter NUM_SYNC bound to: 2'b10 
-INFO: [Synth 8-6157] synthesizing module 'pipeline_7' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/pipeline_7.v:11]
+INFO: [Synth 8-6157] synthesizing module 'pipeline_6' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/pipeline_6.v:11]
 	Parameter DEPTH bound to: 2'b10 
-INFO: [Synth 8-6155] done synthesizing module 'pipeline_7' (2#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/pipeline_7.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'pipeline_6' (2#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/pipeline_6.v:11]
 INFO: [Synth 8-6155] done synthesizing module 'button_conditioner_2' (3#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/button_conditioner_2.v:13]
 INFO: [Synth 8-6157] synthesizing module 'edge_detector_3' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/edge_detector_3.v:12]
 	Parameter RISE bound to: 1'b1 
 	Parameter FALL bound to: 1'b0 
 INFO: [Synth 8-6155] done synthesizing module 'edge_detector_3' (4#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/edge_detector_3.v:12]
-INFO: [Synth 8-6157] synthesizing module 'beta_1_debug_4' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_1_debug_4.v:7]
-INFO: [Synth 8-6157] synthesizing module 'alu_2_debug_8' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/alu_2_debug_8.v:7]
-INFO: [Synth 8-6157] synthesizing module 'mux_2_21' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_21.v:7]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_21.v:18]
-INFO: [Synth 8-6155] done synthesizing module 'mux_2_21' (5#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_21.v:7]
-INFO: [Synth 8-6157] synthesizing module 'add_sub_16' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/add_sub_16.v:7]
-INFO: [Synth 8-6157] synthesizing module 'full_adder_28' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/full_adder_28.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'full_adder_28' (6#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/full_adder_28.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'add_sub_16' (7#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/add_sub_16.v:7]
-INFO: [Synth 8-6157] synthesizing module 'compare_17' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/compare_17.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'compare_17' (8#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/compare_17.v:7]
-INFO: [Synth 8-6157] synthesizing module 'boolean_18' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/boolean_18.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'boolean_18' (9#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/boolean_18.v:7]
-INFO: [Synth 8-6157] synthesizing module 'shifter_19' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_19.v:7]
-INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_shiftleft_29' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_29.v:7]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_29.v:21]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_29.v:34]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_29.v:47]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_29.v:60]
-INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_shiftleft_29' (10#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_29.v:7]
-INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_shiftright_30' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_30.v:7]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_30.v:21]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_30.v:34]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_30.v:47]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_30.v:60]
-INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_shiftright_30' (11#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_30.v:7]
-INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_sra_31' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_31.v:7]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_31.v:21]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_31.v:34]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_31.v:47]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_31.v:60]
-INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_sra_31' (12#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_31.v:7]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_19.v:51]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_19.v:54]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_19.v:68]
-INFO: [Synth 8-6155] done synthesizing module 'shifter_19' (13#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_19.v:7]
-INFO: [Synth 8-6157] synthesizing module 'multiplier_20' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multiplier_20.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'multiplier_20' (14#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multiplier_20.v:7]
-INFO: [Synth 8-6157] synthesizing module 'mux_4_22' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_4_22.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'mux_4_22' (15#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_4_22.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'alu_2_debug_8' (16#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/alu_2_debug_8.v:7]
-INFO: [Synth 8-6157] synthesizing module 'game_CU_3_debug_9' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_3_debug_9.v:7]
+INFO: [Synth 8-6157] synthesizing module 'beta_4' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_4.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_7' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/alu_7.v:7]
+INFO: [Synth 8-6157] synthesizing module 'mux_2_18' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_18.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_18.v:18]
+INFO: [Synth 8-6155] done synthesizing module 'mux_2_18' (5#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_2_18.v:7]
+INFO: [Synth 8-6157] synthesizing module 'add_sub_13' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/add_sub_13.v:7]
+INFO: [Synth 8-6157] synthesizing module 'full_adder_24' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/full_adder_24.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'full_adder_24' (6#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/full_adder_24.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'add_sub_13' (7#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/add_sub_13.v:7]
+INFO: [Synth 8-6157] synthesizing module 'compare_14' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/compare_14.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'compare_14' (8#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/compare_14.v:7]
+INFO: [Synth 8-6157] synthesizing module 'boolean_15' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/boolean_15.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'boolean_15' (9#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/boolean_15.v:7]
+INFO: [Synth 8-6157] synthesizing module 'shifter_16' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_16.v:7]
+INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_shiftleft_25' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_25.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_25.v:21]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_25.v:34]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_25.v:47]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_25.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_shiftleft_25' (10#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftleft_25.v:7]
+INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_shiftright_26' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_26.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_26.v:21]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_26.v:34]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_26.v:47]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_26.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_shiftright_26' (11#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_shiftright_26.v:7]
+INFO: [Synth 8-6157] synthesizing module 'sixteen_bit_sra_27' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_27.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_27.v:21]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_27.v:34]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_27.v:47]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_27.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'sixteen_bit_sra_27' (12#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/sixteen_bit_sra_27.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_16.v:51]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_16.v:54]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_16.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'shifter_16' (13#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/shifter_16.v:7]
+INFO: [Synth 8-6157] synthesizing module 'multiplier_17' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multiplier_17.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'multiplier_17' (14#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multiplier_17.v:7]
+INFO: [Synth 8-6157] synthesizing module 'mux_4_19' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_4_19.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4_19' (15#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/mux_4_19.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'alu_7' (16#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/alu_7.v:7]
+INFO: [Synth 8-6157] synthesizing module 'game_CU_8' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_8.v:7]
 	Parameter RESET_SPEED_game_fsm bound to: 6'b000000 
 	Parameter RESET_P1_SCORE_game_fsm bound to: 6'b000001 
 	Parameter RESET_P2_SCORE_game_fsm bound to: 6'b000010 
@@ -136,103 +136,62 @@ INFO: [Synth 8-6157] synthesizing module 'game_CU_3_debug_9' [/home/ian/Document
 	Parameter LIGHT_UPPER_LEFT_LED_game_fsm bound to: 6'b110110 
 	Parameter LIGHT_LOWER_RIGHT_LED_game_fsm bound to: 6'b110111 
 	Parameter GAMEOVER_game_fsm bound to: 6'b111000 
-INFO: [Synth 8-155] case statement is not full and has no default [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_3_debug_9.v:105]
-INFO: [Synth 8-6155] done synthesizing module 'game_CU_3_debug_9' (17#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_3_debug_9.v:7]
-INFO: [Synth 8-6157] synthesizing module 'regfile_10' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_10.v:7]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_10.v:50]
-INFO: [Synth 8-6155] done synthesizing module 'regfile_10' (18#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_10.v:7]
-INFO: [Synth 8-6157] synthesizing module 'counter_11' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_11.v:14]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_8.v:104]
+INFO: [Synth 8-6155] done synthesizing module 'game_CU_8' (17#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/game_CU_8.v:7]
+INFO: [Synth 8-6157] synthesizing module 'regfile_9' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_9.v:7]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_9.v:50]
+INFO: [Synth 8-6155] done synthesizing module 'regfile_9' (18#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/regfile_9.v:7]
+INFO: [Synth 8-6157] synthesizing module 'counter_10' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_10.v:14]
 	Parameter SIZE bound to: 1'b1 
 	Parameter DIV bound to: 5'b11010 
 	Parameter TOP bound to: 1'b0 
 	Parameter UP bound to: 1'b1 
 	Parameter MAX_VALUE bound to: 27'b011111111111111111111111111 
-INFO: [Synth 8-6155] done synthesizing module 'counter_11' (19#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_11.v:14]
-INFO: [Synth 8-6157] synthesizing module 'circle_clock_4_debug_12' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/circle_clock_4_debug_12.v:7]
-INFO: [Synth 8-6157] synthesizing module 'counter_23' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_23.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'counter_10' (19#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_10.v:14]
+INFO: [Synth 8-6157] synthesizing module 'circle_clock_11' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/circle_clock_11.v:7]
+INFO: [Synth 8-6157] synthesizing module 'counter_20' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_20.v:14]
 	Parameter SIZE bound to: 1'b1 
 	Parameter DIV bound to: 5'b10101 
 	Parameter TOP bound to: 1'b0 
 	Parameter UP bound to: 1'b1 
 	Parameter MAX_VALUE bound to: 22'b0111111111111111111111 
-INFO: [Synth 8-6155] done synthesizing module 'counter_23' (20#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_23.v:14]
-INFO: [Synth 8-6155] done synthesizing module 'circle_clock_4_debug_12' (21#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/circle_clock_4_debug_12.v:7]
-INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_1_debug_4.v:166]
-INFO: [Synth 8-6155] done synthesizing module 'beta_1_debug_4' (22#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_1_debug_4.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'counter_20' (20#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_20.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'circle_clock_11' (21#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/circle_clock_11.v:7]
+INFO: [Synth 8-226] default block is never used [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_4.v:159]
+INFO: [Synth 8-6155] done synthesizing module 'beta_4' (22#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/beta_4.v:7]
 INFO: [Synth 8-6157] synthesizing module 'custom_seven_seg_5' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/custom_seven_seg_5.v:7]
-INFO: [Synth 8-6157] synthesizing module 'multi_seven_seg_13' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multi_seven_seg_13.v:12]
+INFO: [Synth 8-6157] synthesizing module 'multi_seven_seg_12' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multi_seven_seg_12.v:12]
 	Parameter DIGITS bound to: 3'b100 
 	Parameter DIV bound to: 4'b1010 
 	Parameter DIGIT_BITS bound to: 2'b10 
-INFO: [Synth 8-6157] synthesizing module 'counter_24' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_24.v:14]
+INFO: [Synth 8-6157] synthesizing module 'counter_21' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_21.v:14]
 	Parameter SIZE bound to: 2'b10 
 	Parameter DIV bound to: 4'b1010 
 	Parameter TOP bound to: 4'b0011 
 	Parameter UP bound to: 1'b1 
 	Parameter MAX_VALUE bound to: 14'b00111111111111 
-INFO: [Synth 8-6155] done synthesizing module 'counter_24' (23#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_24.v:14]
-INFO: [Synth 8-6157] synthesizing module 'seven_seg_25' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/seven_seg_25.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'seven_seg_25' (24#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/seven_seg_25.v:7]
-INFO: [Synth 8-6157] synthesizing module 'not_decoder_26' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/not_decoder_26.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'counter_21' (23#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/counter_21.v:14]
+INFO: [Synth 8-6157] synthesizing module 'seven_seg_22' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/seven_seg_22.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'seven_seg_22' (24#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/seven_seg_22.v:7]
+INFO: [Synth 8-6157] synthesizing module 'not_decoder_23' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/not_decoder_23.v:11]
 	Parameter WIDTH bound to: 2'b10 
-INFO: [Synth 8-6155] done synthesizing module 'not_decoder_26' (25#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/not_decoder_26.v:11]
-INFO: [Synth 8-6155] done synthesizing module 'multi_seven_seg_13' (26#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multi_seven_seg_13.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'not_decoder_23' (25#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/not_decoder_23.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'multi_seven_seg_12' (26#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/multi_seven_seg_12.v:12]
 INFO: [Synth 8-6155] done synthesizing module 'custom_seven_seg_5' (27#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/custom_seven_seg_5.v:7]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0_debug_0.v:130]
-INFO: [Synth 8-6157] synthesizing module 'au_debugger_6' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_debugger_6.v:13]
-	Parameter DATA_WIDTH bound to: 8'b10100010 
-	Parameter CAPTURE_DEPTH bound to: 9'b100000000 
-	Parameter NONCE bound to: -1155823758 - type: integer 
-	Parameter VERSION bound to: 2'b11 
-	Parameter IDLE_state bound to: 2'b00 
-	Parameter ARMED_state bound to: 2'b01 
-	Parameter FIRED_state bound to: 2'b10 
-	Parameter CAPTURED_state bound to: 2'b11 
-INFO: [Synth 8-6157] synthesizing module 'BSCANE2' [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
-	Parameter DISABLE_JTAG bound to: FALSE - type: string 
-	Parameter JTAG_CHAIN bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'BSCANE2' (28#1) [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
-INFO: [Synth 8-6157] synthesizing module 'BSCANE2__parameterized0' [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
-	Parameter DISABLE_JTAG bound to: FALSE - type: string 
-	Parameter JTAG_CHAIN bound to: 2 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'BSCANE2__parameterized0' (28#1) [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
-INFO: [Synth 8-6157] synthesizing module 'BSCANE2__parameterized1' [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
-	Parameter DISABLE_JTAG bound to: FALSE - type: string 
-	Parameter JTAG_CHAIN bound to: 3 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'BSCANE2__parameterized1' (28#1) [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
-INFO: [Synth 8-6157] synthesizing module 'BSCANE2__parameterized2' [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
-	Parameter DISABLE_JTAG bound to: FALSE - type: string 
-	Parameter JTAG_CHAIN bound to: 4 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'BSCANE2__parameterized2' (28#1) [/tools/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:884]
-INFO: [Synth 8-6157] synthesizing module 'async_fifo_14' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/async_fifo_14.v:12]
-	Parameter SIZE bound to: 1'b1 
-	Parameter DEPTH bound to: 4'b1000 
-	Parameter ADDR_SIZE bound to: 2'b11 
-INFO: [Synth 8-6157] synthesizing module 'simple_dual_ram_27' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/simple_dual_ram_27.v:48]
-	Parameter SIZE bound to: 1'b1 
-	Parameter DEPTH bound to: 4'b1000 
-INFO: [Synth 8-6155] done synthesizing module 'simple_dual_ram_27' (29#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/simple_dual_ram_27.v:48]
-INFO: [Synth 8-6155] done synthesizing module 'async_fifo_14' (30#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/async_fifo_14.v:12]
-INFO: [Synth 8-6157] synthesizing module 'simple_dual_ram_15' [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/simple_dual_ram_15.v:48]
-	Parameter SIZE bound to: 8'b10100010 
-	Parameter DEPTH bound to: 9'b100000000 
-INFO: [Synth 8-6155] done synthesizing module 'simple_dual_ram_15' (31#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/simple_dual_ram_15.v:48]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_debugger_6.v:251]
-INFO: [Synth 8-6155] done synthesizing module 'au_debugger_6' (32#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_debugger_6.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'au_top_0' (33#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0_debug_0.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'au_top_0' (28#1) [/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.srcs/sources_1/imports/verilog/au_top_0.v:7]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2318.191 ; gain = 0.000 ; free physical = 47775 ; free virtual = 55444
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2313.195 ; gain = 0.000 ; free physical = 45632 ; free virtual = 53440
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2318.191 ; gain = 0.000 ; free physical = 47744 ; free virtual = 55420
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2313.195 ; gain = 0.000 ; free physical = 45689 ; free virtual = 53498
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2318.191 ; gain = 0.000 ; free physical = 47744 ; free virtual = 55420
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2313.195 ; gain = 0.000 ; free physical = 45689 ; free virtual = 53498
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2318.191 ; gain = 0.000 ; free physical = 47712 ; free virtual = 55398
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2313.195 ; gain = 0.000 ; free physical = 45682 ; free virtual = 53491
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -247,28 +206,28 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2382.223 ; gain = 0.000 ; free physical = 47618 ; free virtual = 55289
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2377.227 ; gain = 0.000 ; free physical = 45599 ; free virtual = 53405
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2382.223 ; gain = 0.000 ; free physical = 47618 ; free virtual = 55289
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2377.227 ; gain = 0.000 ; free physical = 45599 ; free virtual = 53405
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47773 ; free virtual = 55438
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 45669 ; free virtual = 53474
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tftg256-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47773 ; free virtual = 55438
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 45669 ; free virtual = 53474
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47773 ; free virtual = 55438
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 45669 ; free virtual = 53474
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-802] inferred FSM for state register 'M_game_fsm_q_reg' in module 'game_CU_3_debug_9'
+INFO: [Synth 8-802] inferred FSM for state register 'M_game_fsm_q_reg' in module 'game_CU_8'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -329,62 +288,48 @@ BRANCH_CMPEQ_LEFT_game_fsm |                           110101 |                 
 PLUS1_TO_RIGHT_HALF_game_fsm |                           110110 |                           011000
       COUNTDOWN_game_fsm |                           110111 |                           001010
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'M_game_fsm_q_reg' using encoding 'sequential' in module 'game_CU_3_debug_9'
+INFO: [Synth 8-3354] encoded FSM with state register 'M_game_fsm_q_reg' using encoding 'sequential' in module 'game_CU_8'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47744 ; free virtual = 55413
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 45655 ; free virtual = 53461
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   12 Bit       Adders := 1     
-	   2 Input    8 Bit       Adders := 4     
-	   2 Input    3 Bit       Adders := 3     
+	   2 Input   12 Bit       Adders := 3     
+	   2 Input    8 Bit       Adders := 1     
 +---XORs : 
 	   2 Input     16 Bit         XORs := 2     
-	   2 Input      3 Bit         XORs := 3     
 	   3 Input      1 Bit         XORs := 136   
 	   2 Input      1 Bit         XORs := 2     
 +---Registers : 
-	              162 Bit    Registers := 2     
-	              104 Bit    Registers := 1     
 	               16 Bit    Registers := 9     
-	               12 Bit    Registers := 1     
-	                9 Bit    Registers := 2     
-	                8 Bit    Registers := 4     
-	                4 Bit    Registers := 2     
-	                3 Bit    Registers := 4     
-	                2 Bit    Registers := 7     
-	                1 Bit    Registers := 7     
-+---RAMs : 
-	              40K Bit	(256 X 162 bit)          RAMs := 1     
-	                8 Bit	(8 X 1 bit)          RAMs := 1     
+	               12 Bit    Registers := 3     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 5     
 +---Muxes : 
-	   2 Input  648 Bit        Muxes := 1     
-	   2 Input  162 Bit        Muxes := 6     
-	   2 Input  104 Bit        Muxes := 3     
-	   2 Input   16 Bit        Muxes := 16    
-	   4 Input   16 Bit        Muxes := 4     
+	   2 Input   16 Bit        Muxes := 18    
+	   4 Input   16 Bit        Muxes := 6     
 	   8 Input   16 Bit        Muxes := 1     
-	   2 Input   12 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 13    
-	   4 Input    8 Bit        Muxes := 2     
+	   2 Input   12 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 11    
 	  56 Input    7 Bit        Muxes := 1     
 	   2 Input    7 Bit        Muxes := 1     
-	  56 Input    6 Bit        Muxes := 1     
 	  72 Input    6 Bit        Muxes := 1     
 	  56 Input    4 Bit        Muxes := 2     
 	   2 Input    4 Bit        Muxes := 2     
-	   4 Input    4 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 3     
 	  56 Input    3 Bit        Muxes := 2     
 	   2 Input    3 Bit        Muxes := 2     
 	  56 Input    2 Bit        Muxes := 2     
 	   2 Input    2 Bit        Muxes := 2     
-	   4 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 54    
-	   4 Input    1 Bit        Muxes := 4     
-	   5 Input    1 Bit        Muxes := 2     
+	   4 Input    2 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 51    
+	   4 Input    1 Bit        Muxes := 1     
+	   5 Input    1 Bit        Muxes := 1     
 	  56 Input    1 Bit        Muxes := 2     
 	  10 Input    1 Bit        Muxes := 9     
 ---------------------------------------------------------------------------------
@@ -402,76 +347,26 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5784] Optimized 1 bits of RAM "ram/mem_reg" due to constant propagation. Old ram width 162 bits, new ram width 161 bits.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:11 ; elapsed = 00:01:12 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47644 ; free virtual = 55349
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
-
-Block RAM: Preliminary Mapping	Report (see note below)
-+------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name | RTL Object  | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|debugger    | ram/mem_reg | 256 x 162(NO_CHANGE)   | W |   | 256 x 162(WRITE_FIRST) |   | R | Port A and B     | 1      | 2      | 
-+------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-
-Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
-
-Distributed RAM: Preliminary Mapping	Report (see note below)
-+------------+-------------------------+-----------+----------------------+---------------+
-|Module Name | RTL Object              | Inference | Size (Depth x Width) | Primitives    | 
-+------------+-------------------------+-----------+----------------------+---------------+
-|debugger    | config_fifo/ram/mem_reg | Implied   | 8 x 1                | RAM16X1D x 1	 | 
-+------------+-------------------------+-----------+----------------------+---------------+
-
-Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:02 ; elapsed = 00:01:03 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 44512 ; free virtual = 52621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:15 ; elapsed = 00:01:16 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47544 ; free virtual = 55246
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:08 ; elapsed = 00:01:10 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 43965 ; free virtual = 52225
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:40 ; elapsed = 00:01:42 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47378 ; free virtual = 55091
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
-
-Block RAM: Final Mapping	Report
-+------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name | RTL Object  | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|debugger    | ram/mem_reg | 256 x 162(NO_CHANGE)   | W |   | 256 x 162(WRITE_FIRST) |   | R | Port A and B     | 1      | 2      | 
-+------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-
-
-Distributed RAM: Final Mapping	Report
-+------------+-------------------------+-----------+----------------------+---------------+
-|Module Name | RTL Object              | Inference | Size (Depth x Width) | Primitives    | 
-+------------+-------------------------+-----------+----------------------+---------------+
-|debugger    | config_fifo/ram/mem_reg | Implied   | 8 x 1                | RAM16X1D x 1	 | 
-+------------+-------------------------+-----------+----------------------+---------------+
-
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+Finished Timing Optimization : Time (s): cpu = 00:01:19 ; elapsed = 00:01:21 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 40790 ; free virtual = 51829
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-7052] The timing for the instance debugger/ram/mem_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance debugger/ram/mem_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance debugger/ram/mem_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:41 ; elapsed = 00:01:43 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47448 ; free virtual = 55158
+Finished Technology Mapping : Time (s): cpu = 00:01:20 ; elapsed = 00:01:22 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 40287 ; free virtual = 51741
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -489,56 +384,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:43 ; elapsed = 00:01:45 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47453 ; free virtual = 55157
+Finished IO Insertion : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 40015 ; free virtual = 51740
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:43 ; elapsed = 00:01:45 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47453 ; free virtual = 55157
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 40014 ; free virtual = 51740
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:43 ; elapsed = 00:01:45 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47456 ; free virtual = 55160
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 39991 ; free virtual = 51741
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:43 ; elapsed = 00:01:45 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47456 ; free virtual = 55160
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 39991 ; free virtual = 51742
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:44 ; elapsed = 00:01:45 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47456 ; free virtual = 55160
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 39989 ; free virtual = 51742
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:44 ; elapsed = 00:01:45 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47456 ; free virtual = 55160
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP, Shift Register and Retiming Reporting
----------------------------------------------------------------------------------
-
-Static Shift Register Report:
-+------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|Module Name | RTL Name                              | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
-+------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|au_top_0    | debugger/config_fifo/M_rsync_q_reg[8] | 3      | 3     | NO           | NO                 | YES               | 3      | 0       | 
-|au_top_0    | debugger/config_fifo/M_wsync_q_reg[8] | 3      | 3     | NO           | NO                 | YES               | 3      | 0       | 
-|au_top_0    | debugger/M_status_q_reg[98]           | 6      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-|au_top_0    | debugger/M_status_q_reg[73]           | 23     | 1     | YES          | NO                 | YES               | 0      | 1       | 
-|au_top_0    | debugger/M_status_q_reg[40]           | 32     | 1     | YES          | NO                 | YES               | 0      | 1       | 
-|au_top_0    | debugger/M_status_q_reg[11]           | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
-+------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 39987 ; free virtual = 51741
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -551,50 +427,43 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+---------+------+
-|      |Cell     |Count |
-+------+---------+------+
-|1     |BSCANE2  |     4|
-|2     |BUFG     |     3|
-|3     |CARRY4   |    28|
-|4     |LUT1     |    24|
-|5     |LUT2     |    89|
-|6     |LUT3     |    79|
-|7     |LUT4     |   252|
-|8     |LUT5     |   127|
-|9     |LUT6     |   434|
-|10    |MUXF7    |    12|
-|11    |RAM16X1D |     1|
-|12    |RAMB18E1 |     1|
-|13    |RAMB36E1 |     2|
-|14    |SRL16E   |     8|
-|15    |SRLC32E  |     2|
-|16    |FDRE     |  1351|
-|17    |FDSE     |    32|
-|18    |IBUF     |     6|
-|19    |OBUF     |    45|
-+------+---------+------+
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |   136|
+|3     |LUT1   |    31|
+|4     |LUT2   |   287|
+|5     |LUT3   |   187|
+|6     |LUT4   |   193|
+|7     |LUT5   |   173|
+|8     |LUT6   |   470|
+|9     |MUXF7  |     1|
+|10    |FDRE   |   310|
+|11    |FDSE   |     4|
+|12    |IBUF   |     6|
+|13    |OBUF   |    67|
++------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:44 ; elapsed = 00:01:45 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47456 ; free virtual = 55160
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 39986 ; free virtual = 51741
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:41 ; elapsed = 00:01:43 . Memory (MB): peak = 2382.223 ; gain = 0.000 ; free physical = 47508 ; free virtual = 55212
-Synthesis Optimization Complete : Time (s): cpu = 00:01:44 ; elapsed = 00:01:46 . Memory (MB): peak = 2382.223 ; gain = 64.031 ; free physical = 47508 ; free virtual = 55212
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:21 ; elapsed = 00:01:23 . Memory (MB): peak = 2377.227 ; gain = 0.000 ; free physical = 40023 ; free virtual = 51795
+Synthesis Optimization Complete : Time (s): cpu = 00:01:23 ; elapsed = 00:01:25 . Memory (MB): peak = 2377.227 ; gain = 64.031 ; free physical = 40023 ; free virtual = 51795
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2382.223 ; gain = 0.000 ; free physical = 47596 ; free virtual = 55300
-INFO: [Netlist 29-17] Analyzing 44 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2377.227 ; gain = 0.000 ; free physical = 40075 ; free virtual = 51868
+INFO: [Netlist 29-17] Analyzing 137 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2382.223 ; gain = 0.000 ; free physical = 47547 ; free virtual = 55252
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2377.227 ; gain = 0.000 ; free physical = 39962 ; free virtual = 51822
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 1 instances were transformed.
-  RAM16X1D => RAM32X1D (RAMD32(x2)): 1 instance 
+No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-114 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+93 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:51 ; elapsed = 00:01:49 . Memory (MB): peak = 2382.223 ; gain = 100.906 ; free physical = 47754 ; free virtual = 55458
+synth_design: Time (s): cpu = 00:01:31 ; elapsed = 00:01:29 . Memory (MB): peak = 2377.227 ; gain = 95.906 ; free physical = 40120 ; free virtual = 52009
 INFO: [Common 17-1381] The checkpoint '/home/ian/Documents/drunkin_donut/work/vivado/drunkin_donut/drunkin_donut.runs/synth_1/au_top_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file au_top_0_utilization_synth.rpt -pb au_top_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Apr 12 21:50:11 2022...
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 12 22:54:30 2022...

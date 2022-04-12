@@ -1,22 +1,18 @@
 module au_top (
     input clk,              // 100MHz clock
     input rst_n,            // reset button (active low)
-    output led [8],         // 8 user controllable LEDs
     input usb_rx,           // USB->Serial input
-    output usb_tx,          // USB->Serial output
-    output io_led [3][8],   // LEDs on IO Shield
-    output io_seg [8],      // 7-segment LEDs on IO Shield
-    output io_sel [4],      // Digit select on IO Shield
-    /*
-    output p1_sev[8],
-    output p1_sel[4],
-    output circle_led[30],
     input reset_button,
     input p1_button,
     input p2_button,
-    */
-    input io_button [5],    // 5 buttons on IO Shield
-    input io_dip [3][8]     // DIP switches on IO Shield
+    output usb_tx,          // USB->Serial output
+    output p1_sev[8],
+    output p1_sel[4],
+    output p2_sev[8],
+    output p2_sel[4],
+    output timer_sev[8],
+    output timer_sel[4],
+    output circle_led[30]
   ) {
   
   sig rst;                  // reset signal
@@ -40,6 +36,8 @@ module au_top (
     .rst(rst) {
         beta game_beta;
         custom_seven_seg p1_score_decoder;
+        custom_seven_seg p2_score_decoder;
+        custom_seven_seg timer_decoder;
     }
 
   }
@@ -49,12 +47,6 @@ module au_top (
     rst = reset_cond.out;   // conditioned reset
     
     usb_tx = usb_rx;        // loop serial port
-    
-    led = 8h00;             // turn LEDs off
-    
-    io_led = 3x{{8h00}};    // turn LEDs off
-    io_seg = 8hff;          // turn segments off
-    io_sel = 4hf;           // select no digits
     
     /* Simple fsm to test hardware
     simple.buttonNext = reset_button;
@@ -79,10 +71,19 @@ module au_top (
     io_led[2] = test.q;
     */
     
-    /*
+    // Test with prototype
+    // Reset outputs to 0
+    circle_led = 30b0;
+    p1_sev = 8b0;
+    p2_sev = 8b0;
+    timer_sev = 8b0;
+    
+    // Prototype inputs
     p1_btn_cond.in = p1_button;
     p2_btn_cond.in = p2_button;
     rst_btn_cond.in = reset_button;
+    
+    // Signal processing
     p1_btn_edge.in  = p1_btn_cond.out;
     p2_btn_edge.in = p2_btn_cond.out;
     rst_btn_edge.in = rst_btn_cond.out;
@@ -90,14 +91,20 @@ module au_top (
     game_beta.p2_button = p2_btn_edge.out;
     game_beta.reset_button = rst_btn_edge.out;
     p1_score_decoder.data = game_beta.p1_score;
+    p2_score_decoder.data = game_beta.p2_score;
+    timer_decoder.data = game_beta.countdown_timer_val;
     
+    // Prototype outputs
     p1_sev = p1_score_decoder.out_7seg;
     p1_sel = p1_score_decoder.out_7segsel;
+    p2_sev = p2_score_decoder.out_7seg;
+    p2_sel = p2_score_decoder.out_7segsel;
+    timer_sev = timer_decoder.out_7seg;
+    timer_sel = timer_decoder.out_7segsel;
     circle_led[14:0] = game_beta.circle_left[14:0];
     circle_led[29:15] = game_beta.circle_right[14:0];
-    */
 
-    // Test with Alchitry IO
+    /* Test with Alchitry IO
     p1_btn_cond.in = io_button[0];
     p2_btn_cond.in = io_button[1];
     rst_btn_cond.in = io_button[2];
@@ -114,6 +121,7 @@ module au_top (
     io_led[2] = game_beta.countdown_timer_val[7:0];
     io_led[1] = game_beta.circle_left[7:0]; 
     io_led[0] = game_beta.circle_right[14:7];
+    */
   }
 }
 

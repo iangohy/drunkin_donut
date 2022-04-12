@@ -17,7 +17,7 @@ module custom_seven_seg_5 (
   wire [8-1:0] M_seg_seg;
   wire [4-1:0] M_seg_sel;
   reg [16-1:0] M_seg_values;
-  multi_seven_seg_13 seg (
+  multi_seven_seg_12 seg (
     .clk(clk),
     .rst(rst),
     .values(M_seg_values),

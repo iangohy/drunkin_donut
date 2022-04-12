@@ -1,6 +1,3 @@
-Warnings in file /home/ian/Documents/drunkin_donut/source/au_top.luc:
-    Line 42, Column 8 : "p1_score_decoder" was never used
-    Line 19, Column 4 : "io_dip" was never used
 Starting Vivado...
 Vivado exited.
 
