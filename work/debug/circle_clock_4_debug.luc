@@ -1,9 +1,9 @@
-module circle_clock (
+module circle_clock_4_debug (
     input clk,  // clock
     input rst,  // reset
     input speed[16],
     output out,
-    output debug_counter[8]
+    output debug_counter[8], output debug__ [16]
   ) {
   
   // ~0.02s
@@ -90,4 +90,5 @@ module circle_clock (
     }
         
   }
+always debug__ = c{$flatten(speed)};
 }

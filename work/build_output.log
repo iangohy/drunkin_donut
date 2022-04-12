@@ -1,36 +1,7 @@
 Warnings in file /home/ian/Documents/drunkin_donut/source/au_top.luc:
-    Line 17, Column 4 : "io_dip" was never used
-Errors in file /home/ian/Documents/drunkin_donut/constraint/custom.acf:
-    Line 132, Column 4 : The port circle_led is not a port of the top module
-    Line 95, Column 4 : The port reset_button is not a port of the top module
-    Line 96, Column 4 : The port p1_button is not a port of the top module
-    Line 97, Column 4 : The port p2_button is not a port of the top module
-    Line 100, Column 4 : The port circle_led is not a port of the top module
-    Line 101, Column 4 : The port circle_led is not a port of the top module
-    Line 102, Column 4 : The port circle_led is not a port of the top module
-    Line 103, Column 4 : The port circle_led is not a port of the top module
-    Line 104, Column 4 : The port circle_led is not a port of the top module
-    Line 105, Column 4 : The port circle_led is not a port of the top module
-    Line 106, Column 4 : The port circle_led is not a port of the top module
-    Line 107, Column 4 : The port circle_led is not a port of the top module
-    Line 108, Column 4 : The port circle_led is not a port of the top module
-    Line 109, Column 4 : The port circle_led is not a port of the top module
-    Line 110, Column 4 : The port circle_led is not a port of the top module
-    Line 111, Column 4 : The port circle_led is not a port of the top module
-    Line 112, Column 4 : The port circle_led is not a port of the top module
-    Line 113, Column 4 : The port circle_led is not a port of the top module
-    Line 114, Column 4 : The port circle_led is not a port of the top module
-    Line 118, Column 4 : The port circle_led is not a port of the top module
-    Line 119, Column 4 : The port circle_led is not a port of the top module
-    Line 120, Column 4 : The port circle_led is not a port of the top module
-    Line 121, Column 4 : The port circle_led is not a port of the top module
-    Line 122, Column 4 : The port circle_led is not a port of the top module
-    Line 123, Column 4 : The port circle_led is not a port of the top module
-    Line 124, Column 4 : The port circle_led is not a port of the top module
-    Line 125, Column 4 : The port circle_led is not a port of the top module
-    Line 126, Column 4 : The port circle_led is not a port of the top module
-    Line 127, Column 4 : The port circle_led is not a port of the top module
-    Line 128, Column 4 : The port circle_led is not a port of the top module
-    Line 129, Column 4 : The port circle_led is not a port of the top module
-    Line 130, Column 4 : The port circle_led is not a port of the top module
-    Line 131, Column 4 : The port circle_led is not a port of the top module
+    Line 42, Column 8 : "p1_score_decoder" was never used
+    Line 19, Column 4 : "io_dip" was never used
+Starting Vivado...
+Vivado exited.
+
+Finished building project.

@@ -1,0 +1,109 @@
+module beta_1_debug (
+    input p1_button,
+    input p2_button,
+    input reset_button,
+    input clk,  // clock
+    input rst,  // reset
+    
+    output countdown_timer_val[16],
+    output p1_score[16],
+    output p2_score[16],
+    output circle_left[16],
+    output circle_right[16], output debug__ [82]
+  
+) {
+  
+  sig alu_input_a[16];
+  sig alu_input_b[16];
+  sig wdsel_mux_out[16];
+  
+  alu_2_debug game_alu;
+  
+  .clk(clk){
+    // not very sure about edge detectors and our circle_clock + timer inputs to FSM/control unit
+    edge_detector countdown_rising_edge (#RISE(1), #FALL(0));
+    
+    .rst(rst){
+      // INIT FSM
+      game_CU_3_debug game_controlunit;
+      
+      // INIT REGFILE
+      regfile game_regfiles;
+      
+      // INIT TIMER AND CIRCLE CLOCK
+      counter countdown_timer(#SIZE(1),#DIV(26));
+      circle_clock_4_debug game_circle_clock; 
+    }
+  }
+
+  always {
+    // pass button presses to FSM
+    game_controlunit.p1_button = p1_button;
+    game_controlunit.p2_button = p2_button;
+    game_controlunit.reset_button = reset_button;
+    
+    // setup REGFILES
+    game_regfiles.we = game_controlunit.we_regfile;
+    game_regfiles.write_address = game_controlunit.regfile_write_address;
+    game_regfiles.read_address_a = game_controlunit.regfile_read_address_a;
+    game_regfiles.read_address_b = game_controlunit.regfile_read_address_b;
+    
+    // regfile rb output connect to FSM
+    game_controlunit.rb_data = game_regfiles.out_b;
+    game_controlunit.countdown_time_reg = game_regfiles.countdown_time_out;
+    
+    // setup timers
+    countdown_rising_edge.in = countdown_timer.value;
+    game_circle_clock.speed = game_regfiles.speed_out;
+    
+    // pass circle_clock and timer signals to FSM here, need regfiles' speed counter output
+    game_controlunit.decrease_timer = countdown_rising_edge.out;
+    game_controlunit.circle_clock = game_circle_clock.out;
+  
+    // ALU asel mux
+    case(game_controlunit.asel){
+      b00  : alu_input_a = game_regfiles.out_a;
+      b01  : alu_input_a = 16h003C; 
+      b10  : alu_input_a = 16h7FFF;
+      default : //b11 unused
+          alu_input_a = 16b0;
+    }
+    
+    // ALU bsel mux
+    case(game_controlunit.bsel){
+      b00 : alu_input_b = game_regfiles.out_b;
+      b01 : alu_input_b = 16h8000;
+      b10 : alu_input_b = 16h0001;
+      b11 : alu_input_b = 16b0;
+      default: //necessary to init
+          alu_input_b = 16b0;
+    }
+    
+    // ALU SIGNALS
+    game_alu.a = alu_input_a;
+    game_alu.b = alu_input_b;
+    game_alu.alufn = game_controlunit.alufn[6:0];
+    
+    // WDSEL mux
+    case(game_controlunit.wdsel) {
+      b000: wdsel_mux_out = game_alu.out;
+      b001: wdsel_mux_out = 16hFFFF;
+      b010: wdsel_mux_out = 16hF000;
+      b011: wdsel_mux_out = 16hF001;
+      b100: wdsel_mux_out = 16b0;
+      b101: wdsel_mux_out = 16h00FF;
+      b110: wdsel_mux_out = 16hFF00;
+      default:
+        wdsel_mux_out = 0; //b111 unused
+    }
+    game_regfiles.data = wdsel_mux_out;
+    
+    // take outputs of regfile (output circle halves, countdown timer, p1 and p2 scores) and make them outputs of beta here?
+    p1_score = game_regfiles.p1_score_out;
+    p2_score = game_regfiles.p2_score_out;
+    countdown_timer_val = game_regfiles.countdown_time_out;
+    circle_left = game_regfiles.circle_left;
+    circle_right = game_regfiles.circle_right;
+  }
+always debug__ = c{$flatten(game_controlunit.regfile_write_address), $flatten(game_controlunit.regfile_read_address_a), $flatten(game_controlunit.regfile_read_address_b), $flatten(game_regfiles.out_a), $flatten(game_regfiles.out_b), $flatten(game_alu.debug__), $flatten(game_controlunit.debug__), $flatten(game_circle_clock.debug__)};
+}

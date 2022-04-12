@@ -38,7 +38,7 @@ module au_top (
     edge_detector p2_btn_edge(#RISE(1), #FALL(0));
     edge_detector rst_btn_edge(#RISE(1), #FALL(0));
     .rst(rst) {
-        beta game_beta;
+        beta_1_debug game_beta;
         custom_seven_seg p1_score_decoder;
     }
 
@@ -115,6 +115,7 @@ module au_top (
     io_led[1] = game_beta.circle_left[7:0]; 
     io_led[0] = game_beta.circle_right[14:7];
   }
+au_debugger debugger (#NONCE(3139143538), #DATA_WIDTH(162), #CAPTURE_DEPTH(256), .clk(clk));always debugger.data = c{$flatten(game_beta.countdown_timer_val), $flatten(game_beta.p1_score), $flatten(game_beta.p2_score), $flatten(game_beta.circle_left), $flatten(game_beta.circle_right), $flatten(game_beta.debug__)};
 }
 
 

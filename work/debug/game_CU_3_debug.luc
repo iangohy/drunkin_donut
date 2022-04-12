@@ -1,4 +1,4 @@
-module game_CU (
+module game_CU_3_debug (
     input clk,  // clock
     input rst,  // reset
     input decrease_timer, //SEC
@@ -18,7 +18,7 @@ module game_CU (
     output regfile_write_address[4], // rc 4 bits
     output regfile_read_address_a[4], // ra 4 bits
     output regfile_read_address_b[4], // rb 4 bits
-    output we_regfile// we
+    output we_regfile, output debug__ [6]// we
       
   ) {
     .clk(clk){
@@ -619,4 +619,5 @@ module game_CU (
       }//case parenthesis
     }// else parenthesis    
   }// always parenthesis
+always debug__ = c{$flatten(game_fsm.q)};
 }
