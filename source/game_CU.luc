@@ -59,7 +59,7 @@ module game_CU (
         CHECK_ANY_LED_SECOND_HALF_NOT_LIT,
         CMPEQ_FIRST_HALF,
         BRANCH_FIRST_HALF,
-        CMPLE_SECOND_HALF,
+        CMPEQ_SECOND_HALF,
         BRANCH_SECOND_HALF,
         CHECK_COUNT_MORETHAN_0, //blue balls (game starts)
         CHECK_TIMER,
@@ -425,16 +425,16 @@ module game_CU (
           regfile_read_address_b = 4h6; // temp reg
           if (rb_data == b1){       // to check implementation
             // first half fully lit
-            game_fsm.d = game_fsm.CMPLE_SECOND_HALF;
+            game_fsm.d = game_fsm.CMPEQ_SECOND_HALF;
           }
           else{
             // first half not fully lit
             game_fsm.d = game_fsm.IDLE;
           }
                             
-        game_fsm.CMPLE_SECOND_HALF:
+        game_fsm.CMPEQ_SECOND_HALF:
           alufn = 7h33;                 // CMPEQ
-          asel = 2h2;                   // CMPLE 0X7FFF // written as 2h4, might be an error
+          asel = 2h2;                   // CMPEQ 0X7FFF
           bsel = 2h0;                   // Reg[rb]
           we_regfile = b0;
           regfile_read_address_b = 4h7; // temp reg
@@ -444,14 +444,16 @@ module game_CU (
         game_fsm.BRANCH_SECOND_HALF:
           we_regfile = b0;            
           regfile_read_address_b = 4h7; // temp reg
-          if (rb_data == 1){       // to check implementation
-            // second half fully liy
+          /*
+          if (rb_data == b1){
+            // second half fully lit
             game_fsm.d = game_fsm.RESET_RIGHT_HALF;
           }
           else {
             // first half not fully lit
             game_fsm.d = game_fsm.IDLE;
-          }            
+          }
+        */        
             
         game_fsm.CHECK_COUNT_MORETHAN_0:
           alufn = 7h33;                 // CMPEQ

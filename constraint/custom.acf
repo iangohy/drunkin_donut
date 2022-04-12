@@ -12,9 +12,10 @@ pin led[5] LED5;
 pin led[6] LED6;
 pin led[7] LED7;
 
-pin io_button[0] B28 pulldown;
-pin io_button[1] B27 pulldown;
-pin io_button[2] B23 pulldown;
+
+//pin io_button[0] B28 pulldown;
+//pin io_button[1] B27 pulldown;
+//pin io_button[2] B23 pulldown;
 
 pin io_led[0][0] B21;
 pin io_led[0][1] B20;
@@ -42,19 +43,19 @@ pin io_led[2][6] A12;
 pin io_led[2][7] A11;
 
 
-pin multi_sev[0] C39; //dp
-pin multi_sev[1] C42; //g
-pin multi_sev[2] C45; //f
-pin multi_sev[3] C48; //e
-pin multi_sev[4] C40; //d 2
-pin multi_sev[5] C43; //c 4
-pin multi_sev[6] C46; //b 7 
-pin multi_sev[7] C49; //a 11
+pin p1_sev[0] C39; //dp 3
+pin p1_sev[1] C42; //g 5
+pin p1_sev[2] C45; //f 10
+pin p1_sev[3] C48; //e 1
+pin p1_sev[4] C40; //d 2
+pin p1_sev[5] C43; //c 4
+pin p1_sev[6] C46; //b 7 
+pin p1_sev[7] C49; //a 11
 
-pin multi_sel[0] C11;//d1
-pin multi_sel[1] C8; //d2
-pin multi_sel[2] C5; //d3
-pin multi_sel[3] C2; //d4
+pin p1_sel[0] C11;//d1
+pin p1_sel[1] C8; //d2
+pin p1_sel[2] C5; //d3
+pin p1_sel[3] C2; //d4
 
 //pin multi_sev2[0] C28;
 //pin multi_sev2[1] C31;
@@ -92,41 +93,44 @@ pin multi_sel[3] C2; //d4
 //pin multi_sel2[3] C14;
 
 //buttons
-// pin reset_button C24 pulldown;
+pin reset_button C24 pulldown;
+pin p1_button C21 pulldown;
+pin p2_button C18 pulldown;
+
 //first half
-// pin circle_led[0] B27;
-// pin circle_led[1] B30;
-// pin circle_led[2] B33;
-// pin circle_led[3] B36;
-// pin circle_led[4] B39;
-// pin circle_led[5] B42;
-// pin circle_led[6] B45;
-// pin circle_led[7] B48;
-// pin circle_led[8] B28;
-// pin circle_led[9] B31;
-// pin circle_led[10] B34;
-// pin circle_led[11] B37;
-// pin circle_led[12] B40;
-// pin circle_led[13] B43;
-// pin circle_led[14] B46;
+pin circle_led[0] B27;
+pin circle_led[1] B30;
+pin circle_led[2] B33;
+pin circle_led[3] B36;
+pin circle_led[4] B39;
+pin circle_led[5] B42;
+pin circle_led[6] B45;
+pin circle_led[7] B48;
+pin circle_led[8] B28;
+pin circle_led[9] B31;
+pin circle_led[10] B34;
+pin circle_led[11] B37;
+pin circle_led[12] B40;
+pin circle_led[13] B43;
+pin circle_led[14] B46;
 
 //second half
 
-// pin circle_led[15] A27;
-// pin circle_led[16] A30;
-// pin circle_led[17] A33;
-// pin circle_led[18] A36;
-// pin circle_led[19] A39;
-// pin circle_led[20] A42;
-// pin circle_led[21] A45;
-// pin circle_led[22] A48;
-// pin circle_led[23] A28;
-// pin circle_led[24] A31;
-// pin circle_led[25] A34;
-// pin circle_led[26] A37;
-// pin circle_led[27] A40;
-// pin circle_led[28] A43;
-// pin circle_led[29] A46;
+pin circle_led[15] A27;
+pin circle_led[16] A30;
+pin circle_led[17] A33;
+pin circle_led[18] A36;
+pin circle_led[19] A39;
+pin circle_led[20] A42;
+pin circle_led[21] A45;
+pin circle_led[22] A48;
+pin circle_led[23] A28;
+pin circle_led[24] A31;
+pin circle_led[25] A34;
+pin circle_led[26] A37;
+pin circle_led[27] A40;
+pin circle_led[28] A43;
+pin circle_led[29] A46;
 
 
 // flip the Tx/Rx lines
