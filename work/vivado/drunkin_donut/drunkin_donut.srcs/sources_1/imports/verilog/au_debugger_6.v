@@ -8,7 +8,7 @@
    Parameters:
      DATA_WIDTH = 154
      CAPTURE_DEPTH = 256
-     NONCE = 4204789083
+     NONCE = 806388296
 */
 module au_debugger_6 (
     input clk,
@@ -17,7 +17,7 @@ module au_debugger_6 (
   
   localparam DATA_WIDTH = 8'h9a;
   localparam CAPTURE_DEPTH = 9'h100;
-  localparam NONCE = 32'hfa9ffd5b;
+  localparam NONCE = 30'h30108248;
   
   
   localparam VERSION = 2'h3;
@@ -227,7 +227,7 @@ module au_debugger_6 (
     
     if (M_info_scan_SEL) begin
       if (M_info_scan_CAPTURE) begin
-        M_status_d = 104'h03000001000000009afa9ffd5b;
+        M_status_d = 104'h03000001000000009a30108248;
       end else begin
         if (M_info_scan_SHIFT) begin
           M_status_d = {M_status_q[0+0-:1], M_status_q[1+102-:103]};
@@ -321,15 +321,6 @@ module au_debugger_6 (
   end
   
   
-  always @(posedge M_capture_scan_TCK) begin
-    if (!M_capture_scan_SEL == 1'b1) begin
-      M_force_q <= 1'h0;
-    end else begin
-      M_force_q <= M_force_d;
-    end
-  end
-  
-  
   always @(posedge M_info_scan_TCK) begin
     M_status_q <= M_status_d;
   end
@@ -339,6 +330,15 @@ module au_debugger_6 (
     M_raddr_q <= M_raddr_d;
     M_offset_q <= M_offset_d;
     M_rdata_q <= M_rdata_d;
+  end
+  
+  
+  always @(posedge M_capture_scan_TCK) begin
+    if (!M_capture_scan_SEL == 1'b1) begin
+      M_force_q <= 1'h0;
+    end else begin
+      M_force_q <= M_force_d;
+    end
   end
   
 endmodule

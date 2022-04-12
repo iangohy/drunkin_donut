@@ -426,14 +426,14 @@ module game_CU_3_debug (
           if (rb_data == b1){       // to check implementation
             // first half fully lit
             game_fsm.d = game_fsm.CMPLE_SECOND_HALF;
-            }
+          }
           else{
             // first half not fully lit
             game_fsm.d = game_fsm.IDLE;
-            }       
+          }
                             
         game_fsm.CMPLE_SECOND_HALF:
-          alufn = 7h37;                 // CMPLE
+          alufn = 7h33;                 // CMPEQ
           asel = 2h2;                   // CMPLE 0X7FFF // written as 2h4, might be an error
           bsel = 2h0;                   // Reg[rb]
           we_regfile = b0;
@@ -447,11 +447,11 @@ module game_CU_3_debug (
           if (rb_data == 1){       // to check implementation
             // second half fully liy
             game_fsm.d = game_fsm.RESET_RIGHT_HALF;
-            }
-          else{
+          }
+          else {
             // first half not fully lit
             game_fsm.d = game_fsm.IDLE;
-            }            
+          }            
             
         game_fsm.CHECK_COUNT_MORETHAN_0:
           alufn = 7h33;                 // CMPEQ

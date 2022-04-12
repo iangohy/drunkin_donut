@@ -412,7 +412,7 @@ module game_CU_3_debug_9 (
           end
         end
         CMPLE_SECOND_HALF_game_fsm: begin
-          alufn = 7'h37;
+          alufn = 7'h33;
           asel = 2'h2;
           bsel = 2'h0;
           we_regfile = 1'h0;

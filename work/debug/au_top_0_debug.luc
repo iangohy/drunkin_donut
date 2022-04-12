@@ -96,7 +96,7 @@ module au_top (
     io_led[1] = game_beta.circle_left[7:0]; 
     io_led[0] = game_beta.circle_right[15:8];
   }
-au_debugger debugger (#NONCE(4204789083), #DATA_WIDTH(154), #CAPTURE_DEPTH(256), .clk(clk));always debugger.data = c{$flatten(game_beta.debug__), $flatten(p1_score_decoder.debug__)};
+au_debugger debugger (#NONCE(806388296), #DATA_WIDTH(154), #CAPTURE_DEPTH(256), .clk(clk));always debugger.data = c{$flatten(game_beta.debug__), $flatten(p1_score_decoder.debug__)};
 }
 
 

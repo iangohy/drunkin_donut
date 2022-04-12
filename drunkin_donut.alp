@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="drunkin_donut" board="Alchitry Au" language="Lucid" version="3">
   <files>
-    <src>seven_seg.luc</src>
-    <src>mux_4.luc</src>
-    <src>compare.luc</src>
-    <src>simple_fsm.luc</src>
-    <src>regfile.luc</src>
-    <src top="true">au_top.luc</src>
-    <src>sixteen_bit_sra.luc</src>
-    <src>pausing_counter.luc</src>
-    <src>game_CU.luc</src>
-    <src>decimal_counter.luc</src>
     <src>boolean.luc</src>
-    <component>counter.luc</component>
-    <src>alu.luc</src>
-    <src>rca_five.luc</src>
-    <component>decoder.luc</component>
-    <component>reset_conditioner.luc</component>
-    <src>sixteen_bit_shiftright.luc</src>
-    <src>not_decoder.luc</src>
-    <component>edge_detector.luc</component>
-    <src>beta.luc</src>
-    <src>circle_clock.luc</src>
-    <src>full_adder.luc</src>
-    <src>multiplier.luc</src>
-    <src>multi_seven_seg.luc</src>
     <component>pipeline.luc</component>
-    <component>button_conditioner.luc</component>
-    <src>sixteen_bit_shiftleft.luc</src>
+    <src>not_decoder.luc</src>
     <src>mux_2.luc</src>
+    <component>counter.luc</component>
+    <src>simple_fsm.luc</src>
     <src>custom_seven_seg.luc</src>
     <src>shifter.luc</src>
+    <src>game_CU.luc</src>
+    <src>sixteen_bit_sra.luc</src>
+    <src>rca_five.luc</src>
+    <src>multiplier.luc</src>
+    <src>circle_clock.luc</src>
+    <component>reset_conditioner.luc</component>
+    <src>full_adder.luc</src>
+    <src>sixteen_bit_shiftright.luc</src>
+    <component>button_conditioner.luc</component>
+    <src>beta.luc</src>
+    <src top="true">au_top.luc</src>
+    <src>pausing_counter.luc</src>
+    <src>decimal_counter.luc</src>
     <src>add_sub.luc</src>
+    <component>decoder.luc</component>
+    <src>multi_seven_seg.luc</src>
+    <src>seven_seg.luc</src>
+    <src>compare.luc</src>
+    <src>alu.luc</src>
+    <src>sixteen_bit_shiftleft.luc</src>
+    <src>mux_4.luc</src>
+    <src>regfile.luc</src>
+    <component>edge_detector.luc</component>
     <constraint>newau.xdc</constraint>
     <constraint>custom.acf</constraint>
   </files>
