@@ -47,9 +47,9 @@ pin timer_sel[3] C14; //d1
 
 
 // Buttons
-pin reset_button C24 pulldown;
+pin reset_button B5 pulldown;
 pin p1_button C21 pulldown;
-pin p2_button C18 pulldown;
+pin p2_button B2 pulldown;
 
 // Circle output
 // Right half
