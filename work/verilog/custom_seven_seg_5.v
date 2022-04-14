@@ -45,7 +45,7 @@ module custom_seven_seg_5 (
         M_seg_values = 16'he05d;
       end
       16'hf001: begin
-        M_seg_values = 16'h0880;
+        M_seg_values = 16'hffff;
       end
       default: begin
         first_digit = data - (4'ha * (data / 4'ha));

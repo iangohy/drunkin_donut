@@ -4,7 +4,6 @@
     <src>seven_seg.luc</src>
     <src>mux_4.luc</src>
     <src>compare.luc</src>
-    <src>simple_fsm.luc</src>
     <src>regfile.luc</src>
     <src top="true">au_top.luc</src>
     <src>sixteen_bit_sra.luc</src>

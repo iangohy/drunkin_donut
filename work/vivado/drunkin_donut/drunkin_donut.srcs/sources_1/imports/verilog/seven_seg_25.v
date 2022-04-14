@@ -59,6 +59,9 @@ module seven_seg_25 (
       4'he: begin
         segs = 8'h1c;
       end
+      4'hf: begin
+        segs = 8'h02;
+      end
       default: begin
         segs = 8'h00;
       end

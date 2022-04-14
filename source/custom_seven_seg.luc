@@ -27,7 +27,7 @@ module custom_seven_seg (
         
       // Draw Signal
       hF001:
-        seg.values = {4h0,4h8,4h8,4h0};
+        seg.values = {15,15,15,15};
         
      default:
         first_digit = data - (10 * (data / 10));
