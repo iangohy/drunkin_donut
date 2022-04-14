@@ -197,7 +197,6 @@ module game_CU (
           
         game_fsm.COUNTDOWN_IDLE: 
           we_regfile = b0;
-          read
           if (countdown_time_reg == b0){
             game_fsm.d = game_fsm.SET_COUNT_TO_30;
           }
