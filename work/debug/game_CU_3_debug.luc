@@ -1,0 +1,623 @@
+module game_CU_3_debug (
+    input clk,  // clock
+    input rst,  // reset
+    input decrease_timer, //SEC
+    input circle_clock,   // CC 
+    input rb_data[16], //direct reading of regfile data from read_address_b
+    input countdown_time_reg[16],
+    
+    //3 buttons
+    input p1_button,
+    input p2_button,
+    input reset_button,
+    
+    output alufn[7], // alufn 7 bits
+    output asel[2], // asel 2 bits
+    output bsel[2], // bsel 2 bits
+    output wdsel[3], // wdsel 3 its 
+    output regfile_write_address[4], // rc 4 bits
+    output regfile_read_address_a[4], // ra 4 bits
+    output regfile_read_address_b[4], // rb 4 bits
+    output we_regfile, output debug__ [6]// we
+      
+  ) {
+    .clk(clk){
+      fsm game_fsm={
+        RESET_SPEED, // start state
+        RESET_P1_SCORE, // grey balls
+        RESET_P2_SCORE,
+        RESET_RIGHT_HALF,
+        RESET_LEFT_HALF,
+        RESET_TIMER,
+        BRANCH_CHECK_SPEED,
+        READY,
+        SET_COUNT_TO_3, // blue balls (before game starts)
+        INCREASE_SPEED,
+        COUNTDOWN, // fsm 10
+        COUNTDOWN_SUSPENSE,
+        COUNTDOWN_IDLE,
+        SET_COUNT_TO_60,
+        IDLE, // IDLE
+        SHL_RIGHT_HALF, // red balls
+        SHL_LEFT_HALF,
+        CHECK_MSB_RIGHT_HALF,
+        CMPEQ_RIGHT,
+        BRANCH_CMPEQ_RIGHT,
+        PLUS1_TO_LEFT_HALF, // 20
+        CHECK_MSB_LEFT_HALF, 
+        CMPEQ_LEFT,
+        BRANCH_CMPEQ_LEFT,
+        PLUS1_TO_RIGHT_HALF,
+        CHECK_P2_LOSE, // black balls check p2
+        BRANCH_P2_LOSE_OR_CARRYON,
+        P2_LED_LIGHT_UP,
+        P2_SCORE_INCREASE_BY_1,
+        CHECK_P1_LOSE, // black balls check p1
+        BRANCH_P1_LOSE_OR_CARRYON, // 30
+        P1_LED_LIGHT_UP,
+        P1_SCORE_INCREASE_BY_1,
+        CHECK_ANY_LED_FIRST_HALF_NOT_LIT, // black balls
+        CHECK_ANY_LED_SECOND_HALF_NOT_LIT,
+        CMPEQ_FIRST_HALF,
+        BRANCH_FIRST_HALF,
+        CMPEQ_SECOND_HALF,
+        BRANCH_SECOND_HALF,
+        CHECK_COUNT_MORETHAN_0, //blue balls (game starts)
+        CHECK_TIMER, //40
+        BRANCH_TIMER, 
+        COUNT_MINUS_1,
+        CHECK_DRAW, // purple balls
+        BRANCH_DRAW,
+        DRAW,
+        CHECK_WINNER,
+        BRANCH_WINNER,
+        P1_WINS,
+        P2_LOSES,
+        LIGHT_LOWER_LEFT_LED, // 50
+        LIGHT_UPPER_RIGHT_LED,
+        P2_WINS,
+        P1_LOSES,
+        LIGHT_UPPER_LEFT_LED,
+        LIGHT_LOWER_RIGHT_LED,
+        GAMEOVER
+        };
+  }
+
+  always {
+    
+    // standard setting unless otherwise overwritten by each case 
+    alufn = 0;
+    asel = 0; 
+    bsel = 0;
+    we_regfile = 0;
+    regfile_write_address = 1111;
+    regfile_read_address_a = 0000;
+    regfile_read_address_b = 0000;
+    wdsel = 0;
+    
+    
+    if (rst){
+        game_fsm.d = game_fsm.RESET_SPEED;
+      }
+
+    else{
+        
+    case(game_fsm.q){
+        game_fsm.RESET_SPEED:            
+          we_regfile = b1; 
+          regfile_write_address = 4h5; // Speed counter reg
+          wdsel = 4h4;                 // Reset Signal: 0x0000
+          game_fsm.d = game_fsm.RESET_P1_SCORE;
+        
+                       
+        game_fsm.RESET_P1_SCORE:            
+          we_regfile = 1;
+          regfile_write_address = 4h3; // p1 score
+          wdsel = 4h4;                 // reset signal
+          game_fsm.d = game_fsm.RESET_P2_SCORE;
+             
+        game_fsm.RESET_P2_SCORE:            
+          we_regfile = b1;
+          regfile_write_address = 4h4; // p2 score
+          wdsel = 4h4;                 // reset signal 
+          game_fsm.d = game_fsm.RESET_RIGHT_HALF;
+                        
+        game_fsm.RESET_RIGHT_HALF:            
+          we_regfile = b1;
+          regfile_write_address = 4h1; // reset right half LEDs
+          wdsel = 4h4;                 // reset signal
+          game_fsm.d = game_fsm.RESET_LEFT_HALF;
+                        
+        game_fsm.RESET_LEFT_HALF:            
+          we_regfile = b1;
+          regfile_write_address = 4h0; // reset left half LEDs
+          wdsel = 4h4;                 // reset signal
+          game_fsm.d = game_fsm.RESET_TIMER;    
+                    
+        game_fsm.RESET_TIMER:            
+          we_regfile = b1;
+          regfile_write_address = 4h2; // countdown timer
+          wdsel = 4h4;                 // reset signal
+          game_fsm.d = game_fsm.BRANCH_CHECK_SPEED;      
+                  
+        game_fsm.BRANCH_CHECK_SPEED:            
+          we_regfile = b0;
+          regfile_read_address_b = 4h5; // speed counter
+            
+          if (rb_data != b0) {  
+            // if rb_data !=0
+            game_fsm.d = game_fsm.SET_COUNT_TO_3;
+          }
+          else {                    
+            // if rb_data ==0
+            game_fsm.d = game_fsm.READY;            
+          }
+            
+        game_fsm.READY:            
+          we_regfile = b0;
+          if (p1_button || p2_button){ 
+               // if both players press button
+            game_fsm.d = game_fsm.SET_COUNT_TO_3;
+          }
+          
+        game_fsm.SET_COUNT_TO_3:
+          alufn = 7h40;                 // INC
+          asel = 2h0;                   // Reg[ra]          
+          we_regfile = b1;
+          regfile_read_address_a = 4h2; // countdown timer reg
+          regfile_write_address = 4h2;  // countdown timer reg
+          wdsel = 4h0;                  // ALU output 
+          if (countdown_time_reg == b10){
+            game_fsm.d = game_fsm.INCREASE_SPEED;
+          }
+                          
+        game_fsm.INCREASE_SPEED:            
+          alufn = 7h40;                  // INC
+          asel = 2h0;                    // Reg[ra]          
+          we_regfile = b1;
+          regfile_read_address_a = 4h5; // speed counter reg
+          regfile_write_address = 4h5;  // speed counter reg
+          wdsel = 4h0;                  // ALU output
+          game_fsm.d = game_fsm.COUNTDOWN_SUSPENSE;
+            
+                                                   
+        game_fsm.COUNTDOWN:       
+          alufn = 7h41;                 // DEC
+          asel = 2h0;                   // Reg[ra]          
+          we_regfile = b1;
+          regfile_read_address_a = 4h2; // countdown timer reg
+          regfile_write_address = 4h2;  // countdown timer
+          wdsel = 4h0;                  // ALU output
+          game_fsm.d = game_fsm.COUNTDOWN_IDLE;
+          
+        game_fsm.COUNTDOWN_SUSPENSE:
+          if (decrease_timer == b1) {
+           game_fsm.d = game_fsm.COUNTDOWN_IDLE; 
+          }
+          
+        game_fsm.COUNTDOWN_IDLE: 
+          we_regfile = b0;
+          if (countdown_time_reg == b0){
+            game_fsm.d = game_fsm.SET_COUNT_TO_60;
+          }
+          else if (decrease_timer == b1) {
+            game_fsm.d = game_fsm.COUNTDOWN;
+          }    
+                          
+        game_fsm.SET_COUNT_TO_60:            
+          alufn = 7h0;                   // ADD
+          asel = 2h1;                    // value 60 to reset timer          
+          bsel = 2h3;                    // value 0 to check if counter has counter to
+          we_regfile = b1;
+          regfile_write_address = 4h2;  // countdown counter timer
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.IDLE;            
+                          
+        game_fsm.SHL_RIGHT_HALF:            
+          alufn = 7h20;                  // SHL 
+          asel = 2h0;                    // Reg[ra]          
+          bsel = 2h2;                    // value 0x1 to shift left Reg[0x0]
+          we_regfile = b1;
+          regfile_read_address_a = 4h1; // display bottom half of led at all times
+          regfile_write_address = 4h1;  // display bottom half of led at all times
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.SHL_LEFT_HALF; 
+            
+        game_fsm.SHL_LEFT_HALF:            
+          alufn = 7h20;                  // SHL 
+          asel = 2h0;                    // Reg[ra]          
+          bsel = 2h2;                    // value 0x1 to shift left Reg[0x0]
+          we_regfile = b1;
+          regfile_read_address_a = 4h0; // display top half of led at all times
+          regfile_write_address = 4h0;  // display top half of led at all times
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.CHECK_MSB_RIGHT_HALF;                                      
+                          
+        game_fsm.CHECK_MSB_RIGHT_HALF:            
+          alufn = 7h18;                  // AND
+          asel = 2h0;                    // Reg[ra]             
+          bsel = 2h1;                    // value 0x8000 to  compare with value of Reg[0x0]
+          we_regfile = b1;
+          regfile_read_address_a = 4h1; // display bottom half of led at all times
+          regfile_write_address = 4h6;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.CMPEQ_RIGHT;             
+                          
+        game_fsm.CMPEQ_RIGHT:            
+          alufn = 7h33;                  // CMPEQ
+          asel = 2h0;                    // Reg[ra]             
+          bsel = 2h1;                    // value 0x8000 to  compare with value of Reg[0x0]
+          we_regfile = b1;
+          regfile_read_address_a = 4h6; // temp reg
+          regfile_write_address = 4h8;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.BRANCH_CMPEQ_RIGHT;             
+            
+        game_fsm.BRANCH_CMPEQ_RIGHT:
+          we_regfile = b0;            
+          regfile_read_address_b = 4h8; // temp reg
+          if (rb_data == b0){     
+            // Rb_data = 0
+            game_fsm.d = game_fsm.CHECK_MSB_LEFT_HALF;
+            }
+          else{
+           // Rb_data = 1
+            game_fsm.d = game_fsm.PLUS1_TO_LEFT_HALF;
+            }
+
+        game_fsm.PLUS1_TO_LEFT_HALF:            
+          alufn = 7h40;                 // INC
+          asel = 2h0;                   // Reg[ra]          
+          we_regfile = b1;
+          regfile_read_address_a = 4h0; // display bottom half of led at all times
+          regfile_write_address = 4h0;  // display bottom half of led at all times
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.CHECK_MSB_LEFT_HALF;              
+                          
+        game_fsm.CHECK_MSB_LEFT_HALF:            
+          alufn = 7h18;                  // AND
+          asel = 2h0;                    // Reg[ra]             
+          bsel = 2h1;                    // value 0x8000 to  compare with value of Reg[0x0]
+          we_regfile = b1;
+          regfile_read_address_a = 4h0; // display top half of led at all times
+          regfile_write_address = 4h6;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.CMPEQ_LEFT;              
+            
+        game_fsm.CMPEQ_LEFT:            
+          alufn = 7h33;                  // CMPEQ
+          asel = 2h0;                    // Reg[ra]             
+          bsel = 2h1;                    // value 0x8000 to  compare with value of Reg[0x0]
+          we_regfile = b1;
+          regfile_read_address_a = 4h6; // temp reg
+          regfile_write_address = 4h8;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.BRANCH_CMPEQ_LEFT;               
+            
+        game_fsm.BRANCH_CMPEQ_LEFT:
+          we_regfile = b0;                
+          regfile_read_address_b = 4h8; // temp reg
+          if (rb_data == b0){
+            game_fsm.d = game_fsm.IDLE;
+            // Rb_data = 0
+            }
+          else{
+            // Rb_data = 1
+            game_fsm.d = game_fsm.PLUS1_TO_RIGHT_HALF;
+            }
+            
+        game_fsm.PLUS1_TO_RIGHT_HALF:            
+          alufn = 7h40;                 // INC
+          asel = 2h0;                   // Reg[ra]          
+          we_regfile = b1;
+          regfile_read_address_a = 4h1; // display top half of led at all times
+          regfile_write_address = 4h1;  // display top half of led at all times
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.IDLE;              
+            
+        game_fsm.CHECK_P2_LOSE:
+          alufn = 7h18;                 // AND
+          asel = 2h0;                   // Reg[ra]
+          bsel = 2h2;                   // value 0x1 to shift reg[0x0]
+          we_regfile = b1;
+          regfile_read_address_a = 4h1; // display bottom half of led at all times
+          regfile_write_address = 4h8;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.BRANCH_P2_LOSE_OR_CARRYON;          
+               
+        game_fsm.BRANCH_P2_LOSE_OR_CARRYON:     
+          we_regfile = b0;       
+          regfile_read_address_b = 4h8; // temp reg
+          if (rb_data == b1){       // to check implementation
+            // p1 win
+            game_fsm.d = game_fsm.P1_WINS;
+            }
+          else{
+            // carryon
+            game_fsm.d = game_fsm.P2_LED_LIGHT_UP;
+            }       
+                 
+        game_fsm.P2_LED_LIGHT_UP:            
+          alufn = 7h40;                 // INC
+          asel = 2h0;                   // Reg[ra]          
+          we_regfile = b1; 
+          regfile_read_address_a = 4h1; // display bottom half of led at all times
+          regfile_write_address = 4h1;  // display bottom half of led at all times
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.P2_SCORE_INCREASE_BY_1;                    
+
+        game_fsm.P2_SCORE_INCREASE_BY_1:            
+          alufn = 7h40;                 // INC
+          asel = 2h0;                   // Reg[ra]          
+          we_regfile = b1;
+          regfile_read_address_a = 4h4; // display p2 score
+          regfile_write_address = 4h4;  // display p2 score
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.CHECK_ANY_LED_FIRST_HALF_NOT_LIT;
+
+        game_fsm.CHECK_P1_LOSE:
+          alufn = 7h18;                 // AND
+          asel = 2h0;                   // Reg[ra]
+          bsel = 2h2;                   // value 0x1 to AND
+          we_regfile = b1;
+          regfile_read_address_a = 4h0; // display top half of led at all times
+          regfile_write_address = 4h8;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.BRANCH_P1_LOSE_OR_CARRYON;          
+               
+        game_fsm.BRANCH_P1_LOSE_OR_CARRYON:  
+          we_regfile = b0;
+          regfile_read_address_b = 4h8; // temp reg
+          if (rb_data == b1){
+            // p2 win
+            game_fsm.d = game_fsm.P2_WINS;
+            }
+          else{
+            // carryon
+            game_fsm.d = game_fsm.P1_LED_LIGHT_UP;
+            }       
+                 
+        game_fsm.P1_LED_LIGHT_UP:            
+          alufn = 7h40;                 // INC
+          asel = 2h0;                   // Reg[ra]          
+          we_regfile = b1;
+          regfile_read_address_a = 4h0; // display top half of led at all times
+          regfile_write_address = 4h0;  // display top half of led at all times
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.P1_SCORE_INCREASE_BY_1;                    
+
+        game_fsm.P1_SCORE_INCREASE_BY_1:            
+          alufn = 7h40;                 // INC
+          asel = 2h0;                   // Reg[ra]          
+          we_regfile = b1;
+          regfile_read_address_a = 4h3; // display p1 score
+          regfile_write_address = 4h3;  // display p1 score
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.CHECK_ANY_LED_FIRST_HALF_NOT_LIT;
+            
+        game_fsm.CHECK_ANY_LED_FIRST_HALF_NOT_LIT:
+          alufn = 7h18;                 // AND
+          asel = 2h2;                   // CMPLE 0X7FFF
+          bsel = 2h0;                   // Reg[rb]
+          we_regfile = b1;
+          regfile_read_address_b = 4h0; // display top half of led at all times
+          regfile_write_address = 4h6;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.CHECK_ANY_LED_SECOND_HALF_NOT_LIT;          
+                           
+        game_fsm.CHECK_ANY_LED_SECOND_HALF_NOT_LIT:
+          alufn = 7h18;                 // AND
+          asel = 2h2;                   // CMPLE 0X7FFF
+          bsel = 2h0;                   // Reg[rb]
+          we_regfile = b1;
+          regfile_read_address_b = 4h1; // display bottom half of led at all times
+          regfile_write_address = 4h7;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.CMPEQ_FIRST_HALF;
+            
+        game_fsm.CMPEQ_FIRST_HALF:
+          alufn = 7h33;                 // CMPEQ
+          asel = 2h2;                   // CMPLE 0X7FFF
+          bsel = 2h0;                   // Reg[rb]
+          we_regfile = b1;
+          regfile_read_address_b = 4h6; // temp reg
+          regfile_write_address = 4h8;
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.BRANCH_FIRST_HALF;                                 
+               
+        game_fsm.BRANCH_FIRST_HALF:            
+          we_regfile = b0;
+          regfile_read_address_b = 4h8; // temp reg
+          if (rb_data == b1){       // to check implementation
+            // first half fully lit
+            game_fsm.d = game_fsm.CMPEQ_SECOND_HALF;
+          }
+          else{
+            // first half not fully lit
+            game_fsm.d = game_fsm.IDLE;
+          }
+                            
+        game_fsm.CMPEQ_SECOND_HALF:
+          alufn = 7h33;                 // CMPEQ
+          asel = 2h2;                   // CMPEQ 0X7FFF
+          bsel = 2h0;                   // Reg[rb]
+          we_regfile = b1;
+          regfile_read_address_b = 4h7; // temp reg
+          regfile_write_address = 4h8;
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.BRANCH_SECOND_HALF;                                                                  
+
+        game_fsm.BRANCH_SECOND_HALF:
+          we_regfile = b0;            
+          regfile_read_address_b = 4h8; // temp reg
+          if (rb_data == b1){
+            // second half fully lit
+            game_fsm.d = game_fsm.RESET_RIGHT_HALF;
+          }
+          else {
+            // first half not fully lit
+            game_fsm.d = game_fsm.IDLE;
+          } 
+            
+        game_fsm.CHECK_COUNT_MORETHAN_0:
+          alufn = 7h33;                 // CMPEQ
+          asel = 2h0;                   // Reg[ra]
+          bsel = 2h3;                   // value 0 to check if time has counter to 0
+          we_regfile = b1;
+          regfile_read_address_a = 4h2; // countdown timer
+          regfile_write_address = 4h8;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.BRANCH_TIMER;                  
+            
+        game_fsm.BRANCH_TIMER:
+          we_regfile = b0;
+          regfile_read_address_b = 4h8;     
+          if (rb_data == b1){
+            // game ended
+            game_fsm.d = game_fsm.CHECK_DRAW;
+          }
+          else {
+            // game not ended
+            game_fsm.d = game_fsm.COUNT_MINUS_1;      
+          }
+          
+        game_fsm.COUNT_MINUS_1:
+          alufn = 7h41;                 // DEC
+          asel = 2h0;                   // Reg[ra]
+          we_regfile = b1;
+          regfile_read_address_a = 4h2; // countdown timer
+          regfile_write_address = 4h2;  // countdown timer
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.IDLE;          
+            
+        game_fsm.CHECK_DRAW:
+          alufn = 7h33;                 // CMPEQ
+          asel = 2h0;                   // Reg[ra]
+          bsel = 2h0;                   // Reg[rb]
+          we_regfile = b1;
+          regfile_read_address_a = 4h3; // draw signal
+          regfile_read_address_b = 4h4; // reset signal
+          regfile_write_address = 4h8;  // temp reg
+          wdsel = 4h0;                  // ALU output
+          game_fsm.d = game_fsm.BRANCH_DRAW;          
+            
+        game_fsm.BRANCH_DRAW:            
+          we_regfile = b0;
+          regfile_read_address_b = 4h8; // temp reg
+          if (rb_data == b1){       // to check implementation
+            // DRAW
+            game_fsm.d = game_fsm.DRAW;
+            }
+          else{
+            // NO DRAW
+            game_fsm.d = game_fsm.CHECK_WINNER ;
+            }                                
+            
+        game_fsm.DRAW:  
+          we_regfile = b1;
+          regfile_write_address = 4h2;  // countdown timer, not sure if this is correct
+          wdsel = 4h3;                  // draw signal
+          game_fsm.d = game_fsm.GAMEOVER ;              
+            
+        game_fsm.CHECK_WINNER:
+          alufn = 7h35;                 // CMPLT
+          asel = 2h0;                   // Reg[ra]
+          bsel = 2h0;                   // Reg[rb]
+          we_regfile = b1;
+          regfile_read_address_a = 4h3; // draw signal
+          regfile_read_address_b = 4h4; // reset signal
+          regfile_write_address = 4h8;  // temp reg
+          wdsel = 4h0;                  // ALU output 
+          game_fsm.d = game_fsm.BRANCH_WINNER;                
+            
+        game_fsm.BRANCH_WINNER:     
+          we_regfile = b0;       
+          regfile_read_address_b = 4h8; // temp reg
+          wdsel = 4h3;                  // draw signal, not sure if this is correct 
+          if (rb_data == b1){       // to check implementation
+            // p2 wins
+            game_fsm.d = game_fsm.P2_WINS;
+            }
+          else{
+            // p1 wins 
+            game_fsm.d = game_fsm.P1_WINS;
+            }  
+            
+        game_fsm.P1_WINS:  
+          we_regfile = b1;
+          regfile_write_address = 4h3;   // p1 score
+          wdsel = 4h1;                   // winning signal             
+          game_fsm.d = game_fsm.P2_LOSES;            
+            
+        game_fsm.P2_LOSES:  
+          we_regfile = b1; 
+          regfile_write_address = 4h4;   // p2 score
+          wdsel = 4h2;                   // losing signal         
+          game_fsm.d = game_fsm.LIGHT_LOWER_LEFT_LED;              
+            
+        game_fsm.LIGHT_LOWER_LEFT_LED:  
+          we_regfile = b1;
+          regfile_write_address = 4h0;   // left
+          wdsel = 4h5;                   // lower half LEDs on        
+          game_fsm.d = game_fsm.LIGHT_UPPER_RIGHT_LED;
+                          
+        game_fsm.LIGHT_UPPER_RIGHT_LED:  
+          we_regfile = b1;
+          regfile_write_address = 4h1;   // right
+          wdsel = 4h6;                   // upper half LEDs on        
+          game_fsm.d = game_fsm.GAMEOVER ;              
+                                      
+        game_fsm.P2_WINS:  
+          we_regfile = b1;
+          regfile_write_address = 4h4;   // p2 score
+          wdsel = 4h1;                   // winning signal             
+          game_fsm.d = game_fsm.P1_LOSES;            
+            
+        game_fsm.P1_LOSES:  
+          we_regfile = b1; 
+          regfile_write_address = 4h3;   // p1 score
+          wdsel = 4h2;                   // losing signal         
+          game_fsm.d = game_fsm.LIGHT_UPPER_LEFT_LED;              
+            
+        game_fsm.LIGHT_UPPER_LEFT_LED:  
+          we_regfile = b1;
+          regfile_write_address = 4h0;   // display value of top half of LEDs
+          wdsel = 4h6;                   // upper half LEDs on        
+          game_fsm.d = game_fsm.LIGHT_LOWER_RIGHT_LED;
+                          
+        game_fsm.LIGHT_LOWER_RIGHT_LED:  
+          we_regfile = b1;
+          regfile_write_address = 4h1;   // display value of lower half of LEDs, need to check if this is correct
+          wdsel = 4h5;                   // lower  half LEDs on        
+          game_fsm.d = game_fsm.GAMEOVER ;              
+          
+        game_fsm.GAMEOVER:            
+          if (reset_button == b1) {
+             game_fsm.d = game_fsm.RESET_SPEED; 
+          }
+                              
+          
+        game_fsm.IDLE:
+          if (decrease_timer){                   // decrease timer
+            game_fsm.d = game_fsm.CHECK_COUNT_MORETHAN_0;
+          }
+          
+          else if (p1_button && ~p2_button){    // p1 presses button 
+            game_fsm.d = game_fsm.CHECK_P1_LOSE;
+          }    
+           
+          else if (p2_button && ~p1_button){    // p2 presses button
+            game_fsm.d = game_fsm.CHECK_P2_LOSE;
+          }
+          else if (reset_button){               // reset button pressed
+            game_fsm.d = game_fsm.RESET_SPEED;   
+          }             
+          else if (circle_clock){
+            game_fsm.d = game_fsm.SHL_RIGHT_HALF;  
+          }  
+                        
+      }//case parenthesis
+    }// else parenthesis    
+  }// always parenthesis
+always debug__ = c{$flatten(game_fsm.q)};
+}

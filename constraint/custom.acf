@@ -14,37 +14,36 @@ pin p1_sev[5] C43; //c 4
 pin p1_sev[6] C46; //b 7 
 pin p1_sev[7] C49; //a 11
 
-pin p1_sel[0] C11;//d1
-pin p1_sel[1] C8; //d2
-pin p1_sel[2] C5; //d3
-pin p1_sel[3] C2; //d4
+pin p1_sel[0] C11;//d4
+pin p1_sel[1] C8; //d3
+pin p1_sel[2] C5; //d2
+pin p1_sel[3] C2; //d1
 
-//pin p2_sev[0] C39; //dp 3
-//pin p2_sev[1] C42; //g 5
-//pin p2_sev[2] C45; //f 10
-//pin p2_sev[3] C48; //e 1
-//pin p2_sev[4] C40; //d 2
-//pin p2_sev[5] C43; //c 4
-//pin p2_sev[6] C46; //b 7 
-//pin p2_sev[7] C49; //a 11
+pin p2_sev[0] B24; //dp 3
+pin p2_sev[1] B21; //g 5
+pin p2_sev[2] B18; //f 10
+pin p2_sev[3] B15; //e 1
+pin p2_sev[4] B12; //d 2
+pin p2_sev[5] B9; //c 4
+pin p2_sev[6] B6; //b 7 
+pin p2_sev[7] B3; //a 11
+pin p2_sel[0] B23;//d4
+pin p2_sel[1] B20; //d3
+pin p2_sel[2] B17; //d2
+pin p2_sel[3] B14; //d1
 
-//pin p2_sel[0] C11;//d1
-//pin p2_sel[1] C8; //d2
-//pin p2_sel[2] C5; //d3
-//pin p2_sel[3] C2; //d4
-
-//pin score_sev[0] C39; //dp 3
-//pin score_sev[1] C42; //g 5
-//pin score_sev[2] C45; //f 10
-//pin score_sev[3] C48; //e 1
-//pin score_sev[4] C40; //d 2
-//pin score_sev[5] C43; //c 4
-//pin score_sev[6] C46; //b 7 
-//pin score_sev[7] C49; //a 1score
-//pin score_sel[0] C11;//d1
-//pin score_sel[1] C8; //d2
-//pin score_sel[2] C5; //d3
-//pin score_sel[3] C2; //d4
+pin timer_sev[0] C27; //dp 3
+pin timer_sev[1] C30; //g 5
+pin timer_sev[2] C33; //f 10
+pin timer_sev[3] C36; //e 1
+pin timer_sev[4] C28; //d 2
+pin timer_sev[5] C31; //c 4
+pin timer_sev[6] C34; //b 7 
+pin timer_sev[7] C37; //a 11
+pin timer_sel[0] C23;//d4
+pin timer_sel[1] C20; //d3
+pin timer_sel[2] C17; //d2
+pin timer_sel[3] C14; //d1
 
 
 // Buttons
@@ -53,39 +52,39 @@ pin p1_button C21 pulldown;
 pin p2_button C18 pulldown;
 
 // Circle output
-// Left half
-pin circle_led[0] B27;
-pin circle_led[1] B30;
-pin circle_led[2] B33;
-pin circle_led[3] B36;
-pin circle_led[4] B39;
-pin circle_led[5] B42;
-pin circle_led[6] B45;
-pin circle_led[7] B48;
-pin circle_led[8] B28;
-pin circle_led[9] B31;
-pin circle_led[10] B34;
-pin circle_led[11] B37;
-pin circle_led[12] B40;
-pin circle_led[13] B43;
-pin circle_led[14] B46;
-
 // Right half
-pin circle_led[15] A27;
-pin circle_led[16] A30;
-pin circle_led[17] A33;
-pin circle_led[18] A36;
-pin circle_led[19] A39;
-pin circle_led[20] A42;
-pin circle_led[21] A45;
-pin circle_led[22] A48;
-pin circle_led[23] A28;
-pin circle_led[24] A31;
-pin circle_led[25] A34;
-pin circle_led[26] A37;
-pin circle_led[27] A40;
-pin circle_led[28] A43;
-pin circle_led[29] A46;
+pin circle_led[15] B27;
+pin circle_led[16] B30;
+pin circle_led[17] B33;
+pin circle_led[18] B36;
+pin circle_led[19] B39;
+pin circle_led[20] B42;
+pin circle_led[21] B45;
+pin circle_led[22] B48;
+pin circle_led[23] B28;
+pin circle_led[24] B31;
+pin circle_led[25] B34;
+pin circle_led[26] B37;
+pin circle_led[27] B40;
+pin circle_led[28] B43;
+pin circle_led[29] B46;
+
+// Left half
+pin circle_led[0] A27;
+pin circle_led[1] A30;
+pin circle_led[2] A33;
+pin circle_led[3] A36;
+pin circle_led[4] A39;
+pin circle_led[5] A42;
+pin circle_led[6] A45;
+pin circle_led[7] A48;
+pin circle_led[8] A49;
+pin circle_led[9] A31;
+pin circle_led[10] A34;
+pin circle_led[11] A37;
+pin circle_led[12] A40;
+pin circle_led[13] A43;
+pin circle_led[14] A46;
 
 // flip the Tx/Rx lines
 pin usb_rx USB_TX;
