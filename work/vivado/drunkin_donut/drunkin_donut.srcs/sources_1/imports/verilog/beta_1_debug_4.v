@@ -153,7 +153,7 @@ module beta_1_debug_4 (
         alu_input_a = M_game_regfiles_out_a;
       end
       2'h1: begin
-        alu_input_a = 16'h003c;
+        alu_input_a = 16'h001e;
       end
       2'h2: begin
         alu_input_a = 16'h7fff;

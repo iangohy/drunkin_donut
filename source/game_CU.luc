@@ -36,7 +36,7 @@ module game_CU (
         COUNTDOWN, // fsm 10
         COUNTDOWN_SUSPENSE,
         COUNTDOWN_IDLE,
-        SET_COUNT_TO_60,
+        SET_COUNT_TO_30,
         IDLE, // IDLE
         SHL_RIGHT_HALF, // red balls
         SHL_LEFT_HALF,
@@ -197,14 +197,15 @@ module game_CU (
           
         game_fsm.COUNTDOWN_IDLE: 
           we_regfile = b0;
+          read
           if (countdown_time_reg == b0){
-            game_fsm.d = game_fsm.SET_COUNT_TO_60;
+            game_fsm.d = game_fsm.SET_COUNT_TO_30;
           }
           else if (decrease_timer == b1) {
             game_fsm.d = game_fsm.COUNTDOWN;
           }    
                           
-        game_fsm.SET_COUNT_TO_60:            
+        game_fsm.SET_COUNT_TO_30:            
           alufn = 7h0;                   // ADD
           asel = 2h1;                    // value 60 to reset timer          
           bsel = 2h3;                    // value 0 to check if counter has counter to

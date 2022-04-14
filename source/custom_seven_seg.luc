@@ -19,7 +19,7 @@ module custom_seven_seg (
     case(data) {
       // Win signal
       hFFFF:
-        seg.values = {4hb,4hc,4h1, 4ha}; 
+        seg.values = {4hb,4hc,4h1,4ha}; 
         
       // Lose signal
       hF000:
@@ -27,7 +27,7 @@ module custom_seven_seg (
         
       // Draw Signal
       hF001:
-        seg.values = {4h8,4h8,4h8,4h8};
+        seg.values = {4h0,4h8,4h8,4h0};
         
      default:
         first_digit = data - (10 * (data / 10));

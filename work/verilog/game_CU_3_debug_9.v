@@ -40,7 +40,7 @@ module game_CU_3_debug_9 (
   localparam COUNTDOWN_game_fsm = 6'd10;
   localparam COUNTDOWN_SUSPENSE_game_fsm = 6'd11;
   localparam COUNTDOWN_IDLE_game_fsm = 6'd12;
-  localparam SET_COUNT_TO_60_game_fsm = 6'd13;
+  localparam SET_COUNT_TO_30_game_fsm = 6'd13;
   localparam IDLE_game_fsm = 6'd14;
   localparam SHL_RIGHT_HALF_game_fsm = 6'd15;
   localparam SHL_LEFT_HALF_game_fsm = 6'd16;
@@ -191,14 +191,14 @@ module game_CU_3_debug_9 (
         COUNTDOWN_IDLE_game_fsm: begin
           we_regfile = 1'h0;
           if (countdown_time_reg == 1'h0) begin
-            M_game_fsm_d = SET_COUNT_TO_60_game_fsm;
+            M_game_fsm_d = SET_COUNT_TO_30_game_fsm;
           end else begin
             if (decrease_timer == 1'h1) begin
               M_game_fsm_d = COUNTDOWN_game_fsm;
             end
           end
         end
-        SET_COUNT_TO_60_game_fsm: begin
+        SET_COUNT_TO_30_game_fsm: begin
           alufn = 7'h00;
           asel = 2'h1;
           bsel = 2'h3;

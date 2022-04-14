@@ -49,11 +49,11 @@ module circle_clock_4_debug (
         
       b11:
         // level 3
-        // 6 counts
-        if (ctr.q == 6) {
+        // 7 counts
+        if (ctr.q == 7) {
           out = b1;
           ctr.d = b0;
-        } else if (ctr.q > 6) {
+        } else if (ctr.q > 7) {
           ctr.d = b0;
           out = b0;
         } else {
@@ -62,12 +62,11 @@ module circle_clock_4_debug (
         
       b100:
         // level 4
-        // 4 counts
-        // 0.336s
-        if (ctr.q == 4) {
+        // 6 counts
+        if (ctr.q == 6) {
           out = b1;
           ctr.d = b0;
-        } else if (ctr.q > 4) {
+        } else if (ctr.q > 6) {
           ctr.d = b0;
           out = b0;
         } else {

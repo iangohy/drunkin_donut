@@ -69,11 +69,11 @@ module circle_clock_4_debug_12 (
         end
       end
       2'h3: begin
-        if (M_ctr_q == 3'h6) begin
+        if (M_ctr_q == 3'h7) begin
           out = 1'h1;
           M_ctr_d = 1'h0;
         end else begin
-          if (M_ctr_q > 3'h6) begin
+          if (M_ctr_q > 3'h7) begin
             M_ctr_d = 1'h0;
             out = 1'h0;
           end else begin
@@ -82,11 +82,11 @@ module circle_clock_4_debug_12 (
         end
       end
       3'h4: begin
-        if (M_ctr_q == 3'h4) begin
+        if (M_ctr_q == 3'h6) begin
           out = 1'h1;
           M_ctr_d = 1'h0;
         end else begin
-          if (M_ctr_q > 3'h4) begin
+          if (M_ctr_q > 3'h6) begin
             M_ctr_d = 1'h0;
             out = 1'h0;
           end else begin

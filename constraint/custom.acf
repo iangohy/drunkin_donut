@@ -4,46 +4,45 @@ clock clk 100MHz;
 pin rst_n RESET;
 
 // Seven segment displays
+pin p1_sev[3] C40;
+pin p1_sev[4] C43;
+pin p1_sev[0] C46;
+pin p1_sev[5] C49;
+pin p1_sev[1] C39;
+pin p1_sel[0] C42;
+pin p1_sev[6] C45;
+pin p1_sel[1] C48;
+pin p1_sel[2] C11;
+pin p1_sev[2] C8;
+pin p1_sev[7] C5;
+pin p1_sel[3] C2;
 
-pin p1_sev[0] C39; //dp 3
-pin p1_sev[1] C42; //g 5
-pin p1_sev[2] C45; //f 10
-pin p1_sev[3] C48; //e 1
-pin p1_sev[4] C40; //d 2
-pin p1_sev[5] C43; //c 4
-pin p1_sev[6] C46; //b 7 
-pin p1_sev[7] C49; //a 11
 
-pin p1_sel[0] C11;//d4
-pin p1_sel[1] C8; //d3
-pin p1_sel[2] C5; //d2
-pin p1_sel[3] C2; //d1
+pin p2_sev[3] B24;
+pin p2_sev[4] B21;
+pin p2_sev[0] B18;
+pin p2_sev[5] B15;
+pin p2_sev[1] B12;
+pin p2_sel[0] B9;
+pin p2_sev[6] B6;
+pin p2_sel[1] B3;
+pin p2_sel[2] B23;
+pin p2_sev[2] B20;
+pin p2_sev[7] B17;
+pin p2_sel[3] B14;
 
-pin p2_sev[0] B24; //dp 3
-pin p2_sev[1] B21; //g 5
-pin p2_sev[2] B18; //f 10
-pin p2_sev[3] B15; //e 1
-pin p2_sev[4] B12; //d 2
-pin p2_sev[5] B9; //c 4
-pin p2_sev[6] B6; //b 7 
-pin p2_sev[7] B3; //a 11
-pin p2_sel[0] B23;//d4
-pin p2_sel[1] B20; //d3
-pin p2_sel[2] B17; //d2
-pin p2_sel[3] B14; //d1
-
-pin timer_sev[0] C27; //dp 3
-pin timer_sev[1] C30; //g 5
-pin timer_sev[2] C33; //f 10
-pin timer_sev[3] C36; //e 1
-pin timer_sev[4] C28; //d 2
-pin timer_sev[5] C31; //c 4
-pin timer_sev[6] C34; //b 7 
-pin timer_sev[7] C37; //a 11
-pin timer_sel[0] C23;//d4
-pin timer_sel[1] C20; //d3
-pin timer_sel[2] C17; //d2
-pin timer_sel[3] C14; //d1
+pin timer_sev[3] C28;
+pin timer_sev[4] C31;
+pin timer_sev[0] C34;
+pin timer_sev[5] C37;
+pin timer_sev[1] C27;
+pin timer_sel[0] C30;
+pin timer_sev[6] C33;
+pin timer_sel[1] C36;
+pin timer_sel[2] C23;
+pin timer_sev[2] C20;
+pin timer_sev[7] C17;
+pin timer_sel[3] C14;
 
 
 // Buttons
