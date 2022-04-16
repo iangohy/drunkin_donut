@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Thu Apr 14 14:56:00 2022
+| Date         : Sat Apr 16 13:47:32 2022
 | Host         : DESKTOP-3E3A running 64-bit Ubuntu 20.04.4 LTS
 | Command      : report_control_sets -verbose -file au_top_0_control_sets_placed.rpt
 | Design       : au_top_0
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    28 |
-|    Minimum number of control sets                        |    28 |
+| Total control sets                                       |    17 |
+|    Minimum number of control sets                        |    17 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    61 |
+| Unused register locations in slices containing registers |    36 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    28 |
-| >= 0 to < 4        |     2 |
-| >= 4 to < 6        |     3 |
-| >= 6 to < 8        |     2 |
-| >= 8 to < 10       |     3 |
-| >= 10 to < 12      |     0 |
-| >= 12 to < 14      |     1 |
+| Total control sets |    17 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |    17 |
+| >= 16              |    13 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,49 +58,38 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             200 |          116 |
+| No           | No                    | No                     |              11 |            8 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              93 |           31 |
-| Yes          | No                    | No                     |             813 |          214 |
+| No           | Yes                   | No                     |              89 |           28 |
+| Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             345 |          125 |
+| Yes          | Yes                   | No                     |             240 |          126 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+------------------------------+--------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
-|         Clock Signal         |                            Enable Signal                           |           Set/Reset Signal          | Slice Load Count | Bel Load Count | Bels / Slice |
-+------------------------------+--------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
-|  debugger/M_config_scan_TCK  | debugger/config_fifo/ram/M_ram_write_en                            |                                     |                1 |              2 |         2.00 |
-|  debugger/M_capture_scan_TCK |                                                                    |                                     |                2 |              3 |         1.50 |
-|  clk_IBUF_BUFG               |                                                                    | debugger/M_info_scan_RESET          |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG               |                                                                    | reset_cond/M_reset_cond_in          |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG               | game_beta/game_circle_clock/edge_rise/E[0]                         | reset_cond/Q[0]                     |                3 |              4 |         1.33 |
-|  M_info_scan_TCK             | debugger/p_0_in[0]                                                 |                                     |                2 |              6 |         3.00 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q[5]_i_1_n_0  | reset_cond/Q[0]                     |                3 |              6 |         2.00 |
-|  M_data_scan_TCK             | debugger/M_raddr_q0                                                | debugger/M_raddr_q[7]_i_1_n_0       |                2 |              8 |         4.00 |
-|  clk_IBUF_BUFG               | debugger/force_sync/E[0]                                           | debugger/reset_conditioner/Q[0]     |                2 |              8 |         4.00 |
-|  M_data_scan_TCK             | debugger/M_offset_q[7]_i_2_n_0                                     | debugger/M_offset_q[7]_i_1_n_0      |                3 |              8 |         2.67 |
-|  debugger/M_config_scan_TCK  |                                                                    |                                     |                2 |             12 |         6.00 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/E[0]                                    | reset_cond/Q[0]                     |                8 |             16 |         2.00 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[0]_0[0] | reset_cond/Q[0]                     |                4 |             16 |         4.00 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[2]_4[0] | reset_cond/Q[0]                     |                8 |             16 |         2.00 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[5]_3[0] | reset_cond/Q[0]                     |                7 |             16 |         2.29 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[1]_7[0] | reset_cond/Q[0]                     |                3 |             16 |         5.33 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/write_data[32]                          | reset_cond/Q[0]                     |               11 |             16 |         1.45 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[5]_2[0] | reset_cond/Q[0]                     |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG               | p2_btn_cond/M_ctr_q[0]_i_2__2_n_0                                  | p2_btn_cond/sync/M_pipe_q_reg[1]_0  |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG               | p1_btn_cond/sel                                                    | p1_btn_cond/sync/clear              |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG               | rst_btn_cond/M_ctr_q[0]_i_2__3_n_0                                 | rst_btn_cond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[1]_6[0] | reset_cond/Q[0]                     |               18 |             31 |         1.72 |
-|  clk_IBUF_BUFG               | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[2]_3[0] | reset_cond/Q[0]                     |               17 |             31 |         1.82 |
-|  M_info_scan_TCK             | debugger/p_0_in[0]                                                 | debugger/M_status_d[0]              |               16 |             77 |         4.81 |
-|  clk_IBUF_BUFG               |                                                                    | reset_cond/Q[0]                     |               27 |             85 |         3.15 |
-|  M_data_scan_TCK             | debugger/M_rdata_q[161]_i_1_n_0                                    |                                     |               56 |            162 |         2.89 |
-|  clk_IBUF_BUFG               |                                                                    |                                     |              112 |            191 |         1.71 |
-|  clk_IBUF_BUFG               | debugger/config_fifo/E[0]                                          |                                     |              156 |            648 |         4.15 |
-+------------------------------+--------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
++----------------+--------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |                            Enable Signal                           |           Set/Reset Signal          | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+--------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG |                                                                    | reset_cond/M_reset_cond_in          |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | game_beta/game_circle_clock/edge_rise/E[0]                         | reset_cond/Q[0]                     |                4 |              4 |         1.00 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q[5]_i_1_n_0  | reset_cond/Q[0]                     |                2 |              6 |         3.00 |
+|  clk_IBUF_BUFG |                                                                    |                                     |                8 |             11 |         1.38 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/M_stage_q_reg[3]_6[0]                   | reset_cond/Q[0]                     |               11 |             16 |         1.45 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/M_stage_q_reg[3]_9[0]                   | reset_cond/Q[0]                     |               12 |             16 |         1.33 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/M_stage_q_reg[3]_8[0]                   | reset_cond/Q[0]                     |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/M_stage_q_reg[3]_12[0]                  | reset_cond/Q[0]                     |               11 |             16 |         1.45 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/M_stage_q_reg[3]_11[0]                  | reset_cond/Q[0]                     |               13 |             16 |         1.23 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[2]_1[0] | reset_cond/Q[0]                     |               13 |             16 |         1.23 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/E[0]                                    | reset_cond/Q[0]                     |               12 |             16 |         1.33 |
+|  clk_IBUF_BUFG | rst_btn_cond/M_ctr_q[0]_i_2__3_n_0                                 | rst_btn_cond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | p2_btn_cond/M_ctr_q[0]_i_2__2_n_0                                  | p2_btn_cond/sync/M_pipe_q_reg[1]_0  |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | p1_btn_cond/sel                                                    | p1_btn_cond/sync/clear              |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/M_stage_q_reg[3]_7[0]                   | reset_cond/Q[0]                     |               12 |             29 |         2.42 |
+|  clk_IBUF_BUFG | game_beta/game_controlunit/M_stage_q_reg[3]_10[0]                  | reset_cond/Q[0]                     |               12 |             29 |         2.42 |
+|  clk_IBUF_BUFG |                                                                    | reset_cond/Q[0]                     |               26 |             85 |         3.27 |
++----------------+--------------------------------------------------------------------+-------------------------------------+------------------+----------------+--------------+
 
 
