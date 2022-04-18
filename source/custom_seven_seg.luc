@@ -31,9 +31,9 @@ module custom_seven_seg (
         
      default:
         first_digit = data - (10 * (data / 10));
-        second_digit = data / 10;
-        third_digit = data / 100;
-        fourth_digit = data / 1000;
+        second_digit = (data  - (100 * (data / 100))) / 10;
+        third_digit = (data  - (1000 * (data / 1000))) / 100;
+        fourth_digit =(data  - (10000 * (data / 10000))) / 1000;
         seg.values = {fourth_digit, third_digit, second_digit, first_digit};
         
     }
