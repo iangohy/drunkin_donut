@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
-| Date         : Sat Apr 16 13:47:55 2022
+| Date         : Mon Apr 18 13:01:13 2022
 | Host         : DESKTOP-3E3A running 64-bit Ubuntu 20.04.4 LTS
 | Command      : report_methodology -file au_top_0_methodology_drc_routed.rpt -pb au_top_0_methodology_drc_routed.pb -rpx au_top_0_methodology_drc_routed.rpx
 | Design       : au_top_0
@@ -23,15 +23,21 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 70
+             Violations found: 71
 +-----------+----------+-------------------------------+------------+
 | Rule      | Severity | Description                   | Violations |
 +-----------+----------+-------------------------------+------------+
+| SYNTH-11  | Warning  | DSP output not registered     | 1          |
 | TIMING-18 | Warning  | Missing input or output delay | 70         |
 +-----------+----------+-------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+SYNTH-11#1 Warning
+DSP output not registered  
+DSP instance p1_score_decoder/M_seg_values1__0 is not fully pipelined on the output side. MREG/PREG are not used.
+Related violations: <none>
+
 TIMING-18#1 Warning
 Missing input or output delay  
 An input delay is missing on p1_button relative to clock(s) clk_0

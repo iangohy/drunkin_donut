@@ -49,9 +49,9 @@ module custom_seven_seg_5 (
       end
       default: begin
         first_digit = data - (4'ha * (data / 4'ha));
-        second_digit = data / 4'ha;
-        third_digit = data / 7'h64;
-        fourth_digit = data / 10'h3e8;
+        second_digit = (data - (7'h64 * (data / 7'h64))) / 4'ha;
+        third_digit = (data - (10'h3e8 * (data / 10'h3e8))) / 7'h64;
+        fourth_digit = (data - (14'h2710 * (data / 14'h2710))) / 10'h3e8;
         M_seg_values = {fourth_digit, third_digit, second_digit, first_digit};
       end
     endcase
